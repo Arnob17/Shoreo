@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/shoreoBook.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../static/src/moon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li class="_favico_main">
+                    <a class="_favText" id="_favText" href="/">
+                        অ
+                    </a>
+                </li>
+                <li>
+                    <a id="1" href="/biggan">
+                        বিজ্ঞান
+                    </a>
+                </li>
+                <li>
+                    <a id="2" href="/shahitto">
+                        সাহিত্য
+                    </a>
+                </li>
+                <li>
+                    <a id="3" href="/foryou">
+                        প্রযুক্তি
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="info">
+        <p class="title" id="_title">কেও নয়!</p>
+        <p class="writer" id="_writer">কেও নয়!</p>
+    </div>
+
+    <div class="post" id="post">
+        <div class="c" id="_pageC">
+            <i id="_prev" class="fa-solid fa-angles-left"></i>
+            <div class="ca">
+                <img id="_page" src="" alt="">
+                <p><span class="_currPage" id="_currPage"></span> / <span id="_allPages" class="_allPages"></span></p>
+            </div>
+            <i id="_next" class="fa-solid fa-angles-right"></i>
+        </div>
+    </div>
+
+    <div class="end_footer" id="footer">
+        <ul>
+            <div class="_footer_favico">
+                <a href="http://localhost:3060">অ <span style="font-size: 15px; color: green;">(Shoreo)</span></a>
+            </div>
+            <li>
+                <a href="http://localhost:3060/signup">
+                    Sign up
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/fm">
+                    Listen Fm
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/golporaat">
+                    Listen Events
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/api/v1">
+                    Api
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/chat">
+                    Chat
+                </a>
+            </li>
+            <li class="made_by">
+                <a href="https://github.com/arnob17" target="_blank">
+                    <span style="color: rgb(102, 102, 102);">Made with <span title="NodeJs" class="nodejs_icon"><i
+                                class="fa-brands fa-node-js"></i></span> <span title="Html" class="html_icon"><i
+                                class="fa-brands fa-html5"></i></span> <span title="CSS" class="css_icon"><i
+                                class="fa-brands fa-css3-alt"></i></span> by <span
+                            style="color: rgb(14, 78, 173);">অর্ণব</span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function d(id) {
+            return document.getElementById(`${id}`);
+        }
+        const queryParamsString = window.location.search.substr(1);
+        const queryParams = queryParamsString.split('&').reduce((accumulator, singleQueryParam) => {
+            const [key, value] = singleQueryParam.split('=');
+            accumulator[key] = decodeURIComponent(value);
+            return accumulator;
+        }, {})
+        fetch('/api/view_req_data', {
+            method: 'POST',
+            body: JSON.stringify({ id: `${queryParams.i}` }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json())
+            .then(j => {
+                d('_title').innerText = `${j._title}`;
+                d('_writer').innerText = `${j._writer}`;
+                d('_writer').addEventListener('click', () => {
+                    window.location.href = `http://localhost:3060/user/${j._writer_id}`
+                })
+                let img_links = [];
+                for (let x of j.pages) {
+                    img_links.push(x);
+                }
+                let b_prev = d('_prev');
+                let b_next = d('_next');
+                let c_page = d('_page');
+                //...
+
+                let a = d('post');
+                let i = 0;
+                d('_currPage').innerText=`1`;
+                d('_allPages').innerText=`${img_links.length}`
+                //aa
+                c_page.src = `${img_links[i].i}`;
+                b_prev.addEventListener('click', () => {
+                    if (i < 1) {
+                        return;
+                    } else {
+                        i--;
+                        c_page.src = `${img_links[i].i}`;
+                        d('_currPage').innerText=`${i+1}`;
+                    }
+                });
+
+                b_next.addEventListener('click', () => {
+                    {
+
+                        if (img_links.length > (i + 1)) {
+                            i++;
+
+                            c_page.src = `${img_links[i].i}`;
+                            d('_currPage').innerText=`${i+1}`;
+                        }
+
+                    };
+                });
+            })
+
+    </script>
+
+</body>
+
+</html>

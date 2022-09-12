@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "shoreo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "arnob",
+  "license": "ISC",
+  "description": ""
+}
