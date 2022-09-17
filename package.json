@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "better-sqlite3": "^7.6.2",
     "express": "^4.18.1",
+    "knex": "^2.3.0",
     "nodemon": "^2.0.19"
   },
   "scripts": {
@@ -9,7 +11,6 @@
   "name": "shoreo",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "author": "arnob",
   "license": "ISC",
   "description": ""

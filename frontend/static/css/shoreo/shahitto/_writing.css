@@ -378,3 +378,38 @@ body {
     font-size: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+@media only screen and (max-width: 600px) {
+    .container_right {
+        display: flex;
+        justify-content: center;
+        /* position: absolute;
+        right:0; */
+        margin-left: 10%;
+        height: 100%;
+        width: auto;
+    }
+    .container_right ul li {
+        display: inline-block;
+        align-items: center;
+        list-style-type: none;
+        padding: 0 15px;
+        margin-top: 3%;
+        justify-content: center;
+    }
+    
+    .container ul {
+        list-style-type: none;
+        width: 85%;
+    }
+    ._ ._quote{
+        color: black;
+        font-family: 'Atma', cursive;
+        font-family: 'Bebas Neue', cursive;
+        font-family: 'Galada', cursive;
+        font-family: 'Mina', sans-serif;
+        font-size: 15px;
+        margin-left: 2%;
+        font-weight: 400;
+    }
+}

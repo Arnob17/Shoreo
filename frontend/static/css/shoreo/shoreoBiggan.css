@@ -126,7 +126,7 @@ body {
 
 ._Main_topic p ._topic {
     font-size: 25px;
-    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+    background: linear-gradient(to right, #30CFD0 0%, rgb(46 251 98 / 84%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     font-family: 'Atma', cursive;
@@ -171,7 +171,7 @@ body {
     white-space: pre-line;
 }
 ._tag {
-    font-size: 15px; background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+    font-size: 15px; background: linear-gradient(to right, #30CFD0 0%, rgb(46 251 98 / 84%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     font-family: 'Atma', cursive;
@@ -241,7 +241,7 @@ body {
     height: auto;
     width: auto;
     white-space: pre-line;
-    background-color: rgb(235, 235, 235, .3);
+    background-color: rgba(68, 68, 68, 0.2);
     border-radius: 2ch;
     margin-top: 3%;
 
@@ -262,7 +262,7 @@ body {
     margin-left: 2%;
     font-size: 20px;
     text-decoration: none;
-    color: #292929;
+    color: #d3d3d3;
     display: flex;
     align-items: center;
     font-weight: 1000;
@@ -276,9 +276,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(153, 153, 153, 0.836);
+    border: 1px solid rgba(0, 243, 61, 0.836);
     border-radius: 5ch;
-    background-color: rgba(153, 153, 153, 0.836);
+    background-color: rgba(0, 243, 61, 0.836);
     font-size: 7px;
     color: white;
     font-weight: bolder;
@@ -287,7 +287,7 @@ body {
 .container ul li span {
     margin-left: 2%;
     font-size: 15px;
-    color: #6d6c77;
+    color: #e4e4e4;
     font-weight: 6000;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -302,11 +302,12 @@ body {
 .container ul li .containers {
     height: 200px;
     width: auto;
-    border: grey;
+    border: rgb(255, 254, 254);
 }
 
 .container ul li p {
     margin-left: 2%;
+    color: white;
 }
 body::-webkit-scrollbar {
     width: 5px;

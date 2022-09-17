@@ -29,6 +29,7 @@ d('_subtext').innerText=`${t[iindex].a}`
 let j = localStorage.getItem('userName') || false;
 let i = localStorage.getItem('userImg') || false;
 let id = localStorage.getItem('userId') || false;
+// if (!j) { window.location.href = `http://localhost:3000/`; }
 pfp.src = `${i}`;
 pfp.addEventListener('click', () => {
     window.location.href = `http://localhost:3000/user/${id}`;

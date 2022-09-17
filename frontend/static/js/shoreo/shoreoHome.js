@@ -13,15 +13,10 @@ function langClick (d, l)
 }
 langClick(en, 'en'); langClick(jp, 'jp'); langClick(kr, 'kr');
 
-let pfp = d('_pfp');
 
 let j = localStorage.getItem('userName') || false;
 let i = localStorage.getItem('userImg') || false;
 let id = localStorage.getItem('userId') || false;
-pfp.src = `${i}`;
-pfp.addEventListener('click', () => {
-    window.location.href = `http://localhost:3000/user/${id}`;
-})
 
 if (
     localStorage.getItem('userName')

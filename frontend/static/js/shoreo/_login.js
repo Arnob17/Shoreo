@@ -29,7 +29,7 @@ b.addEventListener('keypress', (event) => {
                 localStorage.setItem('userImg', j._avatar);
                 localStorage.setItem('userName', j._name);
                 localStorage.setItem('userId', j._id);
-                window.location.href = `http://localhost:3000`
+                window.location.href = `http://localhost:3000/feed`
             })
         }
     }
