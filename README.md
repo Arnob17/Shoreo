@@ -1,0 +1,2 @@
+# Shoreo
+repo for shoreo
