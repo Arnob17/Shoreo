@@ -10,11 +10,13 @@ body {
     background-color: #ffffff;
 }
 .navbar {
+    z-index: 10;
     position: sticky;
     top: 0;
     height: 80px;
     width: auto;
-    background-color: #ffffff;  
+    background-color: rgb(255, 255, 255, .8);
+    backdrop-filter: blur(6px);
 }
 
 .navbar nav {
@@ -105,27 +107,43 @@ body {
     border: 1px solid rgb(189, 189, 189);
 }
 .container1 {
-    height: 700px;
+    height: 600px;
     width: auto;
-    background-color:#f3f3f3;
+    /* background-color:#f3f3f3; */
     display: flex;
+    background: url('../../src/bg_shoreo.png');
     justify-content: center;
 }
-.container1 h1 {
+.container1 .frontext {
+    position: relative;
+    z-index: 1;
+    height: 600px;
+    width: 100%;
+    background-color:transparent;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    flex-direction: column;
+}
+.container1 .frontext h1 {
+    font-family: 'Galada', cursive;
+    font-size: 160px;
+    font-weight: 300;
+    color: #a7a7a7;
+}
+.container1 .frontext ._subtext {
     font-family: 'Atma', cursive;
     font-family: 'Bebas Neue', cursive;
     font-family: 'Galada', cursive;
     font-family: 'Mina', sans-serif;
-    font-size: 45px;
-    width: 40vh;
-    font-weight: normal;
-    color: rgb(131, 131, 131);
-    margin-top: 190px;
-    animation: fadeIn 5s;
+    font-size: 30px;
+    color: #a7a7a7;
 }
 .container2 {
     height: 500px;
     width: auto;
+    margin-top: 5%;
     background-color:#a7a7a7;
     display: flex;
     justify-content: center;

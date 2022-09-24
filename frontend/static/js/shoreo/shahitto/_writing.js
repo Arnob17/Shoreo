@@ -22,7 +22,7 @@ fetch ('/api/posts_data/all', {
 })
 let pfp = d('_pfp');
 let q = d('_quote');
-let t=[{t: 'এ সকল কিছু, শুধু তোমার জন্য..', a: 'অর্ণব'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
+let t=[{t: 'ও রজনীগন্ধা, তোমার গন্ধসুধা ঢাল', a: 'অর্ণব'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
 let iindex = Math.floor(Math.random() * t.length);
 q.innerText=`${t[iindex].t}`;
 d('_subtext').innerText=`${t[iindex].a}`

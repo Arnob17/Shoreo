@@ -1,6 +1,3 @@
-let array = [];
+let array = [0, 3, 5, 6, 7];
 
-for (let x = 0; x < 6; x= x + 1) {
-    array.push(x);
-    console.log(array);
-}
+console.log(array[-1+1*4]);

@@ -18,12 +18,14 @@ fetch ('/api/view_req_data', {
         console.log(j.pages);
         if (j._type == 'type_poddo' || 'type_goddo') {
             d('_title').innerText = `${j._title}`;
+            d('_info2').style.background = `url('${j.bg}')`
+            d('_info2').style.backgroundSize = `100%;`;
             d('_writer').innerText = `${j._writer}`;
             d('_writer').addEventListener ('click', () => {
                 window.location.href = `http://localhost:3000/user/${j._writer_id}`
             })
             let p = document.createElement('p');
-            p.innerHTML = `${j._document}`
+            p.innerHTML = `${j._document}`;
             d('post').appendChild(p);
         }
 

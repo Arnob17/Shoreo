@@ -19,6 +19,7 @@ async function Fetch() {
     return await response.json();
 
 }
+///api/q/answer
 let a = d('_question'); let b = d('_by');
 Fetch().then(x => {
     a.innerText = `${x.q}`; b.innerText = `${x.author}`;
@@ -30,12 +31,12 @@ Fetch().then(x => {
         <div class="contents">
             <img id="_user_avatar" src="${y.img}" alt="">
             <p>
-                <span class="_user_name" id="_user_name">${y.a}</span>
+                <span class="_user_name" id="_user_name">${y.authorid}</span>
             </p>
         </div>
     </div>
     <div class="answer">
-        <p>${y.p}</p>
+        <p>${y.answer}</p>
     </div>
     <hr>
     <div class="votes">
@@ -63,4 +64,26 @@ Fetch().then(x => {
             }
         })
     }
+})
+
+let textArea = d('_textarea');
+let submitB = d('submitButton');
+submitB.addEventListener('click', () => {
+    let user_id = localStorage.getItem('userId');
+    if (!user_id) return alert('You have to Log-In!!');
+    if (textArea.value.length < 1) {return}
+    let Json = {answer: `${textArea.value}`, qid: queryParams.i, authorid: user_id, post_token: 1};
+    fetch ('/api/q/answer', {
+        method: 'POST',
+        body: JSON.stringify(Json),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then(response => response.json()).then((x) => {
+        if (x.id === 001) {
+            console.log('done');
+        } else {
+            console.log('not done');
+        }
+    })
 })

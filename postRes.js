@@ -50,9 +50,28 @@ module.exports = function (app, path, knex) {
         res.send(obj);
     })
 
-    app.post('/api/v1/q', (req, res) => {
-        let x = require('./backend/js/shoreo/questions.js');
-        res.send(x);
+    app.post('/api/v1/q', async (req, res) => {
+        let x = await knex('questions');
+        let arr = [];
+        for (let y of x) {
+            arr.push(
+                {
+                    q: y.title,
+                    qid: y.id,
+                    a: []
+                }
+            )
+        }
+        for (let x of arr) {
+            let answer = await knex('answers').where({ question_id: `${x.qid}` })
+            let o = answer;
+            if (o.length > 0) {
+                for (let i of answer) {
+                    x.a.push(i);
+                }
+            }
+        }
+        res.send(arr);
     })
     app.post('/auth/check', async (req, res) => {
         let { id } = req.body;
@@ -75,9 +94,24 @@ module.exports = function (app, path, knex) {
                 is_verified: 'false',
                 userid: `${userid}`
             });
-            res.send({id: 182, message: 'successful!'});
+            res.send({ id: 182, message: 'successful!' });
         } else {
             res.status(418).send({ error: 'UserAlreadyExists', id: 181 })
         }
+    })
+    app.post('/api/q/answer', async (req, res) => {
+        let { answer, qid, authorid } = req.body;
+        let { post_token } = req.body;
+        let answer_db = await knex('answers');
+        if (qid && post_token && answer && authorid) {
+            await knex('answers').insert({
+                answer: String(answer),
+                question_id: `${qid}`,
+                authorid: `${authorid}`,
+                upvote: '0',
+                downvote: '0'
+            })
+        }
+        res.send({ id: 001, message: 'Done' });
     })
 }
