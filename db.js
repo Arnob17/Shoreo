@@ -20,12 +20,13 @@ module.exports = async function (knex) {
   //   table.string('answer');
   // })
   await knex.schema
-  .createTable('answers', table => {
+  .createTable('posts', table => {
     table.increments('id');
-    table.string('answer');
-    table.string('upvote');
-    table.string('question_id');
+    table.string('document');
     table.string('authorid');
-    table.string('downvote');
+    table.string('user_name');
+    table.string('_type');
+    table.string('Gtag');
+    table.string('title')
   })
 }

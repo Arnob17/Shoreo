@@ -99,6 +99,21 @@ body {
     display: flex;
     align-items: center;
 }
+#_Ask {
+    position: absolute;
+    padding-right: 10px;
+    right: 9%;
+    font-size: 20px; color: grey;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+#_upload {
+    position: absolute;
+    right: 7%;
+    font-size: 20px; color: grey;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
 .Iu {
     position: absolute;
     right: 2%;
@@ -115,7 +130,7 @@ body {
     right:0; */
     margin-left: 5%;
     height: 100%;
-    width: calc(100% - 7% - 150px);
+    width: calc(100% - 3% - 50px);
 }
 .container_right ul li {
     display: inline-block;
@@ -137,7 +152,6 @@ body {
     background-color: rgb(235, 235, 235, .3);
     border-radius: 2ch;
     margin-top: 3%;
-
     padding-bottom: 26px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

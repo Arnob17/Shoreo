@@ -1,6 +1,6 @@
 function o() {
     let i = 0;
-    let l = ['অনু','অংকন', 'অর্ণব', 'অভ্র', 'অর্ক', 'অল্প'];
+    let l = ['অনু','অংকন', 'অর্ণব', 'অভ্র', 'অর্ক', 'অল্প', 'অংক', 'অনন্ত', 'অসীম'];
     document.getElementById('_favText').innerText = `${l[Math.floor(Math.random() * l.length)]}`
 }
 function d (id) {return document.getElementById(id);}

@@ -25,11 +25,11 @@ fetch(`/user/${str}`, {
         let li = document.createElement('li');
 
         li.innerHTML = `<div id="c1" class="c1">
-        <span class="_title"><a style="text-decoration:none" href="http://localhost:3000/view?i=${x.id}">${x._title}</a></span>
-        <span class="_document">${x._document.substr(0, 50)}...</span>
+        <span class="_title"><a style="text-decoration:none" href="http://localhost:3000/view?i=${x.id}">${x.title}</a></span>
+        <span class="_document">${x.document.substr(0, 50)}...</span>
         </div>`
 
-        li.querySelector('.c1').style.background = `url('${x.bg}')`
+        li.querySelector('.c1').style.background = x.bg ? `url('${x.bg}')` : `#bebebe`
 
         ul.appendChild(li);
     }

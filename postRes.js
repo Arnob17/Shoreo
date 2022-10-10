@@ -1,44 +1,61 @@
 module.exports = function (app, path, knex) {
-    var _shoreo_data = require('./backend/js/shoreo/blogs.js') || false;
 
-    app.post('/api/view_req_data', (req, res) => {
+    app.post('/api/view_req_data', async (req, res) => {
+        let _shoreo_data = await knex('posts');
+        if (_shoreo_data.length ==0){return;}
         let { id } = req.body;
         if (!id) {
             res.status(418).send({ error: 'No Id Provided' })
         } else {
-            for (let o of _shoreo_data) {
-                if (o.id === id) {
-                    res.send(o);
-                }
-            }
+            let x = await knex('posts').where({id: id});
+            res.send({
+                id: x[0].id,
+                _tag: x[0].tag,
+                Gtag: x[0].Gtag,
+                _type: x[0].type,
+                _title: x[0].title,
+                _writer: x[0].user_name,
+                _writer_id: x[0].authorid,
+                _document: x[0].document
+            });
         }
     })
 
-    app.post('/api/posts_data/:data_quantity', (req, res) => {
+    app.post('/api/posts_data/:data_quantity', async (req, res) => {
+        let _shoreo_data = await knex('posts') || false;
+        if (_shoreo_data.length ==0){return;}
         let { data_quantity } = req.params;
-        if (data_quantity) {
-            if (parseInt(data_quantity)) {
-                for (let i = 0; i < data_quantity; i = i + i) {
-                    let o = [];
-                    o.push(_shoreo_data[i]);
-                    res.send(o);
+        let arr = [];
+                for (let x of _shoreo_data) {
+                    arr.push(
+                        {
+                            id: x.id,
+                            _tag: x.tag,
+                            Gtag: x.Gtag,
+                            _type: x._type,
+                            _title: x.title,
+                            _writer: x.user_name,
+                            _writer_id: x.authorid,
+                            _document: x.document,
+                            img: x.thumbnail
+                        }
+                    )
                 }
-            } else {
-                res.send(_shoreo_data);
-            }
-        }
+        res.send(arr);
     })
 
     let Users = require('./backend/js/shoreo/Users.js');
     app.post('/user/:userid', async (req, res) => {
         const { userid } = req.params;
+        let _shoreo_data = await knex('posts');
         let a = [];
         for (let x of _shoreo_data) {
-            if (userid === x._writer_id) {
+            if (userid === x.authorid) {
                 a.push(x);
             }
         }
         let users = await knex('users').where({ userid: userid });
+        if (users.length == 0) {return;}
         let obj = {
             _name: `${users[0].user_name}`,
             _avatar: `${users[0].img}`,
@@ -47,6 +64,7 @@ module.exports = function (app, path, knex) {
             status: users[0].status || false,
             _role: `${users[0].role}` || false,
         }
+        console.log(obj)
         res.send(obj);
     })
 
@@ -76,9 +94,12 @@ module.exports = function (app, path, knex) {
     app.post('/auth/check', async (req, res) => {
         let { id } = req.body;
         let { pass } = req.body;
-        let users = await knex('users').where({ userid: id } && { password: pass });
-        console.log(users);
-        res.send({ _avatar: users[0].img, _name: users[0].user_name, _id: users[0].userid });
+        let user = await knex('users').where({ userid: id });
+        let password = await knex('users').where({ password: pass });
+        if (user.length==0) {return;} else if (password.length==0){return;}
+        if (user[0].userid == password[0].userid) {
+            res.send({ _avatar: user[0].img, _name: user[0].user_name, _id: user[0].userid });
+        }
     })
 
     app.post('/auth/signup', async (req, res) => {
@@ -113,5 +134,30 @@ module.exports = function (app, path, knex) {
             })
         }
         res.send({ id: 001, message: 'Done' });
+    })
+    app.post('/api/v1/ask_a_question', async (req, res) => {
+        let { title, authorid, type } = req.body;
+        // if (!title && !authorid && !type) {return;};
+        await knex('questions').insert({title: `${title}`, authorid: `${authorid}`, type: `${type}`});
+        res.send({x: 'done'});
+    })
+    app.post('/api/post', async  (req, res) => {
+        let { document, authorid, _type, title, img } = req.body;
+        if (!document && !authorid && !_type && !title && !img) {return;}
+        if (await knex('users').where({userid: authorid}).length == 0) {return;}
+        console.log(authorid);
+        let user = await knex('users').where({userid: `${authorid}`});
+        console.log(user);
+        let a = {
+            document: document,
+            authorid: authorid,
+            _type: _type,
+            Gtag: _type == '_science' ? 'বিজ্ঞান' : 'সাহিত্য',
+            title: title,
+            user_name: user[0].user_name,
+            thumbnail: img
+        }
+        await knex('posts').insert(a);
+        res.send({c: 1});
     })
 }

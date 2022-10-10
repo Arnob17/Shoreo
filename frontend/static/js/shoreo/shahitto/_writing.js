@@ -9,6 +9,7 @@ fetch ('/api/posts_data/all', {
     }
 }).then(response => response.json())
 .then(j => {
+    console.log(j)
     for (let o of j) {
         let li = document.createElement('li');
         let s = `<img src="${o.img || false}" alt="">
@@ -64,3 +65,10 @@ Fetch().then((x) => {
         })
     }
 })
+
+d('_upload').addEventListener('click', () => {
+    window.location.href=`/upload`
+})
+// d('_Ask').addEventListener('click', () => {
+//     window.location.href=`/ask`
+// })

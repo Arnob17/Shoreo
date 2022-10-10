@@ -31,8 +31,10 @@ app.get('/api/v1', (req, res) => {
 
 PostRoute.post('/api/v1/q/i', async (req, res) => {
   let { id } = req.body;
-  let x = await knex('questions').where({id: id});
-  let b = await knex('users').where({userid: x[0].authorid});
+  let x = await knex('questions').where({id: id}) || false;
+  if (x.length==0) {return res.send({error: 'error!'})}
+  let b = await knex('users').where({userid: x[0].authorid}) || false;
+  if (!b) {return res.send({error: 'error!'})}
   let y = {
     q: x[0].title,
     a: [],
@@ -53,29 +55,19 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 
 // db(knex);
 
-let x = async () => {
-  let x = await knex('questions');
-  let arr = [];
-  for (let y of x) {
-    arr.push(
-      {
-        q: y.title,
-        qid: y.id,
-        a: []
-      }
-    )
-  }
-  for (let x of arr) {
-    let answer = await knex('answers').where({ question_id: `${x.qid}` })
-    let y = answer[0];
-    if (y) {
-      x.a.push(y);
-    }
-  }
-  console.log(await arr);
-}
+// let x = async () => {
+//   let y = await knex('posts').where({id: 6}).update({document: '<b>পরিচয়</b>\n' +
+//   '\n' +
+//   'কাজী নজরুল ইসলাম ২৪ মে ১৮৯৯ এ ভারতের পশ্চিমবঙ্গের বর্ধমান জেলার আসানসোল মহকুমার চুরুলিয়া গ্রাম এ জন্মগ্রহন করেন। কবি নজরুল বিংশ শতাব্দীর প্রধান বাঙালি কবি ও সঙ্গীতকার। তার মাত্র ২৩ বৎসরের সাহিত্যিক জীবনে সৃষ্টির যে প্রাচুর্য তা তুলনারহিত। সাহিত্যের নানা শাখায় বিচরণ করলেও তার প্রধান পরিচয় তিনি কবি। কবি ২৯ আগস্ট ১৯৭৬ সাল এ মারা যান।\n' +
+//   '\n' +
+//   '<span style="background-color:yellow;">\n' +
+//   '<b>জন্মঃ</b> ২৪ মে ১৮৯৯,\n' +
+//   '<b>মৃত্যুঃ</b> ২৯ আগস্ট ১৯৭৬,\n' +
+//   '</span>'});
+//   console.log(await knex('posts'));
+// }
 
-x();
+// x();
 
 app.get('/user/:userid', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoUserInfo.html'));

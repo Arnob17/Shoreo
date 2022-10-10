@@ -160,7 +160,7 @@ body {
 }
 .answers ul ._a1 {
     height: auto;
-    width: 100%
+    width:calc(100% + 150px);
     /* background: rgba(128, 128, 128, 0.438); */
 }
 .answers ul li {
@@ -189,9 +189,11 @@ body {
     height: 35px;
     width: auto;
 }
-.InfoComponent .contents p ._user_name{
+.InfoComponent .contents p ._user_name a{
     font-size: 15px;
-    color: grey;
+    color: rgb(36, 156, 255);
+    text-decoration: underline;
+    cursor: pointer;
     font-family: 'Atma', cursive;
     font-family: 'Bebas Neue', cursive;
     font-family: 'Galada', cursive;
@@ -199,11 +201,25 @@ body {
     font-weight: 200;
     margin-left: 10%;
 }
+.answer_text {
+    height: 70px;
+    width: auto;
+    background: wheat;
+    display: flex;
+    align-items: center;
+}
+.answer_text p {
+    margin-left: 4%;
+    font-size: 20px;
+    color: grey;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .answer p{
     margin-left: 6%;
     color: grey;
     white-space: pre-line;
     font-size: 20px;
+    margin-bottom: 3%;
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -221,7 +237,7 @@ body {
 }
 .your_answer {
     display: flex;
-    height: 80px;
+    height: 140px;
     justify-content: center;
     align-items: center;
     width: auto;
@@ -230,9 +246,13 @@ body {
 .your_answer textarea{
     padding: 0 15px;
     width: 800px;
-    height: 80px;
+    background: azure;
+    height: 140px;
     resize: horizontal;
     border-radius: 0.5ch;
+}
+.your_answer textarea:focus{
+    background: rgb(225, 255, 255);
 }
 .your_answer .enterButton i {
     color: grey;

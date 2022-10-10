@@ -31,38 +31,15 @@ Fetch().then(x => {
         <div class="contents">
             <img id="_user_avatar" src="${y.img}" alt="">
             <p>
-                <span class="_user_name" id="_user_name">${y.authorid}</span>
+                <span class="_user_name" id="_user_name"><a href="/user/${y.authorid}">${y.authorid}</a></span>
             </p>
         </div>
     </div>
     <div class="answer">
         <p>${y.answer}</p>
-    </div>
-    <hr>
-    <div class="votes">
-        <i id="${x.qid}_upvote" class="fa-solid fa-caret-up"></i> <span id="_0">(0)</span>
-        <i id="${x.qid}_downvote" class="fa-solid fa-caret-down"></i> <span>(0)</span>
     </div>`
         li.className = '_a1';
         ul.appendChild(li);
-        d(`${x.qid}_upvote`).style.color = 'grey';
-        d(`${x.qid}_downvote`).style.color = 'grey';
-        d(`${x.qid}_downvote`).addEventListener('click', () => {
-            if (d(`${x.qid}_upvote`).style.color == 'grey') {
-                d(`${x.qid}_upvote`).style.color = 'blue';
-            } else if (d(`${x.qid}_upvote`).style.color == 'blue')
-            {
-                d(`${x.qid}_upvote`).style.color = 'grey';
-            }
-        })
-        d(`${x.qid}_downvote`).addEventListener('click', () => {
-            if (d(`${x.qid}_downvote`).style.color == 'grey') {
-                d(`${x.qid}_downvote`).style.color = 'blue';
-            } else if (d(`${x.qid}_downvote`).style.color == 'blue')
-            {
-                d(`${x.qid}_downvote`).style.color = 'grey';
-            }
-        })
     }
 })
 

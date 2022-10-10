@@ -14,7 +14,8 @@ fetch('/api/posts_data/all', {
     }
 }).then(response => response.json()).then(j => {
     for (let o of j) {
-        if (o._tag == '_science') {
+        console.log(o)
+        if (o._type == '_science') {
             for (let x of o._tags) {
                 if (x==queryParams.filter) {
                     let li = document.createElement('li');

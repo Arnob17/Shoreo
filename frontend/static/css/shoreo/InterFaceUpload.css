@@ -211,6 +211,7 @@ body {
     width: auto;
     margin-top: 4%;
     background-color:#f3f3f3;
+    position: relative;
     padding: 50px 50px 20px;
 }
 .end_footer ul {
