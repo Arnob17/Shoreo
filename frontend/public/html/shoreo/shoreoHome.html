@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/shoreoHome.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../static/src/moon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li class="_favico_main">
+                    <a class="_favText" id="_favText" onclick="o()">
+                        অ
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-flask"></i>
+                    <a id="1" href="/biggan">
+                        বিজ্ঞান
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-guitar"></i>
+                    <a id="2" href="/shahitto">
+                        সাহিত্য
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-microchip"></i>
+                    <a id="3" href="/tech">
+                        প্রযুক্তি
+                    </a>
+                </li>
+                <li class="Iu" id="_iU">
+
+                    <a href="/signup">Login</a>
+
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container1">
+        <div class="frontext">
+            <h1 id="_frontText">
+                অ
+            </h1>
+            <p class="_subtext">
+                সময়ের শুরু হোক এখান থেকেই...
+            </p>
+        </div>
+    </div>
+    <div class="container2">
+        <h1>
+            <ul>
+                <li id="_sahitto">সাহিত্য,</li>
+                <li id="_biggan">বিজ্ঞান,</li>
+                <li id="_projukti">প্রযুক্তি</li>
+            </ul>
+            <p id="_shuruhok">শুরু হোক এখান থেকেই...</p>
+        </h1>
+    </div>
+    <div class="end_footer" id="footer">
+        <ul>
+            <div class="_footer_favico">
+                <a href="http://localhost:3000">অ <span style="font-size: 15px; color: green;">(Shoreo)</span></a>
+            </div>
+            <li>
+                <a href="/signup">
+                    Sign up
+                </a>
+            </li>
+            <li>
+                <a href="/upload">
+                    Write
+                </a>
+            </li>
+            <li>
+                <a href="/api/v1">
+                    Api
+                </a>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button onclick="DropdownFunc()" class="dropbtn">ভাষা</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="/" onclick="reset()" id="_lang_bn">বাংলা</a>
+                        <a href="/" id="_lang_eng">English</a>
+                        <a href="/" id="_lang_japanese">日本語</a>
+                        <a href="/" id="_lang_korean">한국인</a>
+                    </div>
+                </div>
+            </li>
+            <li class="made_by">
+                <a href="https://github.com/arnob17" target="_blank">
+                    <span style="color: rgb(102, 102, 102);">Made with <span title="NodeJs" class="nodejs_icon"><i
+                                class="fa-brands fa-node-js"></i></span> <span title="Html" class="html_icon"><i
+                                class="fa-brands fa-html5"></i></span> <span title="CSS" class="css_icon"><i
+                                class="fa-brands fa-css3-alt"></i></span> by <span
+                            style="color: rgb(14, 78, 173);" title="Arnob">অর্ণব</span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <style>
+        .dropbtn {
+            background-color: grey;
+            color: white;
+            padding: 6px;
+            font-size: 10px;
+            border-radius: 3ch;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown button on hover & focus */
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #2980B9;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            border-radius: 10%;
+            min-width: 80px;
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 6px 8px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {
+            display: block;
+        }
+    </style>
+    <script>
+        function DropdownFunc() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        //langugaes
+        function d (id) {return document.getElementById(id);}
+        let frontText = d('_frontText');
+        let navbarTexts_1 = d('1');
+        let navbarTexts_2 = d('2');
+        let navbarTexts_3 = d('3');
+        let texts = [
+            {
+                lang: 'en',
+                frontText: 'Let the time start from here...',
+                navbarTexts_1: 'Science',
+                navbarTexts_2: 'Literature',
+                navbarTexts_3: 'Technology'
+            },
+            {
+                lang: 'jp',
+                frontText: 'ここから時間を始めましょう...',
+                navbarTexts_1: '理科',
+                navbarTexts_2: '文学',
+                navbarTexts_3: 'テクノロジー'
+            },
+        ];
+        function ChangeText (l) {
+            for (let x of texts) {
+                if (x.lang == l) {
+                    frontText.innerHTML=`${x.frontText}`;
+                    navbarTexts_1.innerHTML=`${x.navbarTexts_1}`;
+                    navbarTexts_2.innerHTML=`${x.navbarTexts_2}`;
+                    navbarTexts_3.innerHTML=`${x.navbarTexts_3}`;
+                }
+            }
+        }
+        for (let x of texts) {
+            if (x.lang == localStorage.getItem('language')) {
+                ChangeText(x.lang);
+            }
+        }
+        function reset() {
+            return localStorage.setItem('language', 'bn');
+        }
+    </script>
+    <script type="text/javascript" defer src="../../../static/js/shoreo/shoreoHome.js"></script>
+</body>
+
+</html>

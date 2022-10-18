@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ - সাহিত্য</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/shoreoShahitto.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../static/src/moon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li class="_favico_main">
+                    <a class="_favText" id="_favText" href="/">
+                        অ | <span style="background: linear-gradient(to right, #30CFD0 0%, #330867 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;">সাহিত্য</span>
+                    </a>
+                </li>
+                <li>
+                    <a id="1" href="/biggan">
+                        বিজ্ঞান
+                    </a>
+                </li>
+                <li>
+                    <a id="2" href="/shahitto">
+                        সাহিত্য
+                    </a>
+                </li>
+                <li>
+                    <a id="3" href="/foryou">
+                        প্রযুক্তি
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="TodaysBestWritings">
+        <div class="_Main_topic">
+            <p>
+                <span class="_topic">আজকের শ্রেষ্ঠ</span>
+                <span class="_subText">শুধু তোমার জন্য!</span>
+            </p>
+        </div>
+        <div class="_Writings">
+            <ul class="_writing_UL" id="_bestoftodayUL">
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="Uponnash">
+
+        <div class="_Main_topic">
+            <p>
+                <span class="_topic">গদ্য গুচ্ছ</span>
+                <span class="_subText">বেশ সুন্দর!</span>
+            </p>
+        </div>
+        <div class="_Writings">
+            <ul class="_writing_UL" id="_goddoUl">
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="Poddo">
+
+        <div class="_Main_topic">
+            <p>
+                <span class="_topic">পদ্য গুচ্ছ</span>
+                <span class="_subText">বেশ সুন্দর!</span>
+            </p>
+        </div>
+        <div class="_Writings">
+            <ul class="_writing_UL" id="poddo_UL">
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="More">
+        <div class="Ttile">
+            <p>
+                ঘুরে আসুন ফিড থেকে আরও কিছু সন্ধানের জন্য!
+            </p>
+        </div>
+        <div class="text">
+            <p><a href="http://localhost:3060/shoreo/feed">ফিড</a></p>
+        </div>
+    </div>
+
+    <div class="end_footer" id="footer">
+        <ul>
+            <div class="_footer_favico">
+                <a href="http://localhost:3060">অ <span style="font-size: 15px; color: green;">(Shoreo)</span></a>
+            </div>
+            <li>
+                <a href="http://localhost:3060/signup">
+                    Sign up
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/fm">
+                    Listen Fm
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/golporaat">
+                    Listen Events
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/api/v1">
+                    Api
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/chat">
+                    Chat
+                </a>
+            </li>
+            <li class="made_by">
+                <a href="https://github.com/arnob17" target="_blank">
+                    <span style="color: rgb(102, 102, 102);">Made with <span title="NodeJs" class="nodejs_icon"><i class="fa-brands fa-node-js"></i></span> <span title="Html" class="html_icon"><i class="fa-brands fa-html5"></i></span> <span title="CSS" class="css_icon"><i class="fa-brands fa-css3-alt"></i></span> by <span style="color: rgb(14, 78, 173);">অর্ণব</span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../../../static/js/shoreo/shoreoShahitto.js"></script>
+
+</body>
+
+</html>

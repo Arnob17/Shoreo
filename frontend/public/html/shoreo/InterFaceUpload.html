@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ - Upload</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="../../../static/css/shoreo/InterFaceUpload.css">
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="../../static/src/moon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li class="_favico_main">
+                    <a class="_favText" id="_favText" href="/">
+                        অ
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-flask"></i>
+                    <a id="1" href="/biggan">
+                        বিজ্ঞান
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-guitar"></i>
+                    <a id="2" href="/shahitto">
+                        সাহিত্য
+                    </a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-microchip"></i>
+                    <a id="3" href="/foryou">
+                        প্রযুক্তি
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="Containter_Main">
+        <p class="_text_main">
+            "লিখ যা তুমি জানো.."
+        </p>
+        <div class="inp">
+            <form>
+                <label for="fname">টাইটেল</label><br>
+                <input placeholder="টাইটেল লিখুন" type="text" id="fname" name="fname" max="10"><br>
+                <label for="fname2">ছবি</label><br>
+                <input placeholder="ছবি এর লিঙ্ক দিন" type="text" id="img" name="fname2"><br>
+            </form>
+        </div>
+    </div>
+
+    <div class="Main_Input">
+        <p>লিখা</p>
+        <textarea name="_MainText" placeholder="Write your subject" id="maintext" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="submitButton">
+        <div class="b">
+            <p id="_submit" >হয়ে গেছে!</p>
+        </div>
+    </div>
+
+    <div class="end_footer" id="footer">
+        <ul>
+            <div class="_footer_favico">
+                <a href="http://localhost:3060">অ <span style="font-size: 15px; color: green;">(Shoreo)</span></a>
+            </div>
+            <li>
+                <a href="http://localhost:3060/signup">
+                    Sign up
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/fm">
+                    Listen Fm
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/golporaat">
+                    Listen Events
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/api/v1">
+                    Api
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:3060/chat">
+                    Chat
+                </a>
+            </li>
+            <li class="made_by">
+                <a href="https://github.com/arnob17" target="_blank">
+                    <span style="color: rgb(102, 102, 102);">Made with <span title="NodeJs" class="nodejs_icon"><i
+                                class="fa-brands fa-node-js"></i></span> <span title="Html" class="html_icon"><i
+                                class="fa-brands fa-html5"></i></span> <span title="CSS" class="css_icon"><i
+                                class="fa-brands fa-css3-alt"></i></span> by <span
+                            style="color: rgb(14, 78, 173);">অর্ণব</span></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script src="../../../static/js/shoreo/InterFaceUpload.js"></script>
+</body>
+
+</html>

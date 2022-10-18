@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&family=Mina&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: auto;
+    background-color: #ffffff;
+}
+
+.navbar nav {
+    top: 0;
+    left: 0;
+    width: 100;
+    padding: 40px 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.navbar nav ul li {
+    margin-bottom: 25px;
+    padding: 0 14px;
+}
+
+.navbar nav ul li a {
+    color: rgb(164, 166, 168);
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar nav ul li a:hover {
+    color: rgb(113, 155, 197);
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: fadeIn 2s;
+}
+.navbar nav ul li i {
+    color: rgb(164, 166, 168);
+}
+
+.navbar nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 45px;
+    color: rgb(138, 83, 83)
+}
+
+._favico_main ._favText {
+    /* border-radius: 50%; */
+    font-size: 30px;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-weight: 100;
+    color: rgb(158, 153, 153);
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main ._favText:hover {
+    /* border-radius: 50%; */
+    font-size: 30px;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-weight: 100;
+    color: rgb(158, 153, 153);
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.C {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: auto;
+}
+.C p {
+    margin-left: 4%;
+    font-size: 20px;
+    color: black;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+}
+.quesion
+{
+    align-items: center;
+    height: auto;
+    width: auto;
+    background: rgb(173, 255, 47, 0.6);
+}
+.quesion p {
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+}
+.quesion p ._q {
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+    color: black;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.quesion p .q {
+    margin-left: 4px
+    ;
+    display: flex;
+    font-size: 20px;
+    color: black;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.quesion ._by {
+    margin-left: 6%;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+}
+.answers {
+    height: auto;
+    width: auto;
+    display: flex;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.answers ul {
+    list-style-type: none;
+}
+.answers ul ._a1 {
+    height: auto;
+    width:calc(100% + 150px);
+    /* background: rgba(128, 128, 128, 0.438); */
+}
+.answers ul li {
+    border: 1px solid rgba(255, 255, 255, 0.808);
+    border-radius: 0.5ch;
+    background-color: rgba(228, 228, 228, 0.808);
+    margin-bottom: 7%;
+}
+.InfoComponent {
+    height: 80px;
+    border: 1px solid f3f3f328;
+    width: auto;
+    background-color: #f3f3f328;
+    display: flex;
+    align-items: center;
+}
+.InfoComponent .contents {
+    display: flex;
+    align-items: center;
+    /* position: absolute;
+    left: 5%; */
+    margin-left: 5%;
+}
+.InfoComponent .contents img {
+    border-radius: 50%;
+    height: 35px;
+    width: auto;
+}
+.InfoComponent .contents p ._user_name a{
+    font-size: 15px;
+    color: rgb(36, 156, 255);
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+    font-weight: 200;
+    margin-left: 10%;
+}
+.answer_text {
+    height: 70px;
+    width: auto;
+    background: wheat;
+    display: flex;
+    align-items: center;
+}
+.answer_text p {
+    margin-left: 4%;
+    font-size: 20px;
+    color: grey;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.answer p{
+    margin-left: 6%;
+    color: grey;
+    white-space: pre-line;
+    font-size: 20px;
+    margin-bottom: 3%;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.votes {
+    margin-left: 10%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+}
+.votes i {
+    color: grey;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 0 15px;
+}
+.your_answer {
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    background-color: azure;
+}
+.your_answer textarea{
+    padding: 0 15px;
+    width: 800px;
+    background: azure;
+    height: 140px;
+    resize: horizontal;
+    border-radius: 0.5ch;
+}
+.your_answer textarea:focus{
+    background: rgb(225, 255, 255);
+}
+.your_answer .enterButton i {
+    color: grey;
+    font-size: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+}
