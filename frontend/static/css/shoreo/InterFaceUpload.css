@@ -14,7 +14,7 @@ body {
     top: 0;
     height: 80px;
     width: auto;
-    background-color: #ffffff;  
+    background-color: #ffffff;
 }
 
 .navbar nav {
@@ -156,7 +156,7 @@ body {
     margin-top: 5%;
 }
 .Main_Input textarea {
-    margin-left: 10%;
+    margin-left: 5%;
     height: auto;
     width: 70%;
     padding: 12px 20px;

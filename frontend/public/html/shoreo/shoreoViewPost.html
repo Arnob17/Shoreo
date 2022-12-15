@@ -9,7 +9,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <meta name='og:title' content='অ - Shoreo'>
     <meta name='og:type' content='blog'>
-    <meta name='og:url' content='http://localhost:3060/shoreo'>
+    <meta name='og:url' content='http://localhost:3000/shoreo'>
     <meta name='og:site_name' content='অ'>
     <meta name='og:description' content='Shoreo is a Learning website for all type of humans..!'>
     <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,26 +21,14 @@
     <div class="navbar">
         <nav>
             <ul>
-                <li class="_favico_main">
-                    <a class="_favText" id="_favText" href="/">
-                        অ
-                    </a>
-                </li>
-                <li>
-                    <a id="1" href="/biggan">
-                        বিজ্ঞান
-                    </a>
-                </li>
-                <li>
-                    <a id="2" href="/shahitto">
-                        সাহিত্য
-                    </a>
-                </li>
-                <li>
-                    <a id="3" href="/foryou">
-                        প্রযুক্তি
-                    </a>
-                </li>
+                <!-- <a class="_favText" id="_favText"> অ </a> -->
+                <li class="_favico_main"><img id="_favico" src="../../../../static/src/lg4.png" alt="logo" onclick="window.location.href='/'"></li>
+                <li> <a id="1" href="/biggan"> বিজ্ঞান </a> </li>
+                <li> <a id="2" href="/shahitto"> সাহিত্য </a> </li>
+                <li> <a id="3" href="/tech"> প্রযুক্তি </a> </li>
+                <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+                <li class="Iu" id="_iU"> <img id="_pfp" style="cursor: pointer;"src=""alt=""> </li>
             </ul>
         </nav>
     </div>
@@ -49,11 +37,15 @@
         <p class="title" id="_title">কেও নয়!</p>
         <p class="writer" id="_writer">কেও নয়!</p>
     </div>
-
+    <div class="options">
+        <i title="Text To Speech" id="_speak" class="fa-solid fa-headphones-simple"></i>
+        <i title="Edit" id="_edit" class="fa-solid fa-pen"></i>
+        <i title="Zoom-in" id="_zoom-in" class="fa-solid fa-magnifying-glass-plus"></i>
+        <i title="Zoom-out" id="_zoom-out" class="fa-solid fa-magnifying-glass-minus"></i>
+    </div>
     <div class="post" id="post">
         
     </div>
-
     <div class="end_footer" id="footer">
         <ul>
             <div class="_footer_favico">

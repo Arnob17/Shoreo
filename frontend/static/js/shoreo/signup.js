@@ -16,6 +16,7 @@ button.addEventListener('click', () => {
         }).then(response => response.json()).then (j => {
             if (j.id==181) {
                 alert('id already exists');
+                console.log(181)
             } else if (j.id==182) {
                 alert('SignUp successfull! (redirection to login page...)');
                 setTimeout(() => {

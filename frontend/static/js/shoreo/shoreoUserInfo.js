@@ -5,33 +5,55 @@ fetch(`/user/${str}`, {
     method: 'POST',
     body: JSON.stringify({ id: `id` }),
     headers: {
-        'Content-type': 'application/json; charset=UTF-8'
+        'Content-type': 'application/json; charset=UTF-8',
+        'x-powered-by': 'Shoreo'
     }
 }).then(response => response.json())
 .then(j => {
 
-    let a = d('_user_name');
-    let b = d('role');
-    let c = d('_user_avatar');
-    let v = `<span><i style="color:rgb(37, 174, 238); font-size:17px; cursor:pointer;" title="verified" class="fa-solid fa-circle-check"></i></span>`
-    a.innerHTML = `${j._name} ${j.is_verified == 'true' ? v : ''}`;
+    let a = d('_username');
+    let b = d('_role');
+    let c = d('_avatar');
+    // let v = `<span><i style="color:rgb(37, 174, 238); font-size:17px; cursor:pointer;" title="verified" class="fa-solid fa-circle-check"></i></span>`
+    a.innerText = `${j._name}`;
     c.src = `${j._avatar}`;
-    b.innerHTML=`${j._role}` || '';
+    b.innerText=`${j._role}`;
 
     for (let x of j._posts) {
-
-        
-        let ul = d('_ul');
+        let ul = d('_posts');
         let li = document.createElement('li');
 
-        li.innerHTML = `<div id="c1" class="c1">
-        <span class="_title"><a style="text-decoration:none" href="http://localhost:3000/view?i=${x.id}">${x.title}</a></span>
-        <span class="_document">${x.document.substr(0, 50)}...</span>
-        </div>`
-
-        li.querySelector('.c1').style.background = x.bg ? `url('${x.bg}')` : `#bebebe`
+        li.innerHTML = `<div class="profile2">
+        <img src="${j._avatar}" alt=""> <span onclick="window.location.href='/user/${x.authorid}'" >${x.user_name}</span>
+    </div>
+    <div class="m">
+        <div class="title">
+            <h1 onclick="window.location.href='/view?i=${x.id}'" >${x.title}</h1>
+        </div>
+        <div class="sub">
+            <p>${x.document.substr(0, (x.document.length - 299))}<span onclick="window.location.href='/view?i=${x.id}'" style="font-weight: bolder; cursor:pointer;">..more</span></p>
+        </div>
+    </div>`
 
         ul.appendChild(li);
+    }
+
+    let q_ul = d('_q');
+
+    for (let y of j._questions) {
+        let li = document.createElement('li');
+
+        li.innerHTML = `
+        <div class="question">
+            <span>${y.title}</span>
+        </div>
+        <div onclick='window.location.href="/q?i=${y.id}"' class="answer">
+            <span>Answer</span>
+        </div>
+        `;
+
+        q_ul.appendChild(li);
+
     }
 
 })

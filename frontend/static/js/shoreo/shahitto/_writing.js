@@ -9,21 +9,28 @@ fetch ('/api/posts_data/all', {
     }
 }).then(response => response.json())
 .then(j => {
-    console.log(j)
-    for (let o of j) {
+    for (let x of j) {
         let li = document.createElement('li');
-        let s = `<img src="${o.img || false}" alt="">
-        <a title="${o._title || 'No Title'}" href="http://localhost:3000/view?i=${o.id}"> ${o._title} <span title="${o.Gtag}" class="_status">${o.Gtag}</span></a>
-            <span style="cursor:pointer;" onclick="window.location.href = 'http://localhost:3000/user/${o._writer_id}'" title="${o._writer}"><span style="color:grey">-</span>${o._writer}</span>
-        <hr>
-        <p style="color: grey;">${o._document.substr(0, 100)}<a href="http://localhost:3000/view?i=${o.id}"><span style="font-weight: bolder; color: rgb(70, 70, 70);">..আরও</span></a></p>`;
-        li.innerHTML = s;
+        let ul = d('_main_ul');
+        li.innerHTML = `
+        <div class="profile">
+            <img src="${x._writer_avatar}" alt=""> <span onclick="window.location.href='/user/${x._writer_id}'" >${x._writer}</span>
+        </div>
+        <div class="m">
+            <div class="title">
+                <h1 onclick="window.location.href='/view?i=${x.id}'" >${x._title}</h1>
+            </div>
+            <div class="sub">
+                <p>${x._document.substr(0, (x._document.length - 299))} <span onclick="window.location.href='/view?i=${x.id}'" style="font-weight: bolder; cursor:pointer;">..more</span></p>
+            </div>
+        </div>
+        `;
         ul.appendChild(li);
     }
 })
 let pfp = d('_pfp');
 let q = d('_quote');
-let t=[{t: 'ও রজনীগন্ধা, তোমার গন্ধসুধা ঢাল', a: 'অর্ণব'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
+let t=[{t: 'ও রজনীগন্ধা, তোমার গন্ধসুধা ঢাল', a: 'অচেনা মানুষ'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
 let iindex = Math.floor(Math.random() * t.length);
 q.innerText=`${t[iindex].t}`;
 d('_subtext').innerText=`${t[iindex].a}`
@@ -48,27 +55,18 @@ async function Fetch () {
 let _ul = d('_main_ul');
 Fetch().then((x) => {
     for (let y of x) {
-        let _li = document.createElement('li');
-        _li.innerHTML=`<div class="c">
-        <p>${y.q}</p>
-        <div id="_button_${y.qid}" class="answerButton">
-            Answer
-         </div>
-        </div>
-        <div class="status">
-            <span><code>${y.a.length}</code> answers</span>
-        </div>`
-        _li.className = '_q1'
-        _ul.append(_li);
-        d(`_button_${y.qid}`).addEventListener('click', () => {
-            window.location.href=`/q?i=${y.qid}`
-        })
+        let li = document.createElement('li');
+        let ul = d('_q')
+        li.innerHTML = `
+        <div class="question">
+                            <span>${y.q}</span>
+                        </div>
+                        <div onclick='window.location.href="/q?i=${y.qid}"' class="answer">
+                            <span>Answer</span>
+                        </div>`
+        ul.appendChild(li);
     }
 })
-
 d('_upload').addEventListener('click', () => {
     window.location.href=`/upload`
 })
-// d('_Ask').addEventListener('click', () => {
-//     window.location.href=`/ask`
-// })

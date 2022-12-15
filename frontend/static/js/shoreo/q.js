@@ -31,7 +31,7 @@ Fetch().then(x => {
         <div class="contents">
             <img id="_user_avatar" src="${y.img}" alt="">
             <p>
-                <span class="_user_name" id="_user_name"><a href="/user/${y.authorid}">${y.authorid}</a></span>
+                <span class="_user_name" id="_user_name"><a href="/user/${y.authorid}">@${y.authorid}</a></span>
             </p>
         </div>
     </div>
@@ -44,7 +44,7 @@ Fetch().then(x => {
 })
 
 let textArea = d('_textarea');
-let submitB = d('submitButton');
+let submitB = d('submit_button');
 submitB.addEventListener('click', () => {
     let user_id = localStorage.getItem('userId');
     if (!user_id) return alert('You have to Log-In!!');
@@ -59,6 +59,7 @@ submitB.addEventListener('click', () => {
     }).then(response => response.json()).then((x) => {
         if (x.id === 001) {
             console.log('done');
+            window.location.reload();
         } else {
             console.log('not done');
         }

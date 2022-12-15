@@ -2,12 +2,13 @@ module.exports = function (app, path, knex) {
 
     app.post('/api/view_req_data', async (req, res) => {
         let _shoreo_data = await knex('posts');
-        if (_shoreo_data.length ==0){return;}
+        if (_shoreo_data.length == 0) { return; }
         let { id } = req.body;
         if (!id) {
             res.status(418).send({ error: 'No Id Provided' })
         } else {
-            let x = await knex('posts').where({id: id});
+            let x = await knex('posts').where({ id: id });
+            if (!x[0]) { return; }
             res.send({
                 id: x[0].id,
                 _tag: x[0].tag,
@@ -23,24 +24,29 @@ module.exports = function (app, path, knex) {
 
     app.post('/api/posts_data/:data_quantity', async (req, res) => {
         let _shoreo_data = await knex('posts') || false;
-        if (_shoreo_data.length ==0){return;}
+        let user = await knex('users') || false;
+        if (user.length == 0) {return;}
+        if (_shoreo_data.length == 0) { return; }
         let { data_quantity } = req.params;
         let arr = [];
-                for (let x of _shoreo_data) {
-                    arr.push(
-                        {
-                            id: x.id,
-                            _tag: x.tag,
-                            Gtag: x.Gtag,
-                            _type: x._type,
-                            _title: x.title,
-                            _writer: x.user_name,
-                            _writer_id: x.authorid,
-                            _document: x.document,
-                            img: x.thumbnail
-                        }
-                    )
+        for (let x of _shoreo_data) {
+            let o = await knex('users').where({userid: `${x.authorid}`})
+            arr.push(
+                {
+                    id: x.id,
+                    _tag: x.tag,
+                    Gtag: x.Gtag,
+                    _type: x._type,
+                    _title: x.title,
+                    _writer: x.user_name,
+                    _writer_id: x.authorid,
+                    _writer_avatar: o[0].img,
+                    _document: x.document,
+                    img: x.thumbnail,
+                    type: '01'
                 }
+            )
+        }
         res.send(arr);
     })
 
@@ -48,23 +54,30 @@ module.exports = function (app, path, knex) {
     app.post('/user/:userid', async (req, res) => {
         const { userid } = req.params;
         let _shoreo_data = await knex('posts');
+        let _questions = await knex('questions');
         let a = [];
+        let b = [];
         for (let x of _shoreo_data) {
             if (userid === x.authorid) {
                 a.push(x);
             }
         }
+        for (let y of _questions) {
+            if (userid === y.authorid) {
+                b.push(y);
+            }
+        }
         let users = await knex('users').where({ userid: userid });
-        if (users.length == 0) {return;}
+        if (users.length == 0) { return; }
         let obj = {
             _name: `${users[0].user_name}`,
             _avatar: `${users[0].img}`,
             is_verified: `${users[0].is_verified}`,
             _posts: a,
+            _questions: b,
             status: users[0].status || false,
             _role: `${users[0].role}` || false,
         }
-        console.log(obj)
         res.send(obj);
     })
 
@@ -76,7 +89,8 @@ module.exports = function (app, path, knex) {
                 {
                     q: y.title,
                     qid: y.id,
-                    a: []
+                    a: [],
+                    type: '02'
                 }
             )
         }
@@ -96,7 +110,7 @@ module.exports = function (app, path, knex) {
         let { pass } = req.body;
         let user = await knex('users').where({ userid: id });
         let password = await knex('users').where({ password: pass });
-        if (user.length==0) {return;} else if (password.length==0){return;}
+        if (user.length == 0) { return; } else if (password.length == 0) { return; }
         if (user[0].userid == password[0].userid) {
             res.send({ _avatar: user[0].img, _name: user[0].user_name, _id: user[0].userid });
         }
@@ -138,16 +152,14 @@ module.exports = function (app, path, knex) {
     app.post('/api/v1/ask_a_question', async (req, res) => {
         let { title, authorid, type } = req.body;
         // if (!title && !authorid && !type) {return;};
-        await knex('questions').insert({title: `${title}`, authorid: `${authorid}`, type: `${type}`});
-        res.send({x: 'done'});
+        await knex('questions').insert({ title: `${title}`, authorid: `${authorid}`, type: `${type}` });
+        res.send({ x: 'done' });
     })
-    app.post('/api/post', async  (req, res) => {
+    app.post('/api/post', async (req, res) => {
         let { document, authorid, _type, title, img } = req.body;
-        if (!document && !authorid && !_type && !title && !img) {return;}
-        if (await knex('users').where({userid: authorid}).length == 0) {return;}
-        console.log(authorid);
-        let user = await knex('users').where({userid: `${authorid}`});
-        console.log(user);
+        if (!document && !authorid && !_type && !title && !img) { return; }
+        if (await knex('users').where({ userid: authorid }).length == 0) { return; }
+        let user = await knex('users').where({ userid: `${authorid}` });
         let a = {
             document: document,
             authorid: authorid,
@@ -158,6 +170,22 @@ module.exports = function (app, path, knex) {
             thumbnail: img
         }
         await knex('posts').insert(a);
-        res.send({c: 1});
+        res.send({ c: 1 });
+    })
+
+    app.post('/edit/:id', async (req, res) => {
+        let { id } = req.params;
+        if (!id) {
+            res.send({error: 01});
+        }
+        let x = await knex('posts').where({id: id});
+        if(x.length==0){return;}
+        res.send(x[0]);
+    })
+    app.post('/api/update', async (req,res) => {
+        let { id, document } = req.body;
+        if (!id && !document) {return}
+        console.log(document);
+        await knex('posts').where({id: id}).update({document: document});
     })
 }

@@ -1,6 +1,7 @@
 function d (id) {
     return document.getElementById(`${id}`);
 }
+var msg = new SpeechSynthesisUtterance();
 const queryParamsString = window.location.search.substr(1);
 const queryParams = queryParamsString.split('&').reduce((accumulator, singleQueryParam) => {
     const [key, value] = singleQueryParam.split('=');
@@ -15,16 +16,18 @@ fetch ('/api/view_req_data', {
     }
 }).then(response => response.json())
     .then(j => {
+        d('_edit').addEventListener('click', () => window.location.href=`/edit/${queryParams.i}`)
         console.log(j.pages);
         if (j._type == 'type_poddo' || 'type_goddo') {
             d('_title').innerText = `${j._title}`;
-            d('_info2').style.background = `url('${j.bg}')`
+            // d('_info2').style.background = `url('${j.bg}')`
             d('_info2').style.backgroundSize = `100%;`;
             d('_writer').innerText = `${j._writer}`;
             d('_writer').addEventListener ('click', () => {
                 window.location.href = `http://localhost:3000/user/${j._writer_id}`
             })
             let p = document.createElement('p');
+            p.id = 'maintext';
             p.innerHTML = `${j._document}`;
             d('post').appendChild(p);
         }
@@ -32,4 +35,22 @@ fetch ('/api/view_req_data', {
         if (j._type == 'type_comic') {
             window.location.href = `http://localhost:3000/view/book?i=${j.id}`
         }
+
+        d('_speak').addEventListener('click', () => {
+            msg.text = `${j._document}`;
+
+            window.speechSynthesis.speak(msg);    
+        })
+        let main_font_sizes = ['15px', '20px', '30px'];
+        let font_index = 0;
+        d('_zoom-in').addEventListener('click', () => { 
+            if (font_index !== main_font_sizes.length-1) {
+                font_index++;
+            }
+            d('maintext').style.fontSize=main_font_sizes[font_index];
+        })
+        d('_zoom-out').addEventListener('click', () => { 
+            if (!font_index == 0) {font_index--;} 
+            d('maintext').style.fontSize=main_font_sizes[font_index];
+        })
     })

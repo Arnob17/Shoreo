@@ -32,6 +32,6 @@ submit.addEventListener('click', () => {
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
         }
-    }).then(response => response.json()).then(x => console.log(x));
+    }).then(response => response.json()).then(x => {console.log(x); window.location.href=`/`});
 
 })

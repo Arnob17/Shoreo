@@ -1,16 +1,9 @@
-const knex = require('knex')({
-    client: 'better-sqlite3',
-    connection: {
-      filename: "./database.sqlite"
-    },
-    useNullAsDefault: true
-});
 let keys = [
     '1010114', 'fsfsd8sud8suhHhh77n', '9ji8JMbsjbniBNHba', 'ijsdj8JimasKNknakmimk'
 ]
 module.exports = 
 class {
-    constructor (token, id) {
+    constructor (id, token) {
         this.id = id;
         this.token = keys.includes(token) ? token : 'Invalid_Token';
     }

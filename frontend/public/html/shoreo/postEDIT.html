@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>অ - Upload</title>
+    <title>অ - Edit</title>
     <script src="/socket.io/socket.io.js"></script>
-    <link rel="stylesheet" href="../../../static/css/shoreo/InterFaceUpload.css">
+    <link rel="stylesheet" href="../../../static/css/shoreo/edit.css">
     <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="shortcut icon" href="../../static/src/moon.png" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
@@ -53,9 +53,9 @@
         <div class="inp">
             <form>
                 <label for="fname">টাইটেল</label><br>
-                <input placeholder="টাইটেল লিখুন" type="text" id="fname" name="fname" max="10"><br>
+                <input placeholder="টাইটেল লিখুন" type="text" id="fname" name="fname" max="10" disabled><br>
                 <label for="fname2">ছবি</label><br>
-                <input placeholder="ছবি এর লিঙ্ক দিন" type="text" id="img" name="fname2"><br>
+                <input placeholder="ছবি এর লিঙ্ক দিন" type="text" id="img" name="fname2" disabled><br>
             </form>
         </div>
     </div>
@@ -112,7 +112,7 @@
             </li>
         </ul>
     </div>
-    <script src="../../../static/js/shoreo/InterFaceUpload.js"></script>
+    <script src="../../../static/js/shoreo/edit.js"></script>
 </body>
 
 </html>

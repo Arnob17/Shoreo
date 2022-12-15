@@ -25,6 +25,18 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoHome.html'));
 });
 
+app.get("/ip", (req, res) => {
+  let IP = (req.headers['x-forwarded-for'] ||'').split(',').pop().trim() ||
+  req.connection.remoteAddress ||
+  req.socket.remoteAddress ||
+  req.connection.socket.remoteAddress ||
+  req.headers['x-appengine-user-ip'] ||
+  req.headers['fastly-client-ip'] ;
+
+
+  res.send(IP);
+});
+
 app.get('/api/v1', (req, res) => {
   res.redirect('/?ref=footer');
 });
@@ -43,7 +55,6 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
     qid: x[0].id
   }
   let answer = await knex('answers').where({ question_id: `${y.qid}` })
-  console.log(answer)
   let o = answer;
   if (o.length > 0) {
     for (let i of answer) {
@@ -53,26 +64,16 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
   res.send(y);
 })
 
-// db(knex);
-
-// let x = async () => {
-//   let y = await knex('posts').where({id: 6}).update({document: '<b>পরিচয়</b>\n' +
-//   '\n' +
-//   'কাজী নজরুল ইসলাম ২৪ মে ১৮৯৯ এ ভারতের পশ্চিমবঙ্গের বর্ধমান জেলার আসানসোল মহকুমার চুরুলিয়া গ্রাম এ জন্মগ্রহন করেন। কবি নজরুল বিংশ শতাব্দীর প্রধান বাঙালি কবি ও সঙ্গীতকার। তার মাত্র ২৩ বৎসরের সাহিত্যিক জীবনে সৃষ্টির যে প্রাচুর্য তা তুলনারহিত। সাহিত্যের নানা শাখায় বিচরণ করলেও তার প্রধান পরিচয় তিনি কবি। কবি ২৯ আগস্ট ১৯৭৬ সাল এ মারা যান।\n' +
-//   '\n' +
-//   '<span style="background-color:yellow;">\n' +
-//   '<b>জন্মঃ</b> ২৪ মে ১৮৯৯,\n' +
-//   '<b>মৃত্যুঃ</b> ২৯ আগস্ট ১৯৭৬,\n' +
-//   '</span>'});
-//   console.log(await knex('posts'));
+// async function x() {
+//   await knex('questions').where({id: '13'}).update({title: 'What is an atom?'})
 // }
-
 // x();
-
 app.get('/user/:userid', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoUserInfo.html'));
 })
-
+app.get('/edit/:id', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'postEDIT.html'));
+})
 postRes(app, path, knex);
 
 let routers = require('./routers.js');

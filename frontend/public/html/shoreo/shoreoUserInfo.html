@@ -15,48 +15,123 @@
     <div class="navbar">
         <nav>
             <ul>
-                <li class="_favico_main">
-                    <a class="_favText" id="_favText" href="/">
-                        অ
-                    </a>
-                </li>
-                <li>
-                    <a id="1" href="/biggan">
-                        বিজ্ঞান
-                    </a>
-                </li>
-                <li>
-                    <a id="2" href="/shahitto">
-                        সাহিত্য
-                    </a>
-                </li>
-                <li>
-                    <a id="3" href="/foryou">
-                        প্রযুক্তি
-                    </a>
-                </li>
+                <!-- <a class="_favText" id="_favText"> অ </a> -->
+                <li class="_favico_main"><img id="_favico" src="../../../../static/src/lg4.png" alt="logo"
+                        onclick="window.location.href='/'"></li>
+                <li> <a id="1" href="/biggan"> বিজ্ঞান </a> </li>
+                <li> <a id="2" href="/shahitto"> সাহিত্য </a> </li>
+                <li> <a id="3" href="/tech"> প্রযুক্তি </a> </li>
+                <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+                <li class="Iu" id="_iU"> <img id="_pfp" style="cursor: pointer;" src="" alt=""> </li>
             </ul>
         </nav>
     </div>
-    <div class="InfoComponent">
-
-        <div class="contents">
-            <img id="_user_avatar" src="https://cdn.discordapp.com/avatars/852035918654865408/8a122b5c6caece8df78abcde05695b98.webp?size=2048"
-                alt="">
-
-            <p>
-                <span class="_user_name" id="_user_name">অর্ণব</span>
-                <span class="_role" id="role">লেখক</span>
-            </p>
+    <div class="profile">
+        <img id="_avatar" src="https://cdn.discordapp.com/attachments/778294816190103642/1047802963541901393/x.PNG"
+            alt="">
+        <div class="info">
+            <span id="_username" class="_username">Ghost</span>
+            <span id="_role" class="_role">Student, Writer, Mathematician</span>
         </div>
-
     </div>
-    <div class="Contributes">
-
-        <ul id="_ul">
-        </ul>
-
+    <div class="posts">
+        <div class="statics">
+            <ul>
+                <li>
+                    <span class="_plain">
+                        Followed by 17m people
+                    </span>
+                </li>
+                <li>
+                    <h1>Interested In</h1>
+                    <div class="content">
+                        <ul class="__subjectUL">
+                            <li class="_subject">
+                                Mathematics
+                            </li>
+                            <li class="_subject">
+                                Science
+                            </li>
+                            <li class="_subject">
+                                Coding
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="bar">
+                        <canvas id="myChart" width="312" height="112"></canvas>
+                    </div>
+                </li>
+                <li>
+                    <code id="button_log_out">log-out</code>
+                </li>
+            </ul>
+        </div>
+        <div class="writings">
+            <ul id="_posts">
+            </ul>
+        </div>
+        <div class="questions">
+            <ul id="_q">
+                <!-- <li>
+                    <div class="question">
+                        <span>${y.q}</span>
+                    </div>
+                    <div onclick='window.location.href="/q?i=${y.qid}"' class="answer">
+                        <span>Answer</span>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Arnob', 'samir', 'Jilani', 'Shuvo', 'XYZ', 'ABC'],
+                datasets: [{
+                    label: null,
+                    data: [500, 19, 1000, 5, 2, 299],
+                    borderWidth: 1,
+                    backgroundColor: 'purple',
+                }, {
+                    label: null,
+                    data: [200, 19, 600, 6, 3, 199],
+                    borderWidth: 1,
+                    backgroundColor: 'green',
+                }]
+            },
+            options: {
+                plugins: {
+                    //   title: {
+                    //     display: true,
+                    //     text: 'Shoreo - User Stats'
+                    //   },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        let x = document.getElementById('button_log_out');
+        x.addEventListener('click', () => {
+            localStorage.removeItem('userImg');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userId');
+            if (confirm('Are you sure?') == true) {
+                window.location.href=`/`;
+            }
+        })
+    </script>
     <script src="../../../static/js/shoreo/shoreoUserInfo.js"></script>
 </body>
 
