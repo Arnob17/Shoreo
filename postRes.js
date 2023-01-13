@@ -188,4 +188,39 @@ module.exports = function (app, path, knex) {
         console.log(document);
         await knex('posts').where({id: id}).update({document: document});
     })
+
+    app.post('/api/questions/subjects', async (req, res) => {
+        let subjects = [
+            {
+                id: 'physics',
+                name: 'Physics',
+                description: 'Do you know the theory of relativity?',
+                color: 'rgb(226, 86, 86)'
+            },
+            {
+                id: 'chemistry',
+                name: 'Chemistry',
+                description: 'Do you know the Ionic BOND?',
+                color: 'rgb(86, 88, 226)'
+            },
+            {
+                id: 'biology',
+                name: 'Biology',
+                description: 'Do you know the cells?',
+                color: 'rgb(75, 222, 114)'
+            },
+            {
+                id: 'mathematics',
+                name: 'Math',
+                description: 'Do you know the formulas of math?',
+                color: 'rgb(108, 102, 222)'
+            },
+        ];
+        let y = [];
+        for (let x of subjects) {
+            y.push(x);
+        }
+
+        res.send(y);
+    })
 }

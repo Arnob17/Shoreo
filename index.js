@@ -24,19 +24,6 @@ app.use("/static", express.static(path.resolve(__dirname, "frontend", "static"))
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoHome.html'));
 });
-
-app.get("/ip", (req, res) => {
-  let IP = (req.headers['x-forwarded-for'] ||'').split(',').pop().trim() ||
-  req.connection.remoteAddress ||
-  req.socket.remoteAddress ||
-  req.connection.socket.remoteAddress ||
-  req.headers['x-appengine-user-ip'] ||
-  req.headers['fastly-client-ip'] ;
-
-
-  res.send(IP);
-});
-
 app.get('/api/v1', (req, res) => {
   res.redirect('/?ref=footer');
 });
@@ -74,6 +61,11 @@ app.get('/user/:userid', (req, res) => {
 app.get('/edit/:id', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'postEDIT.html'));
 })
+
+app.get('/questions/q', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'questions_answers.html'));
+})
+
 postRes(app, path, knex);
 
 let routers = require('./routers.js');
