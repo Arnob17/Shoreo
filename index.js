@@ -52,9 +52,33 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 })
 
 // async function x() {
-//   await knex('questions').where({id: '13'}).update({title: 'What is an atom?'})
+//   // return knex.schema.table('olympiad_questions', table => {
+//   //   table.integer('for_question');
+//   // })
+//   let olympiads = await knex('olympiad')
+//   let questions = await knex('olympiad_questions')
+//   // .insert({
+//   //   q_title: 'What is radius of the Earth?',
+//   //   options: JSON.stringify({a: '9 x 10^9', b: '6.37 x 10^6', c: '6.67 x 10^-11'}),
+//   //   q_answer: '6.37 x 10^6',
+//   //   for_question: 1
+//   // })
+//   let array = [];
+//   for (let x of olympiads) {
+//     for (let y of questions) {
+//       if (x.id == y.for_question) {
+//         array.push(y);
+//         x.questions = array;
+//       }
+//     }
+//     console.log(x)
+//   }
 // }
-// x();
+// x()
+// async function y () {
+//   let x = await knex('olympiad_questions').where({id: 2}).update({q_title: 'question 2'})
+// }
+// y()
 app.get('/user/:userid', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoUserInfo.html'));
 })
@@ -67,6 +91,6 @@ app.get('/questions/q', (req, res) => {
 })
 
 postRes(app, path, knex);
-
+// db(knex);
 let routers = require('./routers.js');
 routers(path, regester_router, app);

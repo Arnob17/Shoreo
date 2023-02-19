@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,134 +8,50 @@
     <title>Question</title>
     <link rel="stylesheet" href="../../../static/css/shoreo/questions_answer.css">
 </head>
+
 <body>
     <div id="root">
-        
+
     </div>
-
-
-    <div class="a">
+    <div class="title">
         <span>
-            Physics 2nd Chapter
+            Hardest exam of physics
         </span>
-        <code>Question by <a href="/user/17OnuArnob">Arnob17</a></code>
     </div>
-
-    <div class="b">
-        <ul class="x">
-            <li class="y">
-                <span>
-                    1. Which type of bond in H20?
-                </span>
-                <ul>
-                    <li>
-                        Ionic Bond
-                    </li>
-                    <li>
-                        Covalent Bond
-                    </li>
-                </ul>
-                <div class="input_submit">
-                    <input type="text" placeholder="Write your answer here.">
-                    <div class="button">
-                        submit
-                    </div>
+    <div class="container">
+        <div class="question_answer">
+            <ul id="_ul">
+                <li></li>
+            </ul>
+        </div>
+        <div class="information">
+            <div class="info">
+                <code>Causion: Don't write any thing illegal!</code>
+            </div>
+            <div class="inputs">
+                <input class="_input" type="text" placeholder="write your answer here.">
+                <div class="button">
+                    >
                 </div>
-            </li>
-            <li class="y">
-                <span>
-                    1. Which type of bond in H20?
-                </span>
-                <ul class="_x">
-                    <li>
-                        <code style="color: red;">1.</code> Ionic Bond
-                    </li>
-                    <li>
-                        <code style="color: red;">2.</code> Covalent Bond
-                    </li>
-                </ul>
-                <input type="text" placeholder="Write your answer's number here.">
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
-
-    <style>
-        .a {
-            margin-top: 20px;
-            border: 1px dashed grey;
-            height: 150px;
-            width: auto;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-        }
-        .a span {
-            color: black;
-            font-weight: 500;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 30px;
-        }
-
-        .b {
-            display: flex;
-            /* justify-content: center;
-            align-items: center; */
-            height: auto;
-            width: 100%;
-            border: 1px dashed grey;
-        }
-
-        .b .x {
-            margin-left: 20px;
-            list-style-type: none;
-
-        }
-
-        .b .y {
-            height: auto;
-            margin-top: 15px;
-            padding-top: 10px;
-            padding-right: 10px;
-            padding-left: 10px;
-            padding-bottom: 10px;
-            width: auto;
-            border-radius: 3ch;
-            background-color: rgb(185, 185, 185);
-        }
-        .b .y span {
-            font-size: 20px;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-weight: 500;
-            color: black;
-        }
-        .b .y input {
-            margin-top: 10px;
-            width: 200px;
-            height: 40px;
-        }
-        .b .y ul li {
-            list-style-type: none;
-        }
-        .b .y .input_submit {
-            display: flex;
-            align-items: center;
-        }
-        .b .y .input_submit .button {
-            margin-left: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            height: 30px;
-            width: 70px;
-            border-radius: 5ch;
-            background-color: black;
-            cursor: pointer;
-        }
-    </style>
 
     <script src="../../../static/js/shoreo/questions_js/main.js"></script>
     <script src="../../../static/js/shoreo/questions_js/body.js"></script>
+    <script>
+        let _id = 1;
+        let ul = document.getElementById('_main-question-UL');
+        fetch('/api/olympiad-question/', {
+            method: 'POST',
+            body: JSON.stringify({ id: _id }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json()).then((x) => {
+           
+        })
+    </script>
 </body>
+
 </html>

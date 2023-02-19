@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&family=Mina&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -137,4 +138,87 @@ body {
     height: 30px;
     width: auto;
     border: 1px solid var(--primarycolor);
+}
+
+.container {
+    display: flex;
+    height: auto;
+    width: auto;
+    margin-top: 60px;
+    margin-left: 3%;
+}
+
+.container .information {
+    height: 500px;
+    width: 25vw;
+    margin-left: 3%;
+    background-color: rgb(253, 253, 253);
+    border-radius: 5%;
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.container .information .info {
+    padding: 0 15px;
+    color: gold;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    height: 400px;
+    width: auto;
+    background-color: #260a3d;
+}
+.container .information .inputs {
+    display: flex;
+    align-items: center;
+}
+.container .information .inputs ._input {
+    height: 100px;
+    padding: 0 10px;
+    width: 80%;
+    background-color: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+}
+.container .information .inputs ._input:focus {
+    outline: none;
+}
+.container .information .inputs .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 20%;
+    color: rgb(61, 61, 61);
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.title {
+    display: flex;
+    height: 100px;
+    width: auto;
+    align-items: center;
+    margin-top: 30px;
+    padding: 0 15px;
+}
+.title span {
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive;
+    color: black;
+    font-weight: bolder;
+    margin-left: 20px;
+}
+.container .question_answer ul{
+    margin-left: 5%;
+    list-style-type: none;
+    height: 500px;
+    width: 50vw;
+    overflow-y: scroll;
+}
+.container .question_answer ul::-webkit-scrollbar {
+    color: transparent;
+}
+.container .question_answer ul li {
+    height: 100px;
+    width: auto;
 }

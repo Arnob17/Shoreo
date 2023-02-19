@@ -223,4 +223,18 @@ module.exports = function (app, path, knex) {
 
         res.send(y);
     })
+
+    app.post('/api/olympiad-question/', async (req, res) => {
+        let { id } = req.body;
+        let olympiads = await knex('olympiad').where({id: id});
+        let questions = await knex('olympiad_questions');
+        let array = [];
+        for (let y of questions) {
+            if (olympiads[0].id == y.for_question) {
+              array.push(y);
+              olympiads[0].questions = array;
+            }
+        }
+        res.send(olympiads[0]);
+    })
 }

@@ -11,7 +11,7 @@ fetch ('/api/questions/subjects', {
         let li = document.createElement('li');
 
         li.innerHTML = `
-        <h1 onclick="window.location.href = '/questions/${y.id}'">${y.name.toUpperCase()}</h1>
+        <h1 onclick="window.location.href = '/questions/q'">${y.name.toUpperCase()}</h1>
         <p>
             ${y.description}
         </p>

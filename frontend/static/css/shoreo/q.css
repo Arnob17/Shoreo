@@ -282,12 +282,26 @@ body {
     align-items: center;
     height: 40px;
     width: 90px;
-    border-radius: 5ch;
-    font-size: 15px;
+    border-radius: 1ch;
+    font-size: 10px;
     float: right;
     cursor: pointer;
     background-color: #6d00ff;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
+}
+textarea {
+    background: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    height: 250px;
+    width: 700px;
+    resize: none;
+    padding: 0 10px;
+}
+textarea:focus{
+    outline: none;
 }

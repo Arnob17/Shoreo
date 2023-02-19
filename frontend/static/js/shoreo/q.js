@@ -20,9 +20,9 @@ async function Fetch() {
 
 }
 ///api/q/answer
-let a = d('_question'); let b = d('_by');
+let a = d('_question'); let b = d('_by'); let answer_slot_h1 = d('_q_ans');
 Fetch().then(x => {
-    a.innerText = `${x.q}`; b.innerText = `${x.author}`;
+    a.innerText = `${x.q}`; b.innerText = `${x.author}`; answer_slot_h1.innerText = `${x.q}`
     for (let y of x.a) {
         let ul = d('answers');
         let li = document.createElement('li');

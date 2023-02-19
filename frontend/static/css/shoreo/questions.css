@@ -153,7 +153,7 @@ body {
 .subjects h1 {
     margin-top: 40px;
     display: flex;
-    font-size: 80px;
+    font-size: 5vw;
     opacity: 50%;
     font-weight: 300;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

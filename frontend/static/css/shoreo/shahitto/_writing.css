@@ -246,14 +246,15 @@ body {
     height: auto;
     width: 100%;
     min-height: 100px;
+    padding: 0 15px;
 }
 .c .questions ul li .question span{
     margin-top: 2%;
     margin-left: 2px;
-    font-size: 17px;
+    font-size: 15px;
     color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
+    font-weight: 700;
 }
 .c .questions ul li .answer {
     display: flex;
@@ -492,7 +493,22 @@ body {
     width: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 } */
-
+.posts .post {
+    width: 60vw;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5ch;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 15px;
+    align-items: center;
+    color: grey;
+    font-size: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+}
 @media only screen and (max-width: 600px) {
     .container_right {
         display: flex;
