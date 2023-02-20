@@ -69,6 +69,8 @@ module.exports = function (app, path, knex) {
         }
         let users = await knex('users').where({ userid: userid });
         if (users.length == 0) { return; }
+        let c_point = await knex('c_point').where({user_id: userid});
+        if (c_point.length == 0) {c_point = [{point: 0}]}
         let obj = {
             _name: `${users[0].user_name}`,
             _avatar: `${users[0].img}`,
@@ -77,6 +79,7 @@ module.exports = function (app, path, knex) {
             _questions: b,
             status: users[0].status || false,
             _role: `${users[0].role}` || false,
+            c_point: `${c_point[0].point}`
         }
         res.send(obj);
     })
@@ -236,5 +239,15 @@ module.exports = function (app, path, knex) {
             }
         }
         res.send(olympiads[0]);
+    })
+
+    app.post('/api/c_point/update', async (req, res) => {
+        let { id } = req.body;
+        let data = await knex('c_point').where({user_id: id});
+        if (data) {
+            res.send(data[0]);
+        } else {
+            res.status(418).send({error: 'No id founded'})
+        }
     })
 }

@@ -14,10 +14,12 @@ fetch(`/user/${str}`, {
     let a = d('_username');
     let b = d('_role');
     let c = d('_avatar');
+    let c_point = d('c_point');
     // let v = `<span><i style="color:rgb(37, 174, 238); font-size:17px; cursor:pointer;" title="verified" class="fa-solid fa-circle-check"></i></span>`
     a.innerText = `${j._name}`;
     c.src = `${j._avatar}`;
     b.innerText=`${j._role}`;
+    c_point.innerText=`${j.c_point}`
 
     for (let x of j._posts) {
         let ul = d('_posts');
@@ -55,5 +57,33 @@ fetch(`/user/${str}`, {
         q_ul.appendChild(li);
 
     }
+
+    const ctx = document.getElementById('myChart');
+        console.log()
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Previous', 'Current'],
+                datasets: [{
+                    label: 'C-Point',
+                    data: [0, j.c_point],
+                    borderWidth: 1,
+                    backgroundColor: 'grey',
+                }]
+            },
+            options: {
+                plugins: {
+                    //   title: {
+                    //     display: true,
+                    //     text: 'Shoreo - User Stats'
+                    //   },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
 })

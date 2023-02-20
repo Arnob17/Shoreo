@@ -36,11 +36,16 @@ module.exports = async function (knex) {
   //   table.string('question_by');
   //   table.string('purpose');
   // })
+  // await knex.schema
+  // .createTable('olympiad_questions', (table) => {
+  //   table.increments('id');
+  //   table.string('q_title');
+  //   table.string('options');
+  //   table.string('q_answer');
+  // })
   await knex.schema
-  .createTable('olympiad_questions', (table) => {
-    table.increments('id');
-    table.string('q_title');
-    table.string('options');
-    table.string('q_answer');
-  })
+    .createTable('c_point', (table) => {
+      table.string('user_id');
+      table.integer('point');
+    })
 }

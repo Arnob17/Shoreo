@@ -60,6 +60,12 @@
                     </div>
                 </li>
                 <li>
+                    <h1>Competition Point</h1>
+                    <span id="c_point" class="_plain">
+                        0
+                    </span>
+                </li>
+                <li>
                     <div class="bar">
                         <canvas id="myChart" width="312" height="112"></canvas>
                     </div>
@@ -86,24 +92,20 @@
             </ul>
         </div>
     </div>
+    <script src="../../../static/js/shoreo/shoreoUserInfo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
+    <!-- <script>
         const ctx = document.getElementById('myChart');
 
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Arnob', 'samir', 'Jilani', 'Shuvo', 'XYZ', 'ABC'],
+                labels: ['Previous', 'Current'],
                 datasets: [{
-                    label: null,
-                    data: [500, 19, 1000, 5, 2, 299],
+                    label: 'C-Point',
+                    data: [0, 2],
                     borderWidth: 1,
-                    backgroundColor: 'purple',
-                }, {
-                    label: null,
-                    data: [200, 19, 600, 6, 3, 199],
-                    borderWidth: 1,
-                    backgroundColor: 'green',
+                    backgroundColor: 'grey',
                 }]
             },
             options: {
@@ -120,7 +122,7 @@
                 }
             }
         });
-    </script>
+    </script> -->
     <script>
         let x = document.getElementById('button_log_out');
         x.addEventListener('click', () => {
@@ -129,10 +131,11 @@
             localStorage.removeItem('userId');
             if (confirm('Are you sure?') == true) {
                 window.location.href=`/`;
+            } else {
+                return;
             }
         })
     </script>
-    <script src="../../../static/js/shoreo/shoreoUserInfo.js"></script>
 </body>
 
 </html>
