@@ -51,12 +51,14 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
   res.send(y);
 })
 
-// async function x () {
-//   let id = '17OnuArnob';
-//   let data = await knex('c_point').insert({user_id: 'neon_neeha', point: 5});
-//   console.log(data)
-// }
-// x()
+async function x () {
+  //  return knex.schema.table('c_point', table => {
+  //   table.integer('point_prev');
+  // })
+  // await knex("c_point").where({user_id: "neon_neeha"}).update({point_prev: 4, point: 13})
+  // console.log(await knex('c_point').where({user_id:"neon_neeha"}))
+}
+x()
 app.get('/user/:userid', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'shoreoUserInfo.html'));
 })

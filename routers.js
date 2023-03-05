@@ -10,6 +10,7 @@ function x(path, regester_router, app) {
         path.resolve(__dirname, 'frontend/public/html/shoreo', '_login.html'),
         path.resolve(__dirname, 'frontend/public/html/shoreo', 'signup.html'),
         path.resolve(__dirname, 'frontend/public/html/shoreo', 'questions.html'),
+        path.resolve(__dirname, 'frontend/public/html/shoreo', 'leaderboard.html'),
     ]
 
     regester_router(app, html_files[0], 'shahitto');
@@ -22,5 +23,6 @@ function x(path, regester_router, app) {
     regester_router(app, html_files[7], 'login');
     regester_router(app, html_files[8], 'signup');
     regester_router(app, html_files[9], 'questions');
+    regester_router(app, html_files[10], 'leaderboard');
 }
 module.exports = x;

@@ -11,6 +11,7 @@
 body {
     background-color: #ffffff;
     overflow-x: hidden;
+    height: auto;
 }
 :root {
     --primarycolor: #6d00ff;
@@ -18,8 +19,6 @@ body {
     --buttoncolor: #aa1d69;
 }
 .navbar {
-    position: sticky;
-    top: 16px;
     height: 70px;
     margin-top: 1%;
     border-radius: 5ch;
@@ -28,6 +27,8 @@ body {
     box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
     background-color: rgb(253, 253, 253, .5);
     backdrop-filter: blur(6px);
+    position: sticky;
+    top: 16px;
 }
 
 .navbar nav {
@@ -141,6 +142,7 @@ body {
 
 .c {
     display: flex;
+    height: auto;
 }
 .c .options {
     border-radius: 1ch;
@@ -148,6 +150,8 @@ body {
     width: 15vw;
     background-color: transparent;
     margin-left: 2%;
+    position: sticky;
+    top: 100px;
 }
 .c .options ul {
     list-style-type: none;
@@ -173,7 +177,7 @@ body {
     border-radius: 5ch;
 }
 .c .posts {
-    height: 700px;
+    height: auto;
     width: 60vw;
     margin-left: 2%;
 }
@@ -231,9 +235,19 @@ body {
     margin-bottom: 2%;
 }
 .c .questions {
+    overflow-y: scroll;
     margin-left: 2%;
-    height: 700px;
+    height: 900px;
     width: 17vw;
+}
+.c .questions::-webkit-scrollbar {
+    border-radius: 5ch;
+    background-color: rgb(255, 255, 255);
+    width: 5px;
+}
+.c .questions::-webkit-scrollbar-thumb {
+    background-color: #6b6b6b;
+    border-radius: 5ch;
 }
 .c .questions ul {
     list-style-type: none;
@@ -367,7 +381,7 @@ body {
     height: 70px;
     width: auto;
     /* background-color: #f0f0f0; */
-    background-color: rgb(120, 16, 255);
+    background: linear-gradient(rgb(56, 56, 56), #29005f);
     margin-top: 2%;
     margin-bottom: 1%;
     /* display: flex; */

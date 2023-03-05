@@ -79,7 +79,8 @@ module.exports = function (app, path, knex) {
             _questions: b,
             status: users[0].status || false,
             _role: `${users[0].role}` || false,
-            c_point: `${c_point[0].point}`
+            c_point: `${c_point[0].point}`,
+            c_point_prev: `${c_point[0].point_prev}`
         }
         res.send(obj);
     })
@@ -249,5 +250,12 @@ module.exports = function (app, path, knex) {
         } else {
             res.status(418).send({error: 'No id founded'})
         }
+    })
+
+    app.post('/api/leaderboard', async (req, res) => {
+        let leaderboard_Arr = await knex('c_point');
+        let leaderboard = leaderboard_Arr.sort((a, b) => b.point-a.point);
+        res.send(leaderboard);
+        // console.log(leaderboard);
     })
 }

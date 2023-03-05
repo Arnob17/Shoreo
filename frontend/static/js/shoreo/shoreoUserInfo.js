@@ -66,7 +66,8 @@ fetch(`/user/${str}`, {
                 labels: ['Previous', 'Current'],
                 datasets: [{
                     label: 'C-Point',
-                    data: [0, j.c_point],
+                    data: [j.c_point_prev, j.c_point],
+                    // data: [1000, 500],
                     borderWidth: 1,
                     backgroundColor: 'grey',
                 }]
