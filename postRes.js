@@ -25,12 +25,12 @@ module.exports = function (app, path, knex) {
     app.post('/api/posts_data/:data_quantity', async (req, res) => {
         let _shoreo_data = await knex('posts') || false;
         let user = await knex('users') || false;
-        if (user.length == 0) {return;}
+        if (user.length == 0) { return; }
         if (_shoreo_data.length == 0) { return; }
         let { data_quantity } = req.params;
         let arr = [];
         for (let x of _shoreo_data) {
-            let o = await knex('users').where({userid: `${x.authorid}`})
+            let o = await knex('users').where({ userid: `${x.authorid}` })
             arr.push(
                 {
                     id: x.id,
@@ -69,8 +69,8 @@ module.exports = function (app, path, knex) {
         }
         let users = await knex('users').where({ userid: userid });
         if (users.length == 0) { return; }
-        let c_point = await knex('c_point').where({user_id: userid});
-        if (c_point.length == 0) {c_point = [{point: 0}]}
+        let c_point = await knex('c_point').where({ user_id: userid });
+        if (c_point.length == 0) { c_point = [{ point: 0 }] }
         let obj = {
             _name: `${users[0].user_name}`,
             _avatar: `${users[0].img}`,
@@ -180,17 +180,17 @@ module.exports = function (app, path, knex) {
     app.post('/edit/:id', async (req, res) => {
         let { id } = req.params;
         if (!id) {
-            res.send({error: 01});
+            res.send({ error: 01 });
         }
-        let x = await knex('posts').where({id: id});
-        if(x.length==0){return;}
+        let x = await knex('posts').where({ id: id });
+        if (x.length == 0) { return; }
         res.send(x[0]);
     })
-    app.post('/api/update', async (req,res) => {
+    app.post('/api/update', async (req, res) => {
         let { id, document } = req.body;
-        if (!id && !document) {return}
+        if (!id && !document) { return }
         console.log(document);
-        await knex('posts').where({id: id}).update({document: document});
+        await knex('posts').where({ id: id }).update({ document: document });
     })
 
     app.post('/api/questions/subjects', async (req, res) => {
@@ -228,15 +228,15 @@ module.exports = function (app, path, knex) {
         res.send(y);
     })
 
-    app.post('/api/olympiad-question/', async (req, res) => {
-        let { id } = req.body;
-        let olympiads = await knex('olympiad').where({id: id});
+    app.post('/questions/q/:id', async (req, res) => {
+        let { id } = req.params;
+        let olympiads = await knex('olympiad').where({ id: id });
         let questions = await knex('olympiad_questions');
         let array = [];
         for (let y of questions) {
             if (olympiads[0].id == y.for_question) {
-              array.push(y);
-              olympiads[0].questions = array;
+                array.push(y);
+                olympiads[0].questions = array;
             }
         }
         res.send(olympiads[0]);
@@ -244,18 +244,56 @@ module.exports = function (app, path, knex) {
 
     app.post('/api/c_point/update', async (req, res) => {
         let { id } = req.body;
-        let data = await knex('c_point').where({user_id: id});
+        let data = await knex('c_point').where({ user_id: id });
         if (data) {
             res.send(data[0]);
         } else {
-            res.status(418).send({error: 'No id founded'})
+            res.status(418).send({ error: 'No id founded' })
         }
     })
 
     app.post('/api/leaderboard', async (req, res) => {
         let leaderboard_Arr = await knex('c_point');
-        let leaderboard = leaderboard_Arr.sort((a, b) => b.point-a.point);
+        let leaderboard = leaderboard_Arr.sort((a, b) => b.point - a.point);
         res.send(leaderboard);
         // console.log(leaderboard);
+    })
+
+    app.post('/api/public/create_questions', async (req, res) => {
+        let { question } = req.body;
+
+        if (question.token === 'nXjHnPiLt178712' && question.title && question.userid) {
+            let p = await knex('olympiad').where({title: question.title, question_by: question.userid, purpose: question.purpose})
+            if (!p.length == 0) {return;}
+            await knex('olympiad').insert({ title: question.title, question_by: question.userid, purpose: question.purpose });
+            let q = await knex('olympiad').where({title: question.title, question_by: question.userid, purpose: question.purpose});
+            for (let x of question.q) {
+                await knex('olympiad_questions').insert({ q_title: x.title, options: x.options ? x.options : "none", q_answer: x.answer, explaination: x.explaination, for_question: q[0].id});
+            }
+            console.log(await knex('olympiad'))
+        }
+    })
+
+    app.post('/api/private/answer_check', async (req, res) => {
+        let { id, user_id } = req.body;
+        let { givenans } = req.body;
+        if (!id) { return };
+        if (!user_id) { return } else if (user_id == 'none') { return; };
+        if (!givenans) { return };
+        let q = await knex('olympiad_questions').where({ id: id });
+        let answer = q[0].q_answer;
+        let isanswerd = await knex('answered_question').where({ userid: user_id, quid: id });
+        if (!isanswerd.length == 0) { return; }
+        if (givenans == answer) {
+            let point = await knex('c_point').where({ user_id: user_id });
+            // if (answered_question.length == 0) {return};
+            if (point.length == 0) { return; }
+            let new_p = point[0].point + 5;
+            await knex('c_point').where({ user_id: user_id }).update({ point: new_p, point_prev: point[0].point });
+            await knex('answered_question').insert({ userid: user_id, quid: id });
+            res.send({ x: 1 });
+        } else {
+            res.send({ x: 0 });
+        }
     })
 }

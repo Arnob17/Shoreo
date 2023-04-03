@@ -52,11 +52,12 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 })
 
 async function x () {
-  //  return knex.schema.table('c_point', table => {
-  //   table.integer('point_prev');
+  //  return knex.schema.table('olympiad_questions', table => {
+  //   table.string('explaination');
   // })
-  // await knex("c_point").where({user_id: "neon_neeha"}).update({point_prev: 4, point: 13})
-  // console.log(await knex('c_point').where({user_id:"neon_neeha"}))
+  // let x = await knex("olympiad_questions");
+  // console.log(x);
+  // console.log(await knex('olympiad'))
 }
 x()
 app.get('/user/:userid', (req, res) => {
@@ -66,11 +67,13 @@ app.get('/edit/:id', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'postEDIT.html'));
 })
 
-app.get('/questions/q', (req, res) => {
+app.get('/questions/q/:id', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend/public/html/shoreo', 'questions_answers.html'));
 })
-
 postRes(app, path, knex);
 // db(knex);
 let routers = require('./routers.js');
 routers(path, regester_router, app);
+app.get('*', (req, res) => {
+  res.status(404).send("<h1>Can't find this page.. Sorry (Error: 404)</h1>")
+})

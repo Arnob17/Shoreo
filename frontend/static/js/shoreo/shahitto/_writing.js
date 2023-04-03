@@ -21,7 +21,7 @@ fetch ('/api/posts_data/all', {
                 <h1 onclick="window.location.href='/view?i=${x.id}'" >${x._title}</h1>
             </div>
             <div class="sub">
-                <p>${x._document.substr(0, (x._document.length - 299))} <span onclick="window.location.href='/view?i=${x.id}'" style="font-weight: bolder; cursor:pointer;">..more</span></p>
+                <p>${x._document.slice(1, x._document.length/2)} <span onclick="window.location.href='/view?i=${x.id}'" style="font-weight: bolder; cursor:pointer;">..more</span></p>
             </div>
         </div>
         `;
@@ -31,9 +31,9 @@ fetch ('/api/posts_data/all', {
 let pfp = d('_pfp');
 let q = d('_quote');
 let t=[{t: 'ও রজনীগন্ধা, তোমার গন্ধসুধা ঢাল', a: 'অচেনা মানুষ'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
-let iindex = Math.floor(Math.random() * t.length);
-q.innerText=`${t[iindex].t}`;
-d('_subtext').innerText=`${t[iindex].a}`
+// let iindex = Math.floor(Math.random() * t.length);
+// q.innerText=`${t[iindex].t}`;
+// d('_subtext').innerText=`${t[iindex].a}`
 let j = localStorage.getItem('userName') || false;
 let i = localStorage.getItem('userImg') || false;
 let id = localStorage.getItem('userId') || false;
@@ -67,6 +67,4 @@ Fetch().then((x) => {
         ul.appendChild(li);
     }
 })
-d('_upload').addEventListener('click', () => {
-    window.location.href=`/upload`
-})
+

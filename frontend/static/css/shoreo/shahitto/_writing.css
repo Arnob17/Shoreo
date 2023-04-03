@@ -14,9 +14,9 @@ body {
     height: auto;
 }
 :root {
-    --primarycolor: #6d00ff;
-    --secondarycolor: #260a3d;
-    --buttoncolor: #aa1d69;
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
 }
 .navbar {
     height: 70px;
@@ -29,6 +29,7 @@ body {
     backdrop-filter: blur(6px);
     position: sticky;
     top: 16px;
+    z-index: 1;
 }
 
 .navbar nav {
@@ -143,6 +144,7 @@ body {
 .c {
     display: flex;
     height: auto;
+    margin-top: 18px;
 }
 .c .options {
     border-radius: 1ch;
@@ -169,16 +171,16 @@ body {
     font-size: 20px;
     margin-left: 3%;
     color: #000000;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
 }
 .c .options ul li:hover {
-    background-color: rgb(109, 0, 255, .5);
+    background-color: rgba(224, 224, 224, 0.5);
     border-radius: 5ch;
 }
 .c .posts {
     height: auto;
-    width: 60vw;
+    width: 50vw;
     margin-left: 2%;
 }
 .c .posts ul {
@@ -201,6 +203,11 @@ body {
     width: 30px;
     margin-top: 2%;
     border-radius: 50%;
+}
+.c .posts ul li .m img {
+    height: auto;
+    width: 45vw;
+    border-radius: 1ch;
 }
 .c .posts ul li .profile span {
     margin-left: 2%;
@@ -236,9 +243,13 @@ body {
 }
 .c .questions {
     overflow-y: scroll;
+    overflow-x: hidden;
     margin-left: 2%;
-    height: 900px;
-    width: 17vw;
+    height: 700px;
+    width: 23vw;
+    position: sticky;
+    top: 100px;
+    z-index: 0;
 }
 .c .questions::-webkit-scrollbar {
     border-radius: 5ch;
@@ -246,8 +257,23 @@ body {
     width: 5px;
 }
 .c .questions::-webkit-scrollbar-thumb {
-    background-color: #6b6b6b;
+    background-color: rgb(156, 156, 156, .5);
     border-radius: 5ch;
+}
+.c .questions::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(156, 156, 156);
+}
+.c .questions ._a {
+    height: 30px;
+    width: 23vw;
+    border-left: solid #000000;
+}
+.c .questions ._a span {
+    margin-left: 4px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    font-size: 20px;
 }
 .c .questions ul {
     list-style-type: none;
@@ -508,7 +534,7 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 } */
 .posts .post {
-    width: 60vw;
+    width: 50vw;
     height: 50px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(187, 187, 187);

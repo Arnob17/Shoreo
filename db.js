@@ -43,9 +43,13 @@ module.exports = async function (knex) {
   //   table.string('options');
   //   table.string('q_answer');
   // })
-  await knex.schema
-    .createTable('c_point', (table) => {
-      table.string('user_id');
-      table.integer('point');
-    })
+  // await knex.schema
+  //   .createTable('c_point', (table) => {
+  //     table.string('user_id');
+  //     table.integer('point');
+  //   })
+  await knex.schema.createTable('answered_question', (table) => {
+    table.string('userid');
+    table.integer('quid');
+  })
 }
