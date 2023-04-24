@@ -30,10 +30,10 @@ app.get('/api/v1', (req, res) => {
 
 PostRoute.post('/api/v1/q/i', async (req, res) => {
   let { id } = req.body;
-  let x = await knex('questions').where({id: id}) || false;
-  if (x.length==0) {return res.send({error: 'error!'})}
-  let b = await knex('users').where({userid: x[0].authorid}) || false;
-  if (!b) {return res.send({error: 'error!'})}
+  let x = await knex('questions').where({ id: id }) || false;
+  if (x.length == 0) { return res.send({ error: 'error!' }) }
+  let b = await knex('users').where({ userid: x[0].authorid }) || false;
+  if (!b) { return res.send({ error: 'error!' }) }
   let y = {
     q: x[0].title,
     a: [],
@@ -51,7 +51,7 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
   res.send(y);
 })
 
-async function x () {
+async function x() {
   //  return knex.schema.table('olympiad_questions', table => {
   //   table.string('explaination');
   // })

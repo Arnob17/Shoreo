@@ -84,7 +84,7 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -144,7 +144,7 @@ body {
 .c {
     display: flex;
     height: auto;
-    margin-top: 18px;
+    margin-top: 40px;
 }
 .c .options {
     border-radius: 1ch;
@@ -153,7 +153,7 @@ body {
     background-color: transparent;
     margin-left: 2%;
     position: sticky;
-    top: 100px;
+    top: 130px;
 }
 .c .options ul {
     list-style-type: none;
@@ -204,9 +204,12 @@ body {
     margin-top: 2%;
     border-radius: 50%;
 }
+.c .posts ul li .m {
+    white-space: pre-line;
+}
 .c .posts ul li .m img {
-    height: auto;
-    width: 45vw;
+    height: 45vh;
+    max-width: 45vw;
     border-radius: 1ch;
 }
 .c .posts ul li .profile span {
@@ -248,7 +251,7 @@ body {
     height: 700px;
     width: 23vw;
     position: sticky;
-    top: 100px;
+    top: 130px;
     z-index: 0;
 }
 .c .questions::-webkit-scrollbar {
@@ -272,7 +275,7 @@ body {
     margin-left: 4px;
     color: black;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 20px;
 }
 .c .questions ul {
@@ -302,14 +305,20 @@ body {
     align-items: center;
     margin-top: 16%;
     margin-bottom: 2%;
-    height: 30px;
+    height: 40px;
     width: 80%;
     margin-left: 10%;
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
     cursor: pointer;
-    background-color: var(--primarycolor);
-    border-radius: 5ch;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 1ch;
+}
+.c .questions ul li .answer:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 /* .container_right {
@@ -547,8 +556,96 @@ body {
     font-size: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
+    cursor:text;
+}
+.posts .post span {
+    margin-left: 10px;
+}
+.posts .post img {
+    height: 30px;
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 50%;
     cursor: pointer;
 }
+.what_are_you_thinking_about {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    border-radius: 0.5ch;
+    background-color: rgb(254, 254, 254, 0.7);
+    backdrop-filter: blur(5px);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-content input {
+    width: 30vw;
+    border-radius: 1ch;
+    background-color: transparent;
+    height: 10vh;
+    padding: 0 15px;
+    background-color: white;
+}
+
+.modal-content .button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3vh;
+    width: 10vh;
+    margin-top: 2%;
+    border-radius: 5ch;
+    background-color: #6d00ff;
+    color: white;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#_q_ans {
+    color: rgb(37, 37, 37);
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: 05px;
+}
+#_textarea2 {
+    background: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    height: 250px;
+    width: 700px;
+    resize: none;
+    padding: 0 10px;
+}
+#_textarea2:focus{
+    outline: none;
+}
+
 @media only screen and (max-width: 600px) {
     .container_right {
         display: flex;
