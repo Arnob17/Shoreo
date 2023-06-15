@@ -57,7 +57,7 @@ submitB.addEventListener('click', () => {
             'Content-type': 'application/json; charset=UTF-8'
         }
     }).then(response => response.json()).then((x) => {
-        if (x.id === 001) {
+        if (x.id === 1) {
             console.log('done');
             window.location.reload();
         } else {

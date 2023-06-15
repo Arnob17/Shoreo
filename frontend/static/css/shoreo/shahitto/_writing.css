@@ -199,13 +199,21 @@ body {
     align-items: center;
     margin-left: 2%;
 }
+.c .posts ul li .profile ._time {
+    font-size: 10px;
+    color: grey;
+}
 .c .posts ul li .profile img {
     width: 30px;
     margin-top: 2%;
     border-radius: 50%;
 }
 .c .posts ul li .m {
-    white-space: pre-line;
+    white-space: pre-line; 
+    line-break: normal;
+}
+.c .posts ul li .m p {
+    word-break: break-all;
 }
 .c .posts ul li .m img {
     height: 45vh;
@@ -216,6 +224,7 @@ body {
     margin-left: 2%;
     cursor: pointer;
     margin-top: 2%;
+    font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .c .posts ul li .m .title {

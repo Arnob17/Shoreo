@@ -51,7 +51,7 @@
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span id="_close" class="close">&times;</span>
         <input
           type="text"
           name="_question"
@@ -64,7 +64,7 @@
     </div>
     <div class="what_are_you_thinking_about" id="modal2">
         <div class="modal-content">
-          <span class="close">&times;</span>
+          <span id="_close2" class="close">&times;</span>
           <h1 id="_q_ans">What are you THINKING about?</h1>
           <textarea
             name="_question"
@@ -179,7 +179,7 @@
       function a() {
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("_ask");
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementById('_close')
         btn.onclick = function () {
           modal.style.display = "block";
         };
@@ -223,7 +223,8 @@
       function c() {
         var modal = document.getElementById("modal2");
         var btn = document.getElementById("_whatareyouthinking");
-        var span = document.getElementsByClassName("close")[0];
+        let submit_button = document.getElementById('submit_button2');
+        var span = document.getElementById('_close2')
         btn.onclick = function () {
           modal.style.display = "block";
         };
@@ -235,6 +236,10 @@
             modal.style.display = "none";
           }
         };
+        submit_button.onclick = function() {
+          var btn = document.getElementById("modal2");
+          btn.style.display = "none";
+        }
       }
       c();
     </script>

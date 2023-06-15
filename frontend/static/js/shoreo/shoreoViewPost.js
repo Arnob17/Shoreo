@@ -17,7 +17,6 @@ fetch ('/api/view_req_data', {
 }).then(response => response.json())
     .then(j => {
         d('_edit').addEventListener('click', () => window.location.href=`/edit/${queryParams.i}`)
-        console.log(j.pages);
         if (j._type == 'type_poddo' || 'type_goddo') {
             d('_title').innerText = `${j._title}`;
             // d('_info2').style.background = `url('${j.bg}')`
@@ -52,5 +51,42 @@ fetch ('/api/view_req_data', {
         d('_zoom-out').addEventListener('click', () => { 
             if (!font_index == 0) {font_index--;} 
             d('maintext').style.fontSize=main_font_sizes[font_index];
+        })
+
+        let ctag = j.Gtag;
+        console.log(ctag);
+        let sugUl = document.getElementById('suggestionsUL');
+
+        fetch ('/api/posts_data/all', {
+            method: 'POST',
+            body: JSON.stringify({ id: `id` }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        }).then(response => response.json())
+        .then(y => {
+            for (let o of y) {
+                if (o.Gtag == ctag) {
+                    console.log(o.Gtag)
+                    let li = document.createElement('li');
+    
+                    li.innerHTML = `
+                    <div class="title">
+                    <span onclick="window.location.href='/view?i=${o.id}'" class="_title">
+                        ${o._title}
+                    </span>
+                    <span class="_author">
+                        ${o._writer}
+                    </span>
+                </div>
+                <div class="text">
+                    <span>
+                        ${o._document.slice(0, o._document.length/4)}...               
+                    </span>
+                </div>
+                    `;
+                    sugUl.appendChild(li);
+                }
+            }
         })
     })

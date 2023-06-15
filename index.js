@@ -52,12 +52,21 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 })
 
 async function x() {
-  //  return knex.schema.table('olympiad_questions', table => {
-  //   table.string('explaination');
+  //  return knex.schema.table('posts', table => {
+  //   table.string('time');
   // })
   // let x = await knex("olympiad_questions");
   // console.log(x);
   // console.log(await knex('olympiad'))
+  // let ids = [10, 7, 6, 1];
+  // for (let x of ids) {
+  //   await knex('posts').where({id: ids[x]}).update({Gtag: 'literature'});
+  //   console.log();
+  // }
+  // let x = await knex('posts');
+  // console.log(x);
+  // let x = await knex('personal_posts');
+  // console.log(x);
 }
 x()
 app.get('/user/:userid', (req, res) => {

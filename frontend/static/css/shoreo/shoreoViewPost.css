@@ -10,6 +10,7 @@
 }
 body {
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 :root {
     --primarycolor: #6d00ff;
@@ -176,6 +177,12 @@ body {
     padding: 0 15px;
     cursor: pointer;
 } */
+.container {
+    height: auto;
+}
+.bottom {
+    display: flex;
+}
 .info {
     height: auto;
     min-height: 150px;
@@ -218,6 +225,7 @@ body {
 .info .lekhok .lokhoks span {
     font-family: 'Tiro Bangla', serif;
     font-size: 20px;
+    cursor: pointer;
 }
 .post {
     width: 70vw;
@@ -225,6 +233,10 @@ body {
     padding: 0 20px;
     margin-top: 10px;
     white-space: pre-line;
+    word-break: break-all;
+}
+.suggestions {
+    width: calc(100% - 70vw);
 }
 .options {
     position: sticky;

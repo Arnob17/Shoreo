@@ -22,14 +22,25 @@ submit.addEventListener('click', () => {
         main: `${_mainText.value}`
     })
 
+    let catagories = d('catagory_names');
+
+    let catagory_selected = catagories.value;
+    console.log(catagory_selected);
+    if (!catagory_selected == 'science_and_technology' && 'literature' && 'socity' && 'philosophy_and_history') {
+        return;
+    }
+
+    console.log(catagory_selected);
+    var now = new Date();
+    var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds(); 
     let json = {
-        document: `${_mainText.value}`, authorid: userid, _type: '_science', title: `${_title.value}`, img: img.value
+        document: `${_mainText.value}`, authorid: userid, _type: '_poem', title: `${_title.value}`, gtag: `${catagory_selected}`, time: `${time}`, servertime: `${new Date().getTime()}`
     }
 
     fetch('/api/post', {
         method: 'POST',
         body: JSON.stringify(json),
-        headers: {
+        headers: {  
             'Content-type': 'application/json; charset=UTF-8'
         }
     }).then(response => response.json()).then(x => {console.log(x); window.location.href=`/`});

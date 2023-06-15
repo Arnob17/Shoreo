@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&family=Mina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +10,22 @@
 body {
     background-color: #ffffff;
 }
+:root {
+    --primarycolor: #6d00ff;
+    --secondarycolor: #260a3d;
+    --buttoncolor: #aa1d69;
+}
 .navbar {
     position: sticky;
-    top: 0;
-    height: 80px;
-    width: auto;
-    background-color: #ffffff;
+    top: 16px;
+    height: 70px;
+    margin-top: 1%;
+    border-radius: 5ch;
+    width: 97%;
+    margin-left: 1.5%;
+    box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
+    background-color: rgb(253, 253, 253, .5);
+    backdrop-filter: blur(6px);
 }
 
 .navbar nav {
@@ -29,30 +40,34 @@ body {
 }
 
 .navbar nav ul li {
-    margin-bottom: 25px;
+    margin-bottom: 50px;
     padding: 0 14px;
 }
 
 .navbar nav ul li a {
-    color:  rgb(164, 166, 168);
+    /* color: rgb(164, 166, 168); */
     text-decoration: none;
     font-weight: bolder;
+    color: var(--primarycolor);
     font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Tiro Bangla', serif;
 }
 
 .navbar nav ul li i {
-    color: rgb(164, 166, 168);
+    /* color: rgb(164, 166, 168); */
     font-size: 15px;
 }
 
 .navbar nav ul li a:hover {
-    color:  rgb(113, 155, 197);
-    text-decoration: none;
-    font-weight: bolder;
-    font-size: 17px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    animation: fadeIn 2s;
+    color: rgb(255, 255, 255);
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background: var(--primarycolor);
+    border-radius: 5%;
+    /* text-decoration: underline; */
+    font-family: 'Tiro Bangla', serif;
 }
 
 .navbar nav ul {
@@ -60,17 +75,13 @@ body {
     align-items: center;
     list-style-type: none;
     height: 45px;
-    color: rgb(138, 83, 83)
+    color: rgb(138, 83, 83);
 }
 
-._favico_main ._favText {
+._favico_main img {
     /* border-radius: 50%; */
-    font-size: 30px;
-    font-family: 'Atma', cursive;
-    font-family: 'Bebas Neue', cursive;
-    font-family: 'Galada', cursive;
-    font-weight: 100;
-    color: rgb(158, 153, 153);
+    width: 35px;
+    border-radius: 10%;
     position: absolute;
     left: 5vh;
     cursor: pointer;
@@ -94,17 +105,20 @@ body {
     display: flex;
     align-items: center;
 }
+
 .Iu {
     position: absolute;
     right: 2%;
 }
+
 .Iu img {
     border-radius: 50%;
     height: 30px;
     width: auto;
-    border: 1px solid rgb(189, 189, 189);
+    border: 1px solid var(--primarycolor);
 }
 .Containter_Main {
+    margin-top: 37px;
     height: 35vh;
     width: auto;
     display: flex;

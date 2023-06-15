@@ -38,12 +38,14 @@ module.exports = function (app, path, knex) {
                     Gtag: x.Gtag,
                     _type: x._type,
                     _title: x.title,
-                    _writer: x.user_name,
+                    _writer: o[0].user_name,
                     _writer_id: x.authorid,
                     _writer_avatar: o[0].img,
                     _document: x.document,
                     img: x.thumbnail,
-                    type: '01'
+                    type: '01',
+                    time: x.time,
+                    servertime: x.servertime
                 }
             )
         }
@@ -151,7 +153,7 @@ module.exports = function (app, path, knex) {
                 downvote: '0'
             })
         }
-        res.send({ id: 001, message: 'Done' });
+        res.send({ id: 1, message: 'Done' });
     })
     app.post('/api/v1/ask_a_question', async (req, res) => {
         let { title, authorid, type } = req.body;
@@ -160,18 +162,22 @@ module.exports = function (app, path, knex) {
         res.send({ x: 'done' });
     })
     app.post('/api/post', async (req, res) => {
-        let { document, authorid, _type, title, img } = req.body;
-        if (!document && !authorid && !_type && !title && !img) { return; }
+        let { document, authorid, _type, title, gtag, time, servertime } = req.body;
+        if (!document && !authorid && !_type && !title && !gtag, !time, !servertime) { return; }
+        if (!gtag == 'science_and_technology' && 'literature' && 'socity' && 'philosophy_and_history' ) {
+            return;
+        }
         if (await knex('users').where({ userid: authorid }).length == 0) { return; }
         let user = await knex('users').where({ userid: `${authorid}` });
         let a = {
             document: document,
             authorid: authorid,
             _type: _type,
-            Gtag: _type == '_science' ? 'বিজ্ঞান' : 'সাহিত্য',
+            Gtag: gtag,
             title: title,
             user_name: user[0].user_name,
-            thumbnail: img
+            time: `${time}`,
+            servertime: `${servertime}`
         }
         await knex('posts').insert(a);
         res.send({ c: 1 });
@@ -180,7 +186,7 @@ module.exports = function (app, path, knex) {
     app.post('/edit/:id', async (req, res) => {
         let { id } = req.params;
         if (!id) {
-            res.send({ error: 01 });
+            res.send({ error: 1 });
         }
         let x = await knex('posts').where({ id: id });
         if (x.length == 0) { return; }
@@ -295,5 +301,41 @@ module.exports = function (app, path, knex) {
         } else {
             res.send({ x: 0 });
         }
+    })
+
+    app.post('/api/personal_post/add', async (req, res) => {
+        let { document, authorid, _type, gtag, time} = req.body;
+
+        if (!document && !authorid && !_type && !gtag && !time) {return};
+        
+        await knex ('personal_posts').insert({document: document, authorid: authorid, _type: _type, time: time, gtag: gtag})
+
+        res.send({o: 1});
+        
+    })
+
+    app.get('/api/personal_post/get', async (req, res) => {
+
+        let arr = [];
+        let t = await knex('personal_posts');
+        for (let x of t) {
+            let o = await knex('users').where({ userid: `${x.authorid}` })
+            arr.push(
+                {
+                    id: x.id,
+                    Gtag: x.Gtag,
+                    _type: x._type,
+                    _title: x.title,
+                    _writer: o[0].user_name,
+                    _writer_id: x.authorid,
+                    _writer_avatar: o[0].img,
+                    _document: x.document,
+                    type: x._type,
+                    time: x.time,
+                    servertime: x.servertime
+                }
+            )
+        }
+        res.send(arr);
     })
 }

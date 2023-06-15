@@ -48,8 +48,16 @@ module.exports = async function (knex) {
   //     table.string('user_id');
   //     table.integer('point');
   //   })
-  await knex.schema.createTable('answered_question', (table) => {
-    table.string('userid');
-    table.integer('quid');
+  // await knex.schema.createTable('answered_question', (table) => {
+  //   table.string('userid');
+  //   table.integer('quid');
+  // })
+  await knex.schema.createTable('personal_posts', (table) => {
+    table.increments('id');
+    table.string('document');
+    table.string('authorid');
+    table.string('user_name');
+    table.string('_type');
+    table.string('Gtag');
   })
 }
