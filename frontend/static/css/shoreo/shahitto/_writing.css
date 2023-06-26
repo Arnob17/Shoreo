@@ -53,8 +53,8 @@ body {
     text-decoration: none;
     font-weight: bolder;
     color: var(--primarycolor);
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar nav ul li i {
@@ -71,7 +71,6 @@ body {
     background: var(--primarycolor);
     border-radius: 5%;
     /* text-decoration: underline; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar nav ul {
@@ -653,6 +652,36 @@ body {
 }
 #_textarea2:focus{
     outline: none;
+}
+
+.votes {
+    height: 25px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.votes .vote {
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.votes i {
+    font-size: 20px;
+    color: #a1a1a1;
+    cursor: pointer;
+}
+
+.vote .clicked {
+    color: black;
+}
+
+.votes .vote:hover {
+    border-radius: 5ch;
+    background-color: rgb(243, 242, 242);
 }
 
 @media only screen and (max-width: 600px) {

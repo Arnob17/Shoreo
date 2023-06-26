@@ -45,11 +45,30 @@ fetch('/api/personal_post/get', {
         </div>
         <div class="m">
             <div class="sub">
-                <p style="font-weight: bold;" >${x._document}</p>
+                <p style="font-weight: 600;" >${x._document}</p>
+            </div>
+            <div class="votes">
+                <div class="vote">
+                    <i id="_thumbs_up_${x.id}" class="fa-solid fa-thumbs-up"></i> <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px">${x.thumbs_up}</span>
+                </div>
+                <div class="vote">
+                    <i id="_thumbs_down_${x.id}" class="fa-solid fa-thumbs-down"></i> <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px" >${x.thumbs_down}</span>
+                </div>
             </div>
         </div>
         `;
             ul.appendChild(li);
+            d(`_thumbs_up_${x.id}`).addEventListener('click', () => {
+                d(`_thumbs_up_${x.id}`).classList.add('clicked');
+                console.log(x);
+                fetch('/api/personal_post/private/edit/thumbsup/add', {
+                    method: 'POST',
+                    body: JSON.stringify({ id:  x.id, userid: localStorage.getItem('userId')}),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                }).then(response => response.json()).then(x => console.log(x));
+            })
         }
     })
 let pfp = d('_pfp');

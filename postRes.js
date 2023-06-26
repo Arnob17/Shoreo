@@ -164,7 +164,7 @@ module.exports = function (app, path, knex) {
     app.post('/api/post', async (req, res) => {
         let { document, authorid, _type, title, gtag, time, servertime } = req.body;
         if (!document && !authorid && !_type && !title && !gtag, !time, !servertime) { return; }
-        if (!gtag == 'science_and_technology' && 'literature' && 'socity' && 'philosophy_and_history' ) {
+        if (!gtag == 'science_and_technology' && 'literature' && 'socity' && 'philosophy_and_history') {
             return;
         }
         if (await knex('users').where({ userid: authorid }).length == 0) { return; }
@@ -269,12 +269,12 @@ module.exports = function (app, path, knex) {
         let { question } = req.body;
 
         if (question.token === 'nXjHnPiLt178712' && question.title && question.userid) {
-            let p = await knex('olympiad').where({title: question.title, question_by: question.userid, purpose: question.purpose})
-            if (!p.length == 0) {return;}
+            let p = await knex('olympiad').where({ title: question.title, question_by: question.userid, purpose: question.purpose })
+            if (!p.length == 0) { return; }
             await knex('olympiad').insert({ title: question.title, question_by: question.userid, purpose: question.purpose });
-            let q = await knex('olympiad').where({title: question.title, question_by: question.userid, purpose: question.purpose});
+            let q = await knex('olympiad').where({ title: question.title, question_by: question.userid, purpose: question.purpose });
             for (let x of question.q) {
-                await knex('olympiad_questions').insert({ q_title: x.title, options: x.options ? x.options : "none", q_answer: x.answer, explaination: x.explaination, for_question: q[0].id});
+                await knex('olympiad_questions').insert({ q_title: x.title, options: x.options ? x.options : "none", q_answer: x.answer, explaination: x.explaination, for_question: q[0].id });
             }
             console.log(await knex('olympiad'))
         }
@@ -304,14 +304,14 @@ module.exports = function (app, path, knex) {
     })
 
     app.post('/api/personal_post/add', async (req, res) => {
-        let { document, authorid, _type, gtag, time} = req.body;
+        let { document, authorid, _type, gtag, time } = req.body;
 
-        if (!document && !authorid && !_type && !gtag && !time) {return};
-        
-        await knex ('personal_posts').insert({document: document, authorid: authorid, _type: _type, time: time, gtag: gtag})
+        if (!document && !authorid && !_type && !gtag && !time) { return };
 
-        res.send({o: 1});
-        
+        await knex('personal_posts').insert({ document: document, authorid: authorid, _type: _type, time: time, gtag: gtag, thumbs_up_int: 0, thumbs_down_int: 0, thumbs_up: '{}', thumbs_down: '{}' })
+
+        res.send({ o: 1 });
+
     })
 
     app.get('/api/personal_post/get', async (req, res) => {
@@ -332,10 +332,35 @@ module.exports = function (app, path, knex) {
                     _document: x.document,
                     type: x._type,
                     time: x.time,
-                    servertime: x.servertime
+                    servertime: x.servertime,
+                    thumbs_up: x.thumbs_up_int,
+                    thumbs_down: x.thumbs_down_int
                 }
             )
         }
         res.send(arr);
+    })
+    app.post('/api/personal_post/private/edit/:what/:action', async (req, res) => {
+        let { what, action, } = req.params;
+        let { id, userid } = req.body;
+        if (!what && !action && !id && !userid) { return };
+        if (what == 'thumbsup') {
+            let prev_thumbs_up = await knex('personal_posts').where({ id: id });
+            let thumbs_up_users = prev_thumbs_up[0].thumbs_up;
+            let array = JSON.parse(thumbs_up_users);
+            for (let x of array) {
+                if (x == userid) {
+                    return res.send({error: 'action failed'})
+                } else {
+                    array.push(userid);
+                    let another_array = JSON.stringify(array);
+                    await knex('personal_posts').where({ id: id }).update({ thumbs_up_int: action == 'add' ? (prev_thumbs_up[0].thumbs_up_int + 1) : (prev_thumbs_up[0].thumbs_up_int - 1), thumbs_up: another_array })
+                }
+            }
+        }
+        if (what == 'thumbsdown') {
+            let prev_thumbs_down = await knex('personal_posts').where({ id: id });
+            await knex('personal_posts').where({ id: id }).update({ thumbs_down_int: action == 'add' ? (prev_thumbs_down[0].thumbs_down_int + 1) : (prev_thumbs_down[0].thumbs_down_int - 1) })
+        }
     })
 }

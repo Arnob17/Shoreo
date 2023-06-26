@@ -52,8 +52,8 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 })
 
 async function x() {
-  //  return knex.schema.table('posts', table => {
-  //   table.string('time');
+  //  return knex.schema.table('personal_posts', table => {
+  //   table.integer('thumbs_up_int');
   // })
   // let x = await knex("olympiad_questions");
   // console.log(x);
@@ -65,8 +65,12 @@ async function x() {
   // }
   // let x = await knex('posts');
   // console.log(x);
-  // let x = await knex('personal_posts');
-  // console.log(x);
+  // let array = ['17OnuArnob', 'Robin01', 'Rakib07'];
+  // let jsonaray = JSON.stringify(array);
+  // let x = await knex('personal_posts').where({id: 4});
+
+  // console.log(x[0].thumbs_up);
+  // console.log('extracted', JSON.parse(x[0].thumbs_up));
 }
 x()
 app.get('/user/:userid', (req, res) => {
