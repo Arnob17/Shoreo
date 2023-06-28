@@ -67,7 +67,7 @@ async function x() {
   // console.log(x);
   // let array = ['17OnuArnob', 'Robin01', 'Rakib07'];
   // let jsonaray = JSON.stringify(array);
-  // let x = await knex('personal_posts').where({id: 4});
+  // let x = await knex('personal_posts').where({id: 5}).update({thumbs_down: JSON.stringify(['0']), thumbs_up: JSON.stringify(['0'])});
 
   // console.log(x[0].thumbs_up);
   // console.log('extracted', JSON.parse(x[0].thumbs_up));

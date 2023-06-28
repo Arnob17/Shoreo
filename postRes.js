@@ -308,17 +308,32 @@ module.exports = function (app, path, knex) {
 
         if (!document && !authorid && !_type && !gtag && !time) { return };
 
-        await knex('personal_posts').insert({ document: document, authorid: authorid, _type: _type, time: time, gtag: gtag, thumbs_up_int: 0, thumbs_down_int: 0, thumbs_up: '{}', thumbs_down: '{}' })
+        await knex('personal_posts').insert({ document: document, authorid: authorid, _type: _type, time: time, gtag: gtag, thumbs_up_int: 0, thumbs_down_int: 0, thumbs_up: JSON.stringify(['0']), thumbs_down: JSON.stringify(['0']) })
 
         res.send({ o: 1 });
 
     })
 
-    app.get('/api/personal_post/get', async (req, res) => {
-
+    app.post('/api/personal_post/get', async (req, res) => {
+        let { authorid } = req.body;
         let arr = [];
         let t = await knex('personal_posts');
         for (let x of t) {
+            let thumbs_up_clicked = false;
+            let thumbs_down_clicked = false;
+            let is_thums_up = await knex('personal_posts').where({id: x.id})
+            let thumbs_up_array = JSON.parse(is_thums_up[0].thumbs_up) || [];
+            let thumbs_down_array = JSON.parse(is_thums_up[0].thumbs_down) || [];
+            for (let y of thumbs_up_array) {
+                if (y==authorid) {
+                    thumbs_up_clicked = true;
+                }
+            }
+            for (let y of thumbs_down_array) {
+                if (y==authorid) {
+                    thumbs_down_clicked = true;
+                }
+            }
             let o = await knex('users').where({ userid: `${x.authorid}` })
             arr.push(
                 {
@@ -334,7 +349,9 @@ module.exports = function (app, path, knex) {
                     time: x.time,
                     servertime: x.servertime,
                     thumbs_up: x.thumbs_up_int,
-                    thumbs_down: x.thumbs_down_int
+                    thumbs_down: x.thumbs_down_int,
+                    thumbs_up_clicked: thumbs_up_clicked,
+                    thumbs_down_clicked: thumbs_down_clicked
                 }
             )
         }
@@ -358,9 +375,54 @@ module.exports = function (app, path, knex) {
                 }
             }
         }
+        if (what == 'only_thumb_up') {
+            let prev_thumbs_up = await knex('personal_posts').where({ id: id });
+            let thumbs_up_users = prev_thumbs_up[0].thumbs_up;
+            let array = JSON.parse(thumbs_up_users);
+            for (let x of array) {
+                if (!x == userid) {
+                    return res.send({error: 'action failed'})
+                } else {
+                    const index = array.indexOf(userid);
+                    if (index > -1) {
+                      array.splice(index, 1);
+                    }
+                    let another_array = JSON.stringify(array);
+                    await knex('personal_posts').where({ id: id }).update({ thumbs_up_int: prev_thumbs_up[0].thumbs_up_int - 1, thumbs_up: another_array })
+                }
+            }
+        }
+        if (what == 'only_thumb_down') {
+            let prev_thumbs_up = await knex('personal_posts').where({ id: id });
+            let thumbs_up_users = prev_thumbs_up[0].thumbs_down;
+            let array = JSON.parse(thumbs_up_users);
+            for (let x of array) {
+                if (!x == userid) {
+                    return res.send({error: 'action failed'})
+                } else {
+                    const index = array.indexOf(userid);
+                    if (index > -1) {
+                      array.splice(index, 1);
+                    }
+                    let another_array = JSON.stringify(array);
+                    await knex('personal_posts').where({ id: id }).update({ thumbs_down_int: prev_thumbs_up[0].thumbs_down_int - 1, thumbs_down: another_array })
+                }
+            }
+        }
         if (what == 'thumbsdown') {
             let prev_thumbs_down = await knex('personal_posts').where({ id: id });
-            await knex('personal_posts').where({ id: id }).update({ thumbs_down_int: action == 'add' ? (prev_thumbs_down[0].thumbs_down_int + 1) : (prev_thumbs_down[0].thumbs_down_int - 1) })
+            let thumbs_down_users = prev_thumbs_down[0].thumbs_down;
+            let array = JSON.parse(thumbs_down_users);
+            for (let x of array) {
+                if (x == userid) {
+                    return res.send({error: 'action failed'})
+                } else {
+                    array.push(userid);
+                    let another_array = JSON.stringify(array);
+                    await knex('personal_posts').where({ id: id }).update({ thumbs_down_int: action == 'add' ? (prev_thumbs_down[0].thumbs_down_int + 1) : (prev_thumbs_down[0].thumbs_down_int - 1), thumbs_down: another_array })
+                    console.log(await knex('personal_posts'))
+                }
+            }
         }
     })
 }

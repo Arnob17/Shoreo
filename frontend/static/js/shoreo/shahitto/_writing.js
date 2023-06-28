@@ -29,7 +29,8 @@ fetch('/api/posts_data/all', {
         }
     })
 fetch('/api/personal_post/get', {
-    method: 'GET',
+    method: 'POST',
+    body: JSON.stringify({ authorid: localStorage.getItem('userId') }),
     headers: {
         'Content-type': 'application/json; charset=UTF-8'
     }
@@ -49,26 +50,71 @@ fetch('/api/personal_post/get', {
             </div>
             <div class="votes">
                 <div class="vote">
-                    <i id="_thumbs_up_${x.id}" class="fa-solid fa-thumbs-up"></i> <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px">${x.thumbs_up}</span>
+                    <i id="_thumbs_up_${x.id}" class="fa-solid fa-thumbs-up"></i> <span id="_thumbs_up_int_${x.id}" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px;">${x.thumbs_up}</span>
                 </div>
                 <div class="vote">
-                    <i id="_thumbs_down_${x.id}" class="fa-solid fa-thumbs-down"></i> <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px" >${x.thumbs_down}</span>
+                    <i id="_thumbs_down_${x.id}" class="fa-solid fa-thumbs-down"></i> <span id="_thumbs_down_int_${x.id}" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; color: #a1a1a1; margin-left: 5px;" >${x.thumbs_down}</span>
                 </div>
             </div>
         </div>
         `;
             ul.appendChild(li);
-            d(`_thumbs_up_${x.id}`).addEventListener('click', () => {
+
+            if (x.thumbs_up_clicked == true) {
                 d(`_thumbs_up_${x.id}`).classList.add('clicked');
-                console.log(x);
-                fetch('/api/personal_post/private/edit/thumbsup/add', {
-                    method: 'POST',
-                    body: JSON.stringify({ id:  x.id, userid: localStorage.getItem('userId')}),
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8'
-                    }
-                }).then(response => response.json()).then(x => console.log(x));
-            })
+            }
+            if (x.thumbs_down_clicked == true) {
+                d(`_thumbs_down_${x.id}`).classList.add('clicked');
+            }
+
+            if (x.thumbs_up_clicked == false && x.thumbs_down_clicked == false) {
+                d(`_thumbs_up_${x.id}`).addEventListener('click', () => {
+                    d(`_thumbs_up_${x.id}`).classList.add('clicked');
+                    console.log(x);
+                    fetch('/api/personal_post/private/edit/thumbsup/add', {
+                        method: 'POST',
+                        body: JSON.stringify({ id: x.id, userid: localStorage.getItem('userId') }),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    }).then(response => response.json()).then(x => console.log(x));
+                })
+            } else if (x.thumbs_up_clicked == true && x.thumbs_down_clicked == false) {
+                d(`_thumbs_up_${x.id}`).addEventListener('click', () => {
+                    console.log(x);
+                    fetch('/api/personal_post/private/edit/only_thumb_up/add', {
+                        method: 'POST',
+                        body: JSON.stringify({ id: x.id, userid: localStorage.getItem('userId') }),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    }).then(response => response.json()).then(x => console.log(x));
+                })
+            }
+            if (x.thumbs_down_clicked == false && x.thumbs_up_clicked == false) {
+                d(`_thumbs_down_${x.id}`).addEventListener('click', () => {
+                    d(`_thumbs_down_${x.id}`).classList.add('clicked');
+                    console.log(x);
+                    fetch('/api/personal_post/private/edit/thumbsdown/add', {
+                        method: 'POST',
+                        body: JSON.stringify({ id: x.id, userid: localStorage.getItem('userId') }),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    }).then(response => response.json()).then(x => console.log(x));
+                })
+            } else if (x.thumbs_up_clicked == false && x.thumbs_down_clicked == true) {
+                d(`_thumbs_down_${x.id}`).addEventListener('click', () => {
+                    console.log(x);
+                    fetch('/api/personal_post/private/edit/only_thumb_down/add', {
+                        method: 'POST',
+                        body: JSON.stringify({ id: x.id, userid: localStorage.getItem('userId') }),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    }).then(response => response.json()).then(x => console.log(x));
+                })
+            }
         }
     })
 let pfp = d('_pfp');
@@ -114,7 +160,7 @@ Fetch().then((x) => {
 let personal_posts_text_area = d('_textarea2');
 let personal_posts_submit_button = d('submit_button2');
 var now = new Date();
-var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds(); 
+var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
 //document, authorid, _type, title, gtag, time
 personal_posts_submit_button.addEventListener('click', () => {
     if (personal_posts_text_area.value.length > 10) {
@@ -132,6 +178,24 @@ personal_posts_submit_button.addEventListener('click', () => {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8'
             }
-        }).then(response => response.json()).then(x => {console.log(x)});
+        }).then(response => response.json()).then(x => { console.log(x) });
     }
 })
+
+setInterval(() => {
+    fetch('/api/personal_post/get', {
+        method: 'POST',
+        body: JSON.stringify({ authorid: localStorage.getItem('userId') }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    }).then(response => response.json()).then(x => {
+        for (let y of x) {
+            // console.log(y);
+            let span = d(`_thumbs_up_int_${y.id}`);
+            span.innerText = `${y.thumbs_up}`;
+            let span2 = d(`_thumbs_down_int_${y.id}`);
+            span2.innerText = `${y.thumbs_down}`;
+        }
+    })
+}, 5000)
