@@ -21,7 +21,7 @@ button.addEventListener('click', () => {
                 alert('SignUp successfull! (redirection to login page...)');
                 setTimeout(() => {
                     window.location.href=`/login`;
-                }, 3000);
+                }, 2000);
             }
         })
     }

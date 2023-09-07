@@ -86,7 +86,11 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
+    border-radius: 10%;
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;

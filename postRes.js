@@ -365,6 +365,7 @@ module.exports = function (app, path, knex) {
             let prev_thumbs_up = await knex('personal_posts').where({ id: id });
             let thumbs_up_users = prev_thumbs_up[0].thumbs_up;
             let array = JSON.parse(thumbs_up_users);
+            if (Array.isArray(array) == false) {return;}
             for (let x of array) {
                 if (x == userid) {
                     return res.send({error: 'action failed'})
@@ -424,5 +425,9 @@ module.exports = function (app, path, knex) {
                 }
             }
         }
+    })
+
+    app.post('/api/post/delete', (req, res) => {
+        
     })
 }

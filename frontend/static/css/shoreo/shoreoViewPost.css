@@ -13,9 +13,9 @@ body {
     overflow-x: hidden;
 }
 :root {
-    --primarycolor: #6d00ff;
-    --secondarycolor: #260a3d;
-    --buttoncolor: #aa1d69;
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
 }
 .navbar {
     position: sticky;
@@ -82,7 +82,11 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
+    border-radius: 10%;
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -179,6 +183,7 @@ body {
 } */
 .container {
     height: auto;
+    margin-top: 50px;
 }
 .bottom {
     display: flex;
@@ -202,7 +207,8 @@ body {
     color: black;
     font-size: 40px;
     font-weight: 590;
-    font-family: 'Tiro Bangla', serif;
+    /* font-family: 'Tiro Bangla', serif; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;;
 }
 .info .lekhok {
     margin-top: 30px;
@@ -339,5 +345,20 @@ body::-webkit-scrollbar-thumb:hover {
 @media only screen and (max-width: 600px) {
     .post p img {
         width: 70%;
+    }
+    .bottom {
+        display: block;
+    }
+    .suggestions {
+        padding: 0 20px;
+        width: 100%;
+    }
+    .post {
+        width: 100%;
+        margin-left: 10px;
+        padding: 0 20px;
+        margin-top: 10px;
+        white-space: pre-line;
+        word-break: break-all;
     }
 }

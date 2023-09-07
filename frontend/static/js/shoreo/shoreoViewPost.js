@@ -40,6 +40,7 @@ fetch ('/api/view_req_data', {
 
             window.speechSynthesis.speak(msg);    
         })
+        //zoom-in-out functions (starts here)
         let main_font_sizes = ['15px', '20px', '30px'];
         let font_index = 0;
         d('_zoom-in').addEventListener('click', () => { 
@@ -52,7 +53,7 @@ fetch ('/api/view_req_data', {
             if (!font_index == 0) {font_index--;} 
             d('maintext').style.fontSize=main_font_sizes[font_index];
         })
-
+        //zoom-in-out functions (ends here)
         let ctag = j.Gtag;
         console.log(ctag);
         let sugUl = document.getElementById('suggestionsUL');
