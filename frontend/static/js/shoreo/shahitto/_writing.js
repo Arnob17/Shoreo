@@ -46,7 +46,7 @@ fetch('/api/personal_post/get', {
         </div>
         <div class="m">
             <div class="sub">
-                <p style="font-weight: 600;" >${x._document}</p>
+                <p style="font-weight: none;" >${x._document}</p>
             </div>
             <div class="votes">
                 <div class="vote">

@@ -7,12 +7,18 @@
     scroll-behavior: smooth;
 }
 body {
-    background-color: #ffffff;
+    background-color: #fafafa;
+    height: auto;
 }
-:root {
+/* :root {
     --primarycolor: #6d00ff;
     --secondarycolor: #260a3d;
     --buttoncolor: #aa1d69;
+} */
+:root {
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
 }
 .navbar {
     position: sticky;
@@ -48,8 +54,8 @@ body {
     text-decoration: none;
     font-weight: bolder;
     color: var(--primarycolor);
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar nav ul li i {
@@ -66,7 +72,7 @@ body {
     background: var(--primarycolor);
     border-radius: 5%;
     /* text-decoration: underline; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar nav ul {
@@ -79,7 +85,7 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -176,6 +182,7 @@ body {
     margin-left: 2%;
 }
 .posts {
+    height: auto;
     display: flex;
     margin-top: 2%;
 }
@@ -183,7 +190,9 @@ body {
     height: 400px;
     width: 20vw;
     margin-left: 2%;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 1ch;
 }
 .statics ul {
     list-style-type: none;
@@ -221,7 +230,7 @@ body {
 } */
 .writings {
     height: 700px;
-    width: 60vw;
+    width: 50vw;
     margin-left: 2%;
 }
 .writings ul {
@@ -269,13 +278,16 @@ body {
     align-items: center;
 }
 .writings ul li .m .sub p {
-    color: rgb(20, 20, 20);
+    color: black;
     font-size: 15px;
     margin-top: 2%;
     margin-left: 2%;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 400;
     margin-bottom: 2%;
+    word-break: break-all;
+    white-space: pre-line; 
+    line-break: normal;
 }
 
 .questions {
@@ -294,6 +306,7 @@ body {
     height: auto;
     width: 100%;
     min-height: 100px;
+    padding: 0 15px;
 }
 .questions ul li .question span{
     margin-top: 2%;
@@ -309,14 +322,21 @@ body {
     align-items: center;
     margin-top: 16%;
     margin-bottom: 2%;
-    height: 30px;
+    height: 40px;
     width: 80%;
     margin-left: 10%;
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
     cursor: pointer;
-    background-color: var(--primarycolor);
-    border-radius: 5ch;
+    border: 1px solid black;
+    background-color: transparent;
+    border-radius: 1ch;
+}
+
+.questions ul li .answer:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 #button_log_out {
