@@ -52,8 +52,8 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
 })
 
 async function x() {
-  //  return knex.schema.table('personal_posts', table => {
-  //   table.integer('thumbs_up_int');
+  //  return knex.schema.table('users', table => {
+  //   table.integer('token');
   // })
   // let x = await knex("olympiad_questions");
   // console.log(x);
@@ -71,22 +71,30 @@ async function x() {
 
   // console.log(x[0].thumbs_up);
   // console.log('extracted', JSON.parse(x[0].thumbs_up));
-  let letters_small = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-  let letters_capital = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-  let numbers = [0,1,2,3,4,5,6,7,8,9];
+  // let letters_small = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  // let letters_capital = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  // let numbers = [0,1,2,3,4,5,6,7,8,9];
+  // function generator(a, b, c) {
+  //     let w = [a,b,c];
+  //     let token = [];
+  //     for (let i=0; i<(47+Math.floor(Math.random(7))); i++){
+  //         let j = w[(Math.floor(Math.random() * w.length))];
+  //         token.push(j[(Math.floor(Math.random() * j.length))]);
+  //     }
+  //     let string = token.join('');
+  //     return string;
+  // }
+  // let user = await knex('users')
 
-  function generator(a, b, c) {
-      let w = [a,b,c];
-      let token = [];
-      for (let i=0; i<(47+Math.floor(Math.random(7))); i++){
-          let j = w[(Math.floor(Math.random() * w.length))];
-          token.push(j[(Math.floor(Math.random() * j.length))]);
-      }
-      let string = token.join('');
-      return console.log(string);
-  }
-
-  return generator(letters_capital, letters_small, numbers);
+  // for (x of user) {
+  //   await knex('users').where({id: x.id}).update({ token: generator(letters_capital, letters_small, numbers)})
+  // }
+  // let user = await knex('olympiad_questions');
+  // let ids = [4,5,6,7,8,9,10,11];
+  // for (let x of ids) {
+  //   await knex('olympiad').where({id: x}).del();
+  // }
+  // console.log(user)
 }
 x()
 app.get('/user/:userid', (req, res) => {

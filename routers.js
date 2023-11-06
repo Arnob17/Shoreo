@@ -11,6 +11,8 @@ function x(path, regester_router, app) {
         path.resolve(__dirname, 'frontend/public/html/shoreo', 'signup.html'),
         path.resolve(__dirname, 'frontend/public/html/shoreo', 'questions.html'),
         path.resolve(__dirname, 'frontend/public/html/shoreo', 'leaderboard.html'),
+        path.resolve(__dirname, 'frontend/public/html/shoreo', 'olympiad_create.html'),
+        path.resolve(__dirname, 'frontend/public/html/shoreo', 'question_creator_olympiad.html'),
     ]
 
     regester_router(app, html_files[0], 'shahitto');
@@ -24,5 +26,7 @@ function x(path, regester_router, app) {
     regester_router(app, html_files[8], 'signup');
     regester_router(app, html_files[9], 'questions');
     regester_router(app, html_files[10], 'leaderboard');
+    regester_router(app, html_files[11], 'olympiad/create');
+    regester_router(app, html_files[12], 'olympiad_q/create');
 }
 module.exports = x;

@@ -9,7 +9,7 @@
     scroll-behavior: smooth;
 }
 body {
-    background-color: #ffffff;
+    background-color: #fafafa;
     overflow-x: hidden;
 }
 :root {
@@ -194,8 +194,11 @@ body {
     width: 70vw;
     padding: 0 15px;
     margin-top: 20px;
-    margin-left: 10px;
-    border-bottom: 1px solid rgb(168, 168, 168);
+    margin-left: 25px;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
+    border-radius: 1ch;
+    padding-top: 2px;
 }
 .info .titles {
     margin-top: 30px;
@@ -235,14 +238,20 @@ body {
 }
 .post {
     width: 70vw;
-    margin-left: 10px;
+    margin-left: 25px;
     padding: 0 20px;
     margin-top: 10px;
     white-space: pre-line;
-    word-break: break-all;
+    /* word-break: break-all; */
+    overflow-wrap: anywhere;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
+    border-radius: 1ch;
+    padding-top: 15px;
 }
 .suggestions {
     width: calc(100% - 70vw);
+    
 }
 .options {
     position: sticky;
@@ -359,6 +368,7 @@ body::-webkit-scrollbar-thumb:hover {
         padding: 0 20px;
         margin-top: 10px;
         white-space: pre-line;
-        word-break: break-all;
+        /* word-break: break-all; */
+        overflow-wrap: anywhere;
     }
 }

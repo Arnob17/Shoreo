@@ -285,7 +285,8 @@ body {
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 400;
     margin-bottom: 2%;
-    word-break: break-all;
+    /* word-break: break-all; */
+    overflow-wrap: anywhere;
     white-space: pre-line; 
     line-break: normal;
 }

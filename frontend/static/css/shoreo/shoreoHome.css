@@ -137,11 +137,12 @@ body {
     width: 90%;
     margin-left: 5%;
     border-radius: 5ch;
-    background: url('../../src/newthing.png');
+    /* background: url('../../src/newthing.png'); */
+    background: linear-gradient(50deg, rgb(2, 1, 59), #3d0000);
     /* border: 1px solid rgb(206, 206, 206); */
     /* background: rgb(230, 230, 230); */
     background-size: 150% 150%;
-    animation: y 5s ease infinite;
+    /* animation: y 5s ease infinite; */
 }
 
 @keyframes y {

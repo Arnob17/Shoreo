@@ -42,15 +42,19 @@ fetch ('/api/view_req_data', {
         })
         //zoom-in-out functions (starts here)
         let main_font_sizes = ['15px', '20px', '30px'];
-        let font_index = 0;
+        let stored_font_size = localStorage.getItem('font_size') || 0;
+        d('maintext').style.fontSize=main_font_sizes[stored_font_size];
+        let font_index = stored_font_size;
         d('_zoom-in').addEventListener('click', () => { 
             if (font_index !== main_font_sizes.length-1) {
                 font_index++;
             }
+            localStorage.setItem('font_size', font_index);
             d('maintext').style.fontSize=main_font_sizes[font_index];
         })
         d('_zoom-out').addEventListener('click', () => { 
-            if (!font_index == 0) {font_index--;} 
+            if (!font_index == 0) {font_index--;}
+            localStorage.setItem('font_size', font_index);
             d('maintext').style.fontSize=main_font_sizes[font_index];
         })
         //zoom-in-out functions (ends here)

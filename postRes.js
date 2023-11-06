@@ -118,11 +118,12 @@ module.exports = function (app, path, knex) {
         let password = await knex('users').where({ password: pass });
         if (user.length == 0) { return; } else if (password.length == 0) { return; }
         if (user[0].userid == password[0].userid) {
-            res.send({ _avatar: user[0].img, _name: user[0].user_name, _id: user[0].userid });
+            res.send({ _avatar: user[0].img, _name: user[0].user_name, _id: user[0].userid, _token: user[0].token, _password: user[0].password });
         }
     })
 
     app.post('/auth/signup', async (req, res) => {
+        let token_generator = require('./backend/js/api/tokenGenerator.js');
         let { username, userid, password } = req.body;
         let availableuser = await knex('users').where({ userid: userid });
         console.log(availableuser);
@@ -133,9 +134,11 @@ module.exports = function (app, path, knex) {
                 password: `${password}`,
                 img: 'https://cdn.discordapp.com/attachments/778294816190103642/1020590907701088296/unknown.png',
                 is_verified: 'false',
-                userid: `${userid}`
+                userid: `${userid}`,
+                token: token_generator(knex)
             });
             res.send({ id: 182, message: 'successful!' });
+            console.log(await knex('users'))
         } else {
             res.status(418).send({ error: 'UserAlreadyExists', id: 181 })
         }
@@ -361,6 +364,7 @@ module.exports = function (app, path, knex) {
         let { what, action, } = req.params;
         let { id, userid } = req.body;
         if (!what && !action && !id && !userid) { return };
+        if (userid==null) {return};
         if (what == 'thumbsup') {
             let prev_thumbs_up = await knex('personal_posts').where({ id: id });
             let thumbs_up_users = prev_thumbs_up[0].thumbs_up;
@@ -427,7 +431,29 @@ module.exports = function (app, path, knex) {
         }
     })
 
-    app.post('/api/post/delete', (req, res) => {
-        
+    app.post('/api/olympiad/create', async(req, res) => {
+        let { name, authors, type} = req.body;
+
+        await knex('olympiad').insert(
+            {
+                title: name,
+                question_by: authors,
+                purpose: type
+            }
+        )
+        res.send({x: 'done'});
+    })
+    app.post('/api/olympiad_questions/create', async(req, res) => {
+        let { title, answer, exp, id } = req.body;
+
+        await knex('olympiad_questions').insert(
+            {
+                q_title: title,
+                options: exp,
+                q_answer: answer,
+                for_question: id
+            }
+        )
+        res.send({id: 112});
     })
 }

@@ -10,25 +10,31 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #fafafa;
     overflow-x: hidden;
 }
-:root {
+/* :root {
     --primarycolor: #1c47d4;
     --secondarycolor: #68b4ff;
     --buttoncolor: #0059ce;
+} */
+:root {
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #000000;
 }
 .navbar {
-    position: sticky;
-    top: 16px;
     height: 70px;
     margin-top: 1%;
     border-radius: 5ch;
     width: 97%;
     margin-left: 1.5%;
     box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
-    background-color: rgb(253, 253, 253, .5);
+    background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(6px);
+    position: sticky;
+    top: 16px;
+    z-index: 1;
 }
 
 .navbar nav {
@@ -52,8 +58,8 @@ body {
     text-decoration: none;
     font-weight: bolder;
     color: var(--primarycolor);
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar nav ul li i {
@@ -70,7 +76,7 @@ body {
     background: var(--primarycolor);
     border-radius: 5%;
     /* text-decoration: underline; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .navbar nav ul {
@@ -83,7 +89,7 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -146,6 +152,7 @@ body {
     background: transparent;
     display: flex;
     flex-direction: column;
+    margin-left: 30px;
 }
 .title .q_title {
     color: var(--primarycolor);
@@ -166,15 +173,15 @@ body {
     width: auto;
     display: flex;
     position: relative;
-    margin-top:20px;
+    margin-top:15px;
 }
 
 .containter .questions {
     height: 80vh;
     width: 20vw;
     border-radius: 2ch;
-    background: #ffffff;
-    border: 1px solid black;
+    /* background: #ffffff; */
+    /* border: 1px solid rgb(226, 226, 226); */
     margin-left: 2vw;
 }
 
@@ -194,10 +201,13 @@ body {
     align-items: center;
     margin-top: 12px;
     padding: 0 15px;
-    border-bottom: 1px solid grey;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: white;
+    border-radius: 1ch;
+    transition: background-color, 0.5s;
 }
-.containter .questions ul li:hover {
-    background: var(--primarycolor);
+.containter .questions ul li:hover{
+    background-color: rgb(245, 245, 245);
 }
 .containter .questions ul::-webkit-scrollbar {
     border-radius: 5ch;
@@ -205,7 +215,7 @@ body {
     width: 5px;
 }
 .containter .questions ul li span {
-    color: var(--secondarycolor);
+    color: black;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 17px;
     font-weight: bolder;
@@ -214,18 +224,18 @@ body {
 .containter .answer {
     height:80vh;
     width: 70vw;
-    border-radius: 2ch;
-    background: #ffffff;
+    /* background: #ffffff; */
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    padding: 0 20px;
 }
 .containter .answer .q {
     height: 40vh;
     width: auto;
-    background: transparent;
+    padding: 0 20px;
+    background: white;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 1ch;
 }
 .containter .answer .q .title_Q {
     height: 10vh;
@@ -248,6 +258,9 @@ body {
     height: 30vh;
     width: auto;
     margin-top: 10px;
+    background: white;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 1ch;
 }
 .containter .answer .ans textarea {
     height: 40vh;
@@ -257,9 +270,9 @@ body {
     border-style: solid;
     border-color: transparent;
     border-image: initial;
-    border-top: 1px solid black;
     resize: none;
     padding: 0 10px;
+    padding-top: 10px;
 }
 .containter .answer .ans textarea:focus{
     outline: none;
