@@ -9,25 +9,26 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #fafafa;
 }
 
 :root {
-    --primarycolor: #6d00ff;
-    --secondarycolor: #260a3d;
-    --buttoncolor: #aa1d69;
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
 }
 .navbar {
-    position: sticky;
-    top: 16px;
     height: 70px;
     margin-top: 1%;
     border-radius: 5ch;
     width: 97%;
     margin-left: 1.5%;
     box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
-    background-color: rgb(253, 253, 253, .5);
+    background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(6px);
+    position: sticky;
+    top: 16px;
+    z-index: 1;
 }
 
 .navbar nav {
@@ -51,8 +52,9 @@ body {
     text-decoration: none;
     font-weight: bolder;
     color: var(--primarycolor);
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: background, 0.5s;
 }
 
 .navbar nav ul li i {
@@ -69,7 +71,6 @@ body {
     background: var(--primarycolor);
     border-radius: 5%;
     /* text-decoration: underline; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar nav ul {
@@ -82,7 +83,7 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -107,8 +108,7 @@ body {
     display: flex;
     align-items: center;
 }
-
-.C {
+/* .C {
     margin-top: 2%;
     display: flex;
     align-items: center;
@@ -123,8 +123,8 @@ body {
     font-family: 'Bebas Neue', cursive;
     font-family: 'Galada', cursive;
     font-family: 'Mina', sans-serif;
-}
-.quesion
+} */
+/* .quesion
 {
     align-items: center;
     height: auto;
@@ -173,7 +173,6 @@ body {
 .answers ul ._a1 {
     height: auto;
     width:auto;
-    /* background: rgba(128, 128, 128, 0.438); */
 }
 .answers ul li {
     border: 1px solid rgba(255, 255, 255, 0.808);
@@ -192,8 +191,6 @@ body {
 .InfoComponent .contents {
     display: flex;
     align-items: center;
-    /* position: absolute;
-    left: 5%; */
     margin-left: 3%;
 }
 .InfoComponent .contents img {
@@ -250,32 +247,14 @@ body {
     font-size: 40px;
     cursor: pointer;
     padding: 0 15px;
-}
+}**/
 .your_answer {
     display: flex;
-    height: 60px;
+    height: 40px;
     justify-content: center;
     align-items: center;
     width: auto;
-    background-color: azure;
 }
-/* .your_answer textarea{
-    padding: 0 15px;
-    width: 800px;
-    accent-color: azure;
-    height: 140px;
-    resize: horizontal;
-    border-radius: 0.5ch;
-}
-.your_answer textarea:focus{
-    background: rgb(225, 255, 255);
-}
-.your_answer .enterButton i {
-    color: grey;
-    font-size: 20px;
-    margin-left: 30px;
-    cursor: pointer;
-} */
 .answer_button_x {
     display: flex;
     justify-content: center;
@@ -286,10 +265,117 @@ body {
     font-size: 10px;
     float: right;
     cursor: pointer;
-    background-color: #6d00ff;
+    background-color: #000000;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: normal;
+}
+.question {
+    margin-left: 50px;
+    margin-top: 40px;
+    height: auto;
+    min-height: 150px;
+    width: 50vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: white;
+    border-radius: 1ch;
+    border: 1px solid rgb(226, 226, 226);
+}
+.question ._onlyq {
+    height: auto;
+    min-height: 60%;
+    min-height: 100px;
+    margin-left: 10px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+.question ._info {
+    font-weight: bold;
+    font-size: 15px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-right: 20px;
+}
+.question ._info:hover {
+    text-decoration: underline;
+}
+.question ._onlyinfo {
+    margin-top: 4px;
+    margin-left: 10px;
+}
+.question .q {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+.answers ul {
+    list-style-type: none;
+}
+.answers ul li {
+    border: 1px solid rgb(226, 226, 226);
+    height: 100%;
+    margin-top: 1%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1ch;
+    transition: background-color, 0.5s;
+    overflow-wrap: anywhere;
+}
+.answers ul li:hover {
+    background-color: rgb(245, 245, 245);
+}
+.answers ul li .profile {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    cursor: pointer;
+}
+.answers ul li .profile ._name_flex {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-top: 7px;
+    /* font-size: 15px; */
+}
+.answers ul li .profile ._name_flex .writer_id {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 10px;
+    color: grey;
+}
+.answers ul li .profile ._time {
+    font-size: 10px;
+    color: grey;
+    margin-left: 4px;
+}
+.answers ul li .profile img {
+    width: 30px;
+    margin-top: 2%;
+    border-radius: 50%;
+}
+.answers ul li .answer {
+    display: flex;
+    align-items: center;
+}
+.answers ul li .answer p {
+    color: black;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin-bottom: 2%;
+    white-space: pre-line;
+}
+.answers {
+    width: 60vw;
+    height: auto;   
+}
+.answers ul {
+    width: 60vw;
+    height: auto;
+    margin-left: 50px;
 }
 textarea {
     background: transparent;

@@ -13,7 +13,7 @@ module.exports = function (knex) {
         let string = token.join('');
         for (let x of users) {
             if (x.token === string) {
-                return;
+                return (x.token, string);
             }
         }
         return string;

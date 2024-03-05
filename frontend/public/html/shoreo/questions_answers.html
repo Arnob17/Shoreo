@@ -92,6 +92,7 @@
           _mainTitle.innerText = `${x.title}`;
           document.getElementById('_contributors').innerText = `${x.question_by}`
           if (queryParams) {
+            if (!localStorage.getItem('userId')) {return;}
             for (let o of x.questions) {
               if (o.id == queryParams.i) {
                 _question_title.innerText = o.q_title;

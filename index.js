@@ -39,12 +39,16 @@ PostRoute.post('/api/v1/q/i', async (req, res) => {
     a: [],
     author: b[0].user_name,
     author_id: x[0].authorid,
-    qid: x[0].id
+    qid: x[0].id,
+    img: b[0].img
   }
   let answer = await knex('answers').where({ question_id: `${y.qid}` })
   let o = answer;
   if (o.length > 0) {
     for (let i of answer) {
+      let user = await knex('users').where({userid: i.authorid});
+      i.author = user[0].user_name;
+      i.img = user[0].img;
       y.a.push(i);
     }
   }
@@ -84,16 +88,17 @@ async function x() {
   //     let string = token.join('');
   //     return string;
   // }
-  // let user = await knex('users')
-
+  // let user = await knex('olympiad_questions')
+  // let array = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 26, 27, 28, 29]
   // for (x of user) {
   //   await knex('users').where({id: x.id}).update({ token: generator(letters_capital, letters_small, numbers)})
   // }
   // let user = await knex('olympiad_questions');
   // let ids = [4,5,6,7,8,9,10,11];
-  // for (let x of ids) {
-  //   await knex('olympiad').where({id: x}).del();
+  // for (let x of array) {
+  //   await knex('olympiad_questions').where({id: x}).del();
   // }
+  // let user = await knex('posts')
   // console.log(user)
 }
 x()

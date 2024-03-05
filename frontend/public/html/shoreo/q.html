@@ -14,17 +14,25 @@
 
     <div class="navbar">
         <nav>
-            <ul>
-                <!-- <a class="_favText" id="_favText"> অ </a> -->
-                <li class="_favico_main"><img id="_favico" src="../../../../static/src/lg4.png" alt="logo"
-                        onclick="window.location.href='/'"></li>
-                <li> <a id="1" href="/biggan"> বিজ্ঞান </a> </li>
-                <li> <a id="2" href="/shahitto"> সাহিত্য </a> </li>
-                <li> <a id="3" href="/tech"> প্রযুক্তি </a> </li>
-                <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
-                <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
-                <li class="Iu" id="_iU"> <img id="_pfp" style="cursor: pointer;" src="" alt=""> </li>
-            </ul>
+          <ul>
+            <!-- <a class="_favText" id="_favText"> অ </a> -->
+            <li class="_favico_main">
+              <img
+                id="_favico"
+                src="../../../../static/src/phiocean.PNG"
+                alt="logo"
+                onclick="window.location.href='/'"
+              />
+            </li>
+            <li><a id="1" href="/biggan"> Science </a></li>
+            <li><a id="2" href="/shahitto"> Literature </a></li>
+            <li><a id="3" href="/tech"> Technology </a></li>
+            <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                  <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+            <li class="Iu" id="_iU">
+              <img id="_pfp" style="cursor: pointer" src="" alt="" />
+            </li>
+          </ul>
         </nav>
     </div>
     <div id="myModal" class="modal">
@@ -50,31 +58,31 @@
         </div>
 
     </div>
-    <div class="C">
-        <p> <span><i style="font-size: 25px; color:black;" class="fa-solid fa-hashtag"></i></span> প্রশ্ন - উত্তর</p>
-    </div>
-
-    <div class="quesion">
-        <p><span class="_q">Q.</span> <span id="_question" class="q">What is Universe?</span></p>
-        <span id="_by" class="_by">অর্ণব</span>
-    </div>
-    <div class="your_answer">
-
-        <!-- <textarea type="text" name="answer" placeholder="Write your answer here." id="_textarea"></textarea>
-        <div class="enterButton" id="submitButton">
-            <i class="fa-solid fa-chevron-right"></i>
-        </div> -->
-        <div id="answer_button_x" class="answer_button_x">
-            ANSWER
+    <div class="question">
+        <div class="_onlyq">
+            <p><span id="_question" class="q">What is Universe?</span></p>
         </div>
-    </div>
-    <div class="answer_text">
-        <p>Answers</p>
+        <div class="_onlyinfo">
+            <span id="_by" class="_by _info">অর্ণব</span>
+            <span id="_time" class="_info">15/12/2023</span>
+            <div class="your_answer">
+                <div id="answer_button_x" class="answer_button_x">
+                ANSWER
+                </div>
+            </div>
+        </div>
     </div>
     <div class="answers">
         <ul id="answers">
-
-        </ul>
+            <!-- <li class="_new">
+                <div class="profile">
+                    <img src="https://cdn.discordapp.com/attachments/778294816190103642/1020328438306963566/unknown.png" alt=""> <div class="_name_flex"><span onclick="window.location.href='/user/${x._writer_id}'" >${x._writer}</span> <span class="writer_id" >@${x._writer_id}</span> </div> <span class="_time">at ${x.time ? x.time : 'timex'}</span>
+                </div>
+                <div class="answer">
+                    
+                </div>
+            </li> -->
+        </ul>`
     </div>
     <style>
         .modal {

@@ -42,7 +42,7 @@ fetch('/api/personal_post/get', {
             let ul = d('_main_ul');
             li.innerHTML = `
         <div class="profile">
-            <img src="${x._writer_avatar}" alt=""> <span onclick="window.location.href='/user/${x._writer_id}'" >${x._writer}</span> <span class="_time">at ${x.time ? x.time : 'timex'}</span>
+            <img src="${x._writer_avatar}" alt=""> <div class="_name_flex"><span onclick="window.location.href='/user/${x._writer_id}'" >${x._writer}</span> <span class="writer_id" >@${x._writer_id}</span> </div> <span class="_time">at ${x.time ? x.time : 'timex'}</span>
         </div>
         <div class="m">
             <div class="sub">

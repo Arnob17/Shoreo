@@ -135,7 +135,7 @@ module.exports = function (app, path, knex) {
                 img: 'https://cdn.discordapp.com/attachments/778294816190103642/1020590907701088296/unknown.png',
                 is_verified: 'false',
                 userid: `${userid}`,
-                token: token_generator(knex)
+                token: await token_generator(knex)
             });
             res.send({ id: 182, message: 'successful!' });
             console.log(await knex('users'))

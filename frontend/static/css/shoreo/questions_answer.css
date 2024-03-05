@@ -222,7 +222,7 @@ body {
     cursor: pointer;
 }
 .containter .answer {
-    height:80vh;
+    height:auto;
     width: 70vw;
     /* background: #ffffff; */
     margin-left: 2vw;
@@ -255,15 +255,14 @@ body {
 
 }
 .containter .answer .ans {
-    height: 30vh;
+    height: auto;
     width: auto;
     margin-top: 10px;
     background: white;
-    border: 1px solid rgb(226, 226, 226);
     border-radius: 1ch;
 }
 .containter .answer .ans textarea {
-    height: 40vh;
+    height: 400px;
     width: 100%;
     background: rgb(255, 255, 255);
     border-width: 0px;
@@ -272,7 +271,9 @@ body {
     border-image: initial;
     resize: none;
     padding: 0 10px;
+    overflow-y: scroll;
     padding-top: 10px;
+    border: 1px solid rgb(226, 226, 226);
 }
 .containter .answer .ans textarea:focus{
     outline: none;
@@ -281,15 +282,19 @@ body {
     height: 60px;
     width: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: var(--buttoncolor);
-    margin-top: 5px;
-    color: white;
+    justify-content: center;
+    color: black;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 20px;
-    cursor: pointer;
-    border-radius: 5ch;
-    font-weight: bold;
+    background-color: transparent;
+    transition: background-color, 0.5s;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 1ch;
+    margin-top: 5px;
+}
+.containter .answer .submit:hover {
+    background-color: rgb(245, 245, 245);
 }
 
 .containter .answer .question_full {

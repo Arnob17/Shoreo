@@ -207,6 +207,18 @@ body {
     align-items: center;
     margin-left: 2%;
 }
+.c .posts ul li .profile ._name_flex {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-top: 7px;
+    /* font-size: 15px; */
+}
+.c .posts ul li .profile ._name_flex .writer_id {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 10px;
+    color: grey;
+}
 .c .posts ul li .profile ._time {
     font-size: 10px;
     color: grey;
@@ -234,7 +246,7 @@ body {
     cursor: pointer;
     margin-top: 2%;
     font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .c .posts ul li .m .title {
     display: flex;
@@ -702,7 +714,7 @@ body {
 
 .votes i:hover {
     border-radius: 5ch;
-    background-color: rgb(243, 242, 242);
+    background-color: rgb(221, 221, 221);
 }
 
 @media only screen and (max-width: 600px) {
