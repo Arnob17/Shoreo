@@ -11,12 +11,11 @@
 </head>
 
 <body>
-
     <div class="navbar">
         <nav>
             <ul>
                 <!-- <a class="_favText" id="_favText"> অ </a> -->
-                <li class="_favico_main"><img id="_favico" src="../../../../static/src/phiocean.PNG"" alt="logo"
+                <li class="_favico_main"><img id="_favico" src="../../../../static/src/phiocean.PNG" alt="logo"
                         onclick="window.location.href='/'"></li>
                 <li> <a id="1" href="/biggan"> Science </a> </li>
                 <li> <a id="2" href="/shahitto"> Literature </a> </li>
@@ -27,9 +26,10 @@
             </ul>
         </nav>
     </div>
-    <div class="profile">
+    <div class="profile" id="_bg_profile">
         <img id="_avatar" src="https://cdn.discordapp.com/attachments/778294816190103642/1047802963541901393/x.PNG"
-            alt="">
+            alt="" crossorigin="anonymous">
+        <input type="file" id="_image_input">            
         <div class="info">
             <span id="_username" class="_username">Ghost</span>
             <span id="_role" class="_role">Student, Writer, Mathematician</span>
@@ -40,7 +40,7 @@
             <ul>
                 <li>
                     <span class="_plain">
-                        Followed by 17billion people
+                        Followed by 17m people
                     </span>
                 </li>
                 <li>
@@ -94,35 +94,7 @@
     </div>
     <script src="../../../static/js/shoreo/shoreoUserInfo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Previous', 'Current'],
-                datasets: [{
-                    label: 'C-Point',
-                    data: [0, 2],
-                    borderWidth: 1,
-                    backgroundColor: 'grey',
-                }]
-            },
-            options: {
-                plugins: {
-                    //   title: {
-                    //     display: true,
-                    //     text: 'Shoreo - User Stats'
-                    //   },
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script>
         let x = document.getElementById('button_log_out');
         x.addEventListener('click', () => {

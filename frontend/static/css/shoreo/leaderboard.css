@@ -9,25 +9,29 @@
 }
 
 body {
-    background-color: #ffffff;
+    /* background-color: #f1f2f2; */
+    background-color: #fafafa;
+    /* background-color: white; */
     overflow-x: hidden;
+    height: auto;
 }
 :root {
-    --primarycolor: #6d00ff;
-    --secondarycolor: #260a3d;
-    --buttoncolor: #aa1d69;
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
 }
 .navbar {
-    position: sticky;
-    top: 16px;
     height: 70px;
     margin-top: 1%;
     border-radius: 5ch;
     width: 97%;
     margin-left: 1.5%;
     box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
-    background-color: rgb(253, 253, 253, .5);
+    background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(6px);
+    position: sticky;
+    top: 16px;
+    z-index: 1;
 }
 
 .navbar nav {
@@ -51,8 +55,9 @@ body {
     text-decoration: none;
     font-weight: bolder;
     color: var(--primarycolor);
-    font-size: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: background, 0.5s;
 }
 
 .navbar nav ul li i {
@@ -69,7 +74,6 @@ body {
     background: var(--primarycolor);
     border-radius: 5%;
     /* text-decoration: underline; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar nav ul {
@@ -82,7 +86,7 @@ body {
 
 ._favico_main img {
     /* border-radius: 50%; */
-    width: 35px;
+    width: 85px;
     border-radius: 10%;
     position: absolute;
     left: 5vh;
@@ -137,4 +141,18 @@ body {
     height: 30px;
     width: auto;
     border: 1px solid var(--primarycolor);
+}
+
+.first {
+    height: 150px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.first h1 {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    color: black;
 }

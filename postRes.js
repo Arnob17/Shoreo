@@ -456,4 +456,23 @@ module.exports = function (app, path, knex) {
         )
         res.send({id: 112});
     })
+    app.post('/api/private/user/edit/:what', async (req, res) => {
+        let { token, str, img } = req.body;
+        let { what } = req.params
+        if (what == 'img') {
+            await knex('users').where({token: token}).update({img: img})
+        }
+        if (what == 'name') {
+            await knex('users').where({token: token}).update({user_name: str})
+        }
+    })
+    app.post('/api/private/isuser_owner', async(req, res) => {
+        let {usertoken, userid} = req.body;
+
+        let user = await knex('users').where({userid: userid})
+
+        if (user[0].token == usertoken) {
+            res.send({res: 'true'});
+        }
+    })
 }

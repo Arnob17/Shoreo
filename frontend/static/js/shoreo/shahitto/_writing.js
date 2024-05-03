@@ -184,6 +184,7 @@ fetch('/api/personal_post/get', {
         }
     })
 let pfp = d('_pfp');
+let what_you_thinking_img = d('what_you_thinking_img');
 // let q = d('_quote');
 // let t=[{t: 'ও রজনীগন্ধা, তোমার গন্ধসুধা ঢাল', a: 'অচেনা মানুষ'}, {t: 'আমি যাবো তোমার সাথে, তুমি আছো কোন শহরে?', a: 'শুভ'}]
 // let iindex = Math.floor(Math.random() * t.length);
@@ -194,6 +195,7 @@ let i = localStorage.getItem('userImg') || false;
 let id = localStorage.getItem('userId') || false;
 // if (!j) { window.location.href = `http://localhost:3000/`; }
 pfp.src = `${i}`;
+what_you_thinking_img.src = `${i}`
 pfp.addEventListener('click', () => {
     window.location.href = `http://localhost:3000/user/${id}`;
 })

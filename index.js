@@ -100,6 +100,7 @@ async function x() {
   // }
   // let user = await knex('posts')
   // console.log(user)
+  await knex('users').where({userid: '17OnuArnob'}).update({img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Sinus_und_Kosinus_am_Einheitskreis_1.svg/250px-Sinus_und_Kosinus_am_Einheitskreis_1.svg.png'})
 }
 x()
 app.get('/user/:userid', (req, res) => {

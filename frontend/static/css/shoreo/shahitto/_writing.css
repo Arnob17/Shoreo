@@ -170,6 +170,7 @@ body {
     align-items: center;
     background-color: transparent;
     transition: background-color, 0.5s;
+    padding: 0 10px;
 }
 .c .options ul li span {
     font-size: 20px;
@@ -299,6 +300,10 @@ body {
 .c .questions ._a {
     height: 30px;
     width: 23vw;
+    background: rgb(255, 255, 255, .6);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
     border-left: solid #000000;
 }
 .c .questions ._a span {
