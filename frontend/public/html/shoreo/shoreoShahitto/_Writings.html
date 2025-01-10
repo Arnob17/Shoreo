@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>অ - Shoreo</title>
+    <link
+      rel="shortcut icon"
+      href="../../../../static/src/lg3.PNG"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../static/css/shoreo/shahitto/_writing.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="../../static/src/moon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <nav>
+        <ul>
+          <!-- <a class="_favText" id="_favText"> অ </a> -->
+          <li class="_favico_main">
+            <img
+              id="_favico"
+              src="../../../../static/src/phiocean.PNG"
+              alt="logo"
+            />
+          </li>
+          <li><a id="1" href="/biggan"> Science </a></li>
+          <li><a id="2" href="/shahitto"> Literature </a></li>
+          <li><a id="3" href="/tech"> Technology </a></li>
+          <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+          <li class="Iu" id="_iU">
+            <img id="_pfp" style="cursor: pointer" src="" alt="" />
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span id="_close" class="close">&times;</span>
+        <input
+          type="text"
+          name="_question"
+          placeholder="write your question here.."
+          id="_question"
+          maxlength="300"
+        />
+        <div class="button" id="submit_button">Submit</div>
+      </div>
+    </div>
+    <div class="what_are_you_thinking_about" id="modal2">
+        <div class="modal-content">
+          <span id="_close2" class="close">&times;</span>
+          <h1 id="_q_ans">What are you THINKING about?</h1>
+          <textarea
+            name="_question"
+            id="_textarea2"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="write your feelings here.."
+          ></textarea>
+          <div class="button" id="submit_button2">submit</div>
+        </div>
+      </div>
+    <div class="c">
+      <div class="options">
+        <ul>
+          <li onclick="window.location.href = '/questions'">
+            <i class="fa-solid fa-question"></i>
+            <span>Questions</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-user"></i>
+            <span>Users</span>
+          </li>
+          <li onclick="window.location.href = '/leaderboard'">
+            <i class="fa-solid fa-ranking-star"></i>
+            <span>LeaderBoard</span>
+          </li>
+          <li
+            onclick="window.location.href = '/upload'"
+            style="border: 1px solid rgb(44, 44, 44); border-radius: 5ch"
+          >
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>Write</span>
+          </li>
+          <li
+            id="_ask"
+            style="border: 1px solid rgb(44, 44, 44); border-radius: 5ch"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Ask</span>
+          </li>
+        </ul>
+      </div>
+      <div class="posts">
+        <div class="post" id="_whatareyouthinking">
+          <img
+            id="what_you_thinking_img"
+            src=""
+            alt=""
+          />
+          <span>What are you thinking about?</span>
+        </div>
+        <ul id="_main_ul"></ul>
+      </div>
+      <div class="questions">
+        <div class="_a">
+          <span> Questions </span>
+        </div>
+        <ul id="_q"></ul>
+      </div>
+    </div>
+    <style>
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .modal-content {
+        border-radius: 0.5ch;
+        background-color: rgb(254, 254, 254, 0.7);
+        backdrop-filter: blur(5px);
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+      }
+      .modal-content input {
+        width: 30vw;
+        border-radius: 5ch;
+        background-color: rgb(254, 254, 254, 0.8);
+        height: 5vh;
+        padding: 0 15px;
+        background-color: white;
+      }
+      .modal-content .button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 10vh;
+        margin-top: 2%;
+        border-radius: 1ch;
+        background-color: #000000;
+        color: white;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      function a() {
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("_ask");
+        var span = document.getElementById('_close')
+        btn.onclick = function () {
+          modal.style.display = "block";
+        };
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+      }
+      a();
+      function x(a) {
+        return document.getElementById(a);
+      }
+      let question = x("_question");
+      let submit_button = x("submit_button");
+      function f() {
+        if (question.value.length > 0) {
+          fetch("/api/v1/ask_a_question", {
+            method: "POST",
+            body: JSON.stringify({
+              title: `${question.value}`,
+              authorid: `${localStorage.getItem("userId")}`,
+              type: `all`,
+            }),
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          })
+            .then((response) => response.json())
+            .then((r) => console.log(r));
+        }
+      }
+      submit_button.onclick = function () {
+        f();
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      function c() {
+        var modal = document.getElementById("modal2");
+        var btn = document.getElementById("_whatareyouthinking");
+        let submit_button = document.getElementById('submit_button2');
+        var span = document.getElementById('_close2')
+        btn.onclick = function () {
+          modal.style.display = "block";
+        };
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+        submit_button.onclick = function() {
+          var btn = document.getElementById("modal2");
+          btn.style.display = "none";
+        }
+      }
+      c();
+    </script>
+    <script src="../../../static/js/shoreo/shahitto/_writing.js"></script>
+    <script src="../../../../static/js/shoreo/shahitto/intervals.js"></script>
+  </body>
+</html>

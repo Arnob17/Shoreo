@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>অ - Upload</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link
+      rel="stylesheet"
+      href="../../../static/css/shoreo/InterFaceUpload.css"
+    />
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="shortcut icon"
+      href="../../static/src/moon.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li class="_favico_main">
+            <img id="_favico" src="../../../../static/src/lg4.png" alt="logo" onclick="window.location.href='/'" />
+          </li>
+          <li><a id="1" href="/biggan"> বিজ্ঞান </a></li>
+          <li><a id="2" href="/shahitto"> সাহিত্য </a></li>
+          <li><a id="3" href="/tech"> প্রযুক্তি </a></li>
+          <li class="Iu" id="_iU">
+            <img id="_pfp" style="cursor: pointer" src="" alt="" />
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="Containter_Main">
+      <p class="_text_main">"লিখ যা তুমি জানো.."</p>
+      <div class="inp">
+        <form>
+          <label for="fname">টাইটেল</label><br />
+          <input
+            placeholder="টাইটেল লিখুন"
+            type="text"
+            id="fname"
+            name="fname"
+            max="10"
+          /><br />
+          <label for="catagory-names">Choose a catagory:</label>
+          <select name="catagory-names" id="catagory_names" class="_select">
+            <option value="science_and_technology">Science</option>
+            <option value="literature">Literature</option>
+            <option value="socity">Socity</option>
+            <option value="philosophy_and_history">Philosophy and History</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <style>
+      /* Dropdown Button */
+      ._select {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        background-color: #fdfdfd;
+        color: rgb(112, 112, 112);
+        height: 5vh;
+        width: 20vw;
+        font-size: 16px;
+        border: none;
+      }
+      ._select:focus{
+    border: 1px dashed grey;
+    outline: none;
+}
+    </style>
+    <div class="Main_Input">
+      <p>লিখা</p>
+      <textarea
+        name="_MainText"
+        placeholder="Write your subject"
+        id="maintext"
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+
+    <div class="submitButton">
+      <div class="b">
+        <p id="_submit">হয়ে গেছে!</p>
+      </div>
+    </div>
+
+    <div class="end_footer" id="footer">
+      <ul>
+        <div class="_footer_favico">
+          <a href="http://localhost:3060"
+            >অ <span style="font-size: 15px; color: green">(Shoreo)</span></a
+          >
+        </div>
+        <li>
+          <a href="http://localhost:3060/signup"> Sign up </a>
+        </li>
+        <li>
+          <a href="http://localhost:3060/fm"> Listen Fm </a>
+        </li>
+        <li>
+          <a href="http://localhost:3060/golporaat"> Listen Events </a>
+        </li>
+        <li>
+          <a href="http://localhost:3060/api/v1"> Api </a>
+        </li>
+        <li>
+          <a href="http://localhost:3060/chat"> Chat </a>
+        </li>
+        <li class="made_by">
+          <a href="https://github.com/arnob17" target="_blank">
+            <span style="color: rgb(102, 102, 102)"
+              >Made with
+              <span title="NodeJs" class="nodejs_icon"
+                ><i class="fa-brands fa-node-js"></i
+              ></span>
+              <span title="Html" class="html_icon"
+                ><i class="fa-brands fa-html5"></i
+              ></span>
+              <span title="CSS" class="css_icon"
+                ><i class="fa-brands fa-css3-alt"></i
+              ></span>
+              by <span title="সত্যি! আমিই বানিয়েছি :D" style="color: rgb(14, 78, 173)">অর্ণব</span></span
+            >
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script src="../../../static/js/shoreo/InterFaceUpload.js"></script>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/q.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <nav>
+          <ul>
+            <!-- <a class="_favText" id="_favText"> অ </a> -->
+            <li class="_favico_main">
+              <img
+                id="_favico"
+                src="../../../../static/src/phiocean.PNG"
+                alt="logo"
+                onclick="window.location.href='/'"
+              />
+            </li>
+            <li><a id="1" href="/biggan"> Science </a></li>
+            <li><a id="2" href="/shahitto"> Literature </a></li>
+            <li><a id="3" href="/tech"> Technology </a></li>
+            <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                  <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+            <li class="Iu" id="_iU">
+              <img id="_pfp" style="cursor: pointer" src="" alt="" />
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- <div class="modal-content">
+            <span class="close">&times;</span>
+            <input type="text" name="_question" placeholder="write your question here.." id="_textarea" maxlength="300">
+            <div class="button" id="submit_button">
+                Submit
+            </div>
+        </div> -->
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 id="_q_ans">
+                What is 2+2?
+            </h1>
+            <textarea name="_question" id="_textarea" id="" cols="30" rows="10"
+                placeholder="write your answer here.."></textarea>
+            <div class="button" id="submit_button">
+                submit
+            </div>
+        </div>
+
+    </div>
+    <div class="question">
+        <div class="_onlyq">
+            <p><span id="_question" class="q">What is Universe?</span></p>
+        </div>
+        <div class="_onlyinfo">
+            <span id="_by" class="_by _info">অর্ণব</span>
+            <span id="_time" class="_info">15/12/2023</span>
+            <div class="your_answer">
+                <div id="answer_button_x" class="answer_button_x">
+                ANSWER
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="answers">
+        <ul id="answers">
+            <!-- <li class="_new">
+                <div class="profile">
+                    <img src="https://cdn.discordapp.com/attachments/778294816190103642/1020328438306963566/unknown.png" alt=""> <div class="_name_flex"><span onclick="window.location.href='/user/${x._writer_id}'" >${x._writer}</span> <span class="writer_id" >@${x._writer_id}</span> </div> <span class="_time">at ${x.time ? x.time : 'timex'}</span>
+                </div>
+                <div class="answer">
+                    
+                </div>
+            </li> -->
+        </ul>`
+    </div>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            border-radius: 0.5ch;
+            background-color: rgb(254, 254, 254, 0.7);
+            backdrop-filter: blur(5px);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-content input {
+            width: 30vw;
+            border-radius: 1ch;
+            background-color: transparent;
+            height: 10vh;
+            padding: 0 15px;
+            background-color: white;
+        }
+
+        .modal-content .button {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3vh;
+            width: 10vh;
+            margin-top: 2%;
+            border-radius: 5ch;
+            background-color: #6d00ff;
+            color: white;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #_q_ans {
+            color: rgb(37, 37, 37);
+            font-size: 20px;
+            margin-left: 10px;
+            margin-bottom: 05px;
+        }
+    </style>
+    <script>
+        function c() { var modal = document.getElementById("myModal"); var btn = document.getElementById("answer_button_x"); var span = document.getElementsByClassName("close")[0]; btn.onclick = function () { modal.style.display = "block"; }; span.onclick = function () { modal.style.display = "none"; }; window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none"; } } } c(); function x(a) { return document.getElementById(a); } let question = x('_question'); let submit_button = x('submit_button'); function f() { if (question.value.length > 0) { fetch('/api/v1/ask_a_question', { method: 'POST', body: JSON.stringify({ title: `${question.value}`, authorid: `${localStorage.getItem('userId')}`, type: `all` }), headers: { 'Content-type': 'application/json; charset=UTF-8' } }).then(response => response.json()).then(r => console.log(r)) } }; submit_button.onclick = function () { f(); var modal = document.getElementById("myModal"); modal.style.display = "none"; };
+    </script>
+    <script src="../../../static/js/shoreo/q.js"></script>
+</body>
+
+</html>

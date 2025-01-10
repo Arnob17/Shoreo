@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question</title>
+    <link
+      rel="stylesheet"
+      href="../../../static/css/shoreo/questions_answer.css"
+    />
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <div class="title">
+      <div class="q_title">
+        <span id="_mainTitle"> Questions from theory of relativity </span>
+      </div>
+      <div class="contributors" id="_contributors">by- Arnob, Arnob2</div>
+    </div>
+
+    <div class="containter">
+      <div class="questions">
+        <ul id="_ull"></ul>
+      </div>
+      <div class="answer">
+        <div class="q">
+          <div class="title_Q">
+            <span id="_question_title"> Select a question from sidebar </span>
+          </div>
+          <div class="question_full">
+            <span id="_exp"> </span>
+          </div>
+        </div>
+        <div class="ans">
+          <textarea
+            class="_textarea"
+            placeholder="write your answer"
+            name=""
+            id="_textarea"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="submit" id="_q_submit">
+          <span id="_text_submit">Submit</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../../static/js/shoreo/questions_js/main.js"></script>
+    <script src="../../../static/js/shoreo/questions_js/body.js"></script>
+    <script>
+      let _id = 1;
+      let ul = document.getElementById("_ull");
+      let _mainTitle = document.getElementById("_mainTitle");
+      let _question_title = document.getElementById("_question_title");
+      let o = window.location.href;
+      let _q_submit = document.getElementById("_q_submit");
+      let _textarea = document.getElementById("_textarea");
+      const queryParamsString = window.location.search.substr(1);
+      const queryParams = queryParamsString
+        .split("&")
+        .reduce((accumulator, singleQueryParam) => {
+          const [key, value] = singleQueryParam.split("=");
+          accumulator[key] = decodeURIComponent(value);
+          return accumulator;
+        }, {});
+      let str = o.replace("http://localhost:3000/questions/q/", "");
+      let l = location.href.split("/");
+      if (
+        l[2] ==
+        "2c55d73d-f8d8-4aa8-ba0e-f6dee06d9f0a-00-png72hcvpxuw.janeway.replit.dev"
+      ) {
+        str = o.replace(
+          "https://2c55d73d-f8d8-4aa8-ba0e-f6dee06d9f0a-00-png72hcvpxuw.janeway.replit.dev/questions/q/",
+          "",
+        );
+      }
+      fetch(`/questions/q/${str}`, {
+        method: "POST",
+        body: JSON.stringify({ id: _id }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((x) => {
+          if (x.questions) {
+            for (let y of x.questions) {
+              let li = document.createElement("li");
+              li.innerHTML = `<span onclick="location.href = '?i=${y.id}'">
+                    ${y.q_title}
+                   </span> `;
+              ul.appendChild(li);
+            }
+          }
+          _mainTitle.innerText = `${x.title}`;
+          document.getElementById("_contributors").innerText =
+            `${x.question_by}`;
+          if (queryParams) {
+            if (!localStorage.getItem("userId")) {
+              return;
+            }
+            for (let o of x.questions) {
+              if (o.id == queryParams.i) {
+                _question_title.innerText = o.q_title;
+                document.getElementById("_exp").innerText = o.options;
+                _q_submit.addEventListener("click", () => {
+                  console.log(queryParams.i, _textarea.value);
+                  fetch("/api/private/answer_check", {
+                    method: "POST",
+                    body: JSON.stringify({
+                      id: o.id,
+                      givenans: _textarea.value,
+                      user_id: localStorage.getItem("userId") || "none",
+                    }),
+                    headers: {
+                      "Content-type": "application/json; charset=UTF-8",
+                    },
+                  })
+                    .then((response) => response.json())
+                    .then((res) => {
+                      console.log(res);
+                      if (res.x === 1) {
+                        _q_submit.style.backgroundColor = "rgb(9, 170, 9)";
+                        document.getElementById("_text_submit").innerText =
+                          `Correct, Move to next question`;
+                      } else {
+                        _q_submit.style.backgroundColor = "#aa1d69";
+                        document.getElementById("_text_submit").innerText =
+                          `Incorrect, Move to next question`;
+                      }
+                    });
+                });
+              }
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

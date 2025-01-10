@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoreo - SignUp</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/signup.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <nav>
+            <ul>
+                <!-- <a class="_favText" id="_favText"> অ </a> -->
+                <li class="_favico_main"><img onclick="window.location.href='/'" id="_favico" src="../../../../static/src/phiocean.PNG" alt="logo"></li>
+                <li><a id="1" href="/biggan"> Science </a></li>
+                <li><a id="2" href="/shahitto"> Literature </a></li>
+                <li><a id="3" href="/tech"> Technology </a></li>
+                <li class="Iu" id="_iU"> <img id="_pfp" style="cursor: pointer;"src=""alt=""> </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="containter">
+        <div class="x">
+            <h1>
+                Sign Up
+            </h1>
+            <div class="inp">
+                <form>
+                    <label for="fname1">Id</label><br>
+                    <input placeholder="write your id" type="text" id="fname1" name="fname1" max="10"><br>
+                    <label for="fname">Username</label><br>
+                    <input placeholder="write your username" type="text" id="fname" name="fname" max="10"><br>
+                    <label for="fname2">Password</label><br>
+                    <input placeholder="write your password" type="password" id="fname2" name="fname2" max="10"><br>
+                    <div class="buttonSubmit" id="buttonSubmit">
+                        Submit
+                    </div>
+                    <a href="/login">login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .containter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+        }
+        .x {
+            height: auto;
+            padding: 0 15px;
+            padding-bottom: 15px;
+            width: 80vw;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(226, 226, 226);
+            border-radius: 5ch;
+        }
+        .x h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+
+    <script defer src="../../static/js/shoreo/signup.js"></script>
+
+</body>
+</html>

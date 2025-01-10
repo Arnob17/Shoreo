@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ - ব্যাবহারকারী</title>
+    <link rel="stylesheet" href="../../../static/css/shoreo/shoreoUserInfo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <!-- <a class="_favText" id="_favText"> অ </a> -->
+                <li class="_favico_main"><img id="_favico" src="../../../../static/src/phiocean.PNG" alt="logo"
+                        onclick="window.location.href='/'"></li>
+                <li> <a id="1" href="/biggan"> Science </a> </li>
+                <li> <a id="2" href="/shahitto"> Literature </a> </li>
+                <li> <a id="3" href="/tech"> Technology </a> </li>
+                <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+                <li class="Iu" id="_iU"> <img id="_pfp" style="cursor: pointer;" src="" alt=""> </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="profile" id="_bg_profile">
+        <img id="_avatar" src="https://cdn.discordapp.com/attachments/778294816190103642/1047802963541901393/x.PNG"
+            alt="" crossorigin="anonymous">
+        <input type="file" id="_image_input">            
+        <div class="info">
+            <span id="_username" class="_username">Ghost</span>
+            <span id="_role" class="_role">Student, Writer, Mathematician</span>
+        </div>
+    </div>
+    <div class="posts">
+        <div class="statics">
+            <ul>
+                <li>
+                    <span class="_plain">
+                        Followed by 17m people
+                    </span>
+                </li>
+                <li>
+                    <h1>Interested In</h1>
+                    <div class="content">
+                        <ul class="__subjectUL">
+                            <li class="_subject">
+                                Mathematics
+                            </li>
+                            <li class="_subject">
+                                Science
+                            </li>
+                            <li class="_subject">
+                                Coding
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <h1>Competition Point</h1>
+                    <span id="c_point" class="_plain">
+                        0
+                    </span>
+                </li>
+                <li>
+                    <div class="bar">
+                        <canvas id="myChart" width="312" height="112"></canvas>
+                    </div>
+                </li>
+                <li>
+                    <code id="button_log_out">log-out</code>
+                </li>
+            </ul>
+        </div>
+        <div class="writings">
+            <ul id="_posts">
+            </ul>
+        </div>
+        <div class="questions">
+            <ul id="_q">
+                <!-- <li>
+                    <div class="question">
+                        <span>${y.q}</span>
+                    </div>
+                    <div onclick='window.location.href="/q?i=${y.qid}"' class="answer">
+                        <span>Answer</span>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <script src="../../../static/js/shoreo/shoreoUserInfo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script>
+        let x = document.getElementById('button_log_out');
+        x.addEventListener('click', () => {
+            localStorage.removeItem('userImg');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userId');
+            if (confirm('Are you sure?') == true) {
+                window.location.href=`/`;
+            } else {
+                return;
+            }
+        })
+    </script>
+</body>
+
+</html>

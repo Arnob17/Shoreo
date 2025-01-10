@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&family=Mina&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+:root {
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
+}
+.navbar {
+    height: 70px;
+    margin-top: 1%;
+    border-radius: 5ch;
+    width: 97%;
+    margin-left: 1.5%;
+    box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 16px;
+    z-index: 1;
+}
+
+.navbar nav {
+    top: 0;
+    left: 0;
+    width: 100;
+    padding: 40px 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.navbar nav ul li {
+    margin-bottom: 50px;
+    padding: 0 14px;
+}
+
+.navbar nav ul li a {
+    /* color: rgb(164, 166, 168); */
+    text-decoration: none;
+    font-weight: bolder;
+    color: var(--primarycolor);
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: background, 0.5s;
+}
+
+.navbar nav ul li i {
+    /* color: rgb(164, 166, 168); */
+    font-size: 15px;
+}
+
+.navbar nav ul li a:hover {
+    color: rgb(255, 255, 255);
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background: var(--primarycolor);
+    border-radius: 5%;
+    /* text-decoration: underline; */
+}
+
+.navbar nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 45px;
+    color: rgb(138, 83, 83);
+}
+
+._favico_main img {
+    /* border-radius: 50%; */
+    width: 85px;
+    border-radius: 10%;
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main ._favText:hover {
+    /* border-radius: 50%; */
+    font-size: 30px;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-weight: 100;
+    color: rgb(158, 153, 153);
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+/* .C {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: auto;
+}
+.C p {
+    margin-left: 4%;
+    font-size: 20px;
+    color: black;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+} */
+/* .quesion
+{
+    align-items: center;
+    height: auto;
+    width: auto;
+    background: rgb(173, 255, 47, 0.6);
+}
+.quesion p {
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+}
+.quesion p ._q {
+    display: flex;
+    align-items: center;
+    font-size: 23px;
+    color: black;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.quesion p .q {
+    margin-left: 4px
+    ;
+    display: flex;
+    font-size: 20px;
+    color: black;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.quesion ._by {
+    margin-left: 6%;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+}
+.answers {
+    height: auto;
+    width: auto;
+    display: flex;
+    margin-left: 3%;
+    margin-top: 2%;
+}
+.answers ul {
+    list-style-type: none;
+}
+.answers ul ._a1 {
+    height: auto;
+    width:auto;
+}
+.answers ul li {
+    border: 1px solid rgba(255, 255, 255, 0.808);
+    border-radius: 0.5ch;
+    background-color: rgba(228, 228, 228, 0.808);
+    margin-bottom: 7%;
+}
+.InfoComponent {
+    height: 50px;
+    border: 1px solid f3f3f328;
+    width: auto;
+    background-color: #f3f3f328;
+    display: flex;
+    align-items: center;
+}
+.InfoComponent .contents {
+    display: flex;
+    align-items: center;
+    margin-left: 3%;
+}
+.InfoComponent .contents img {
+    border-radius: 50%;
+    height: 35px;
+    width: auto;
+}
+.InfoComponent .contents p ._user_name a{
+    font-size: 10px;
+    color: rgb(36, 156, 255);
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-family: 'Mina', sans-serif;
+    font-weight: 200;
+    margin-left: 5%;
+}
+.answer_text {
+    height: 50px;
+    width: auto;
+    background: wheat;
+    display: flex;
+    align-items: center;
+}
+.answer_text p {
+    margin-left: 4%;
+    font-size: 15px;
+    color: grey;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.answer p{
+    margin-right: 2%;
+    margin-left: 3%;
+    color: grey;
+    white-space: pre-line;
+    font-size: 15px;
+    margin-bottom: 3%;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.answer p img {
+    padding-right: 20px;
+}
+.votes {
+    margin-left: 10%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+}
+.votes i {
+    color: grey;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 0 15px;
+}**/
+.your_answer {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.answer_button_x {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 90px;
+    border-radius: 1ch;
+    font-size: 10px;
+    float: right;
+    cursor: pointer;
+    background-color: #000000;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+}
+.question {
+    margin-left: 50px;
+    margin-top: 40px;
+    height: auto;
+    min-height: 150px;
+    width: 50vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: white;
+    border-radius: 1ch;
+    border: 1px solid rgb(226, 226, 226);
+}
+.question ._onlyq {
+    height: auto;
+    min-height: 60%;
+    min-height: 100px;
+    margin-left: 10px;
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+.question ._info {
+    font-weight: bold;
+    font-size: 15px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-right: 20px;
+}
+.question ._info:hover {
+    text-decoration: underline;
+}
+.question ._onlyinfo {
+    margin-top: 4px;
+    margin-left: 10px;
+}
+.question .q {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+.answers ul {
+    list-style-type: none;
+}
+.answers ul li {
+    border: 1px solid rgb(226, 226, 226);
+    height: 100%;
+    margin-top: 1%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1ch;
+    transition: background-color, 0.5s;
+    overflow-wrap: anywhere;
+}
+.answers ul li:hover {
+    background-color: rgb(245, 245, 245);
+}
+.answers ul li .profile {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    cursor: pointer;
+}
+.answers ul li .profile ._name_flex {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-top: 7px;
+    /* font-size: 15px; */
+}
+.answers ul li .profile ._name_flex .writer_id {
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 10px;
+    color: grey;
+}
+.answers ul li .profile ._time {
+    font-size: 10px;
+    color: grey;
+    margin-left: 4px;
+}
+.answers ul li .profile img {
+    width: 30px;
+    margin-top: 2%;
+    border-radius: 50%;
+}
+.answers ul li .answer {
+    display: flex;
+    align-items: center;
+}
+.answers ul li .answer p {
+    color: black;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-left: 2%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin-bottom: 2%;
+    white-space: pre-line;
+}
+.answers {
+    width: 60vw;
+    height: auto;   
+}
+.answers ul {
+    width: 60vw;
+    height: auto;
+    margin-left: 50px;
+}
+textarea {
+    background: transparent;
+    border-width: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    height: 250px;
+    width: 700px;
+    resize: none;
+    padding: 0 10px;
+}
+textarea:focus{
+    outline: none;
+}

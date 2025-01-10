@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&family=Bebas+Neue&family=Galada&family=Mina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #fafafa;
+    overflow-x: hidden;
+}
+:root {
+    --primarycolor: rgb(44, 44, 44);
+    --secondarycolor: #a1a1a1;
+    --buttoncolor: #ffffff;
+}
+.navbar {
+    position: sticky;
+    top: 16px;
+    height: 70px;
+    margin-top: 1%;
+    border-radius: 5ch;
+    width: 97%;
+    margin-left: 1.5%;
+    box-shadow: rgba(98, 41, 255, 0.315) 0px 2px 8px 0px;
+    background-color: rgb(253, 253, 253, .5);
+    backdrop-filter: blur(6px);
+}
+
+.navbar nav {
+    top: 0;
+    left: 0;
+    width: 100;
+    padding: 40px 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.navbar nav ul li {
+    margin-bottom: 50px;
+    padding: 0 14px;
+}
+
+.navbar nav ul li a {
+    /* color: rgb(164, 166, 168); */
+    text-decoration: none;
+    font-weight: bolder;
+    color: var(--primarycolor);
+    font-size: 18px;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: background, 0.5s;
+}
+
+.navbar nav ul li i {
+    /* color: rgb(164, 166, 168); */
+    font-size: 15px;
+}
+
+.navbar nav ul li a:hover {
+    color: rgb(255, 255, 255);
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    background: var(--primarycolor);
+    border-radius: 5%;
+    /* text-decoration: underline; */
+}
+
+.navbar nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 45px;
+    color: rgb(138, 83, 83);
+}
+
+._favico_main img {
+    /* border-radius: 50%; */
+    width: 85px;
+    border-radius: 10%;
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;width: 85px;
+    border-radius: 10%;
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main ._favText:hover {
+    /* border-radius: 50%; */
+    font-size: 30px;
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    font-weight: 100;
+    color: rgb(158, 153, 153);
+    position: absolute;
+    left: 5vh;
+    cursor: pointer;
+}
+
+._favico_main {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* .info {
+    margin-top: 3%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background: url('../../src/back.PNG');
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@font-face {
+    font-family: 'Manha-Jhankaar-Design-Unicode';
+    src: url(../../src/Manha-Jhankaar-Design-Unicode.woff2);
+}
+
+.info .title {
+    font-size: 30px;
+    color: rgb(22, 22, 22);
+    background-clip: text;
+    font-weight: 200;
+    font-weight: bolder;
+    font-family: 'Manha-Jhankaar-Design-Unicode';
+    margin-left: 20px;
+}
+
+.info .writer {
+    font-family: 'Tiro Bangla', serif;
+    font-weight: 200;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration:underline;
+}
+
+.post {
+    margin-top: 20px;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    padding: 20px 20px 10px;
+}
+
+.post p {
+    font-size: 15px;
+    color: rgb(32, 32, 32);
+    font-family: 'Tiro Bangla', serif;
+    font-weight: 200;
+    white-space: pre-line;
+}
+.post p img {
+    width: auto;
+}
+.post .c {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.post .c img {
+    height: 550px;
+    width: auto;
+    border: 3px dashed grey;
+}
+
+.post .c i {
+    font-size: 30px;
+    color: grey;
+    padding: 0 15px;
+    cursor: pointer;
+} */
+.container {
+    height: auto;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+.bottom {
+    display: flex;
+}
+.info {
+    height: auto;
+    min-height: 150px;
+    width: 70vw;
+    padding: 0 15px;
+    margin-top: 20px;
+    margin-left: 25px;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
+    border-radius: 1ch;
+    padding-top: 2px;
+}
+.info .titles {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    max-width: 69vw;
+}
+.info .titles span {
+    color: black;
+    font-size: 40px;
+    font-weight: 590;
+    /* font-family: 'Tiro Bangla', serif; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;;
+}
+.info .lekhok {
+    margin-top: 30px;
+    height: auto;
+    min-height: 50px;
+    max-height: 100px;
+}
+.info .lekhok .lekhok_span {
+    color: grey;
+    font-family: 'Tiro Bangla', serif;
+    font-size: 23px;
+    border-bottom: solid rgb(233, 24, 59);
+}
+.info .lekhok .lokhoks {
+    margin-top: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+.info .lekhok .lokhoks span {
+    font-family: 'Tiro Bangla', serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+.post {
+    width: 70vw;
+    margin-left: 25px;
+    padding: 0 20px;
+    margin-top: 10px;
+    white-space: pre-line;
+    /* word-break: break-all; */
+    overflow-wrap: anywhere;
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
+    border-radius: 1ch;
+    padding-top: 15px;
+}
+.suggestions {
+    width: calc(100% - 70vw);
+    
+}
+.options {
+    position: sticky;
+    top: 11%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 50px;
+    /* background-color: rgb(243, 243, 243, .5);
+    backdrop-filter: blur(5px); */
+    width: auto;
+}
+.options i{
+    margin-right: 2%;
+    cursor: pointer;
+    color: grey;
+}
+.options i:hover {
+    color: rgb(44, 44, 44);
+}
+.edit{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.edit p {
+    color: grey;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 1%;
+}
+.end_footer {
+    margin-top: 8%;
+    height: auto;
+    width: auto;
+    background: url('../../src/bg_shoreo.png');
+    background-color:#f3f3f3;
+    padding: 50px 50px 20px;
+}
+.end_footer ul {
+    list-style-type: none;
+}
+.end_footer li {
+    display: flex;
+    padding: 0 20px;
+    padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    justify-content: flex-end;
+    font-size: 15px;
+}
+.end_footer li a {
+    text-decoration: none;
+    color: rgb(131, 131, 131);
+}
+.end_footer li a:hover {
+    color: rgb(71, 71, 71);
+}
+._footer_favico a {
+    color: rgb(131, 131, 131);
+    font-family: 'Atma', cursive;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Galada', cursive;
+    text-decoration: none;
+    font-size: 40px;
+}
+.end_footer .made_by {
+    display: flex;
+    justify-content: center;
+    font-size: small;
+}
+.end_footer .made_by .nodejs_icon {
+    color: green;
+}
+.end_footer .made_by .html_icon {
+    color: rgb(214, 78, 44);
+}
+.end_footer .made_by .css_icon {
+    color: rgb(12, 178, 219);
+}
+body::-webkit-scrollbar {
+    width: 5px;
+    height: 20px;
+    border-radius: 5ch;
+}
+body::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 5ch;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgb(218, 218, 218);
+    border-radius: 5ch;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgb(200, 199, 199);
+}
+@media only screen and (max-width: 600px) {
+    .post p img {
+        width: 70%;
+    }
+    .bottom {
+        display: block;
+    }
+    .suggestions {
+        padding: 0 20px;
+        width: 100%;
+    }
+    .post {
+        width: 100%;
+        margin-left: 10px;
+        padding: 0 20px;
+        margin-top: 10px;
+        white-space: pre-line;
+        /* word-break: break-all; */
+        overflow-wrap: anywhere;
+    }
+}
