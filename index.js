@@ -112,7 +112,7 @@ async function x() {
   // }
   // let user = await knex('posts')
   // console.log(user)
-  // let c = await knex("users");
+  // let c = await knex("users").where({id: 1}).update({img: 'https://scontent.fcgp36-1.fna.fbcdn.net/v/t39.30808-6/463774402_1498221134194180_8984345171886574584_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFdIbtnIWg1CrdNvrntCW6zMgn-zhHng-8yCf7OEeeD7-kcKKNNlIrAF5H2j6TSB81vx72fKywd-D6WtznHTc2J&_nc_ohc=8IAjxNPp_6UQ7kNvgHgFPvf&_nc_zt=23&_nc_ht=scontent.fcgp36-1.fna&_nc_gid=AGT1J1yxk2CSuJPqJm-ZQkx&oh=00_AYBSu-qxEKAAwI_jQbXzzdB7PSeHpjvydgahx95HQGN6QA&oe=67888B36'});
   // for (let i of c) {
   //   console.log(i)
   // }

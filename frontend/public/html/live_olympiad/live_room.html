@@ -1,17 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Live-Olympiad</title>
+    <link rel="stylesheet" href="./../../../static/css/shoreo/live_olympiad/live_room.css">
 </head>
+
 <body>
 
+    <div class="navbar">
+        <nav>
+            <ul>
+                <!-- <a class="_favText" id="_favText"> অ </a> -->
+                <li class="_favico_main" onclick="window.location.href='/'">
+                    <img id="_favico" src="../../../../static/src/phiocean.PNG" alt="logo" />
+                </li>
+                <li><a id="1" href="/biggan"> Science </a></li>
+                <li><a id="2" href="/shahitto"> Literature </a></li>
+                <li><a id="3" href="/tech"> Technology </a></li>
+                <!-- <i title="Ask a Question" class="fa-solid fa-q" id="_Ask"></i>
+                  <i title="Write a post" class="fa-solid fa-plus" id="_upload"></i> -->
+                <li class="Iu" id="_iU">
+                    <img id="_pfp" style="cursor: pointer" src="" alt="" />
+                </li>
+            </ul>
+        </nav>
+    </div>
 
+    <div class="container">
+        <div class="player _1">
+            <div class="title">
+                <img src="../../../static/src/Team_Red.PNG" alt="">
+                <span>Red Rangers</span>
+            </div>
+            <div class="point">
+                <span>POINT:</span> <span>10</span>
+            </div>
+            <div class="players">
+                <ul id="_team_red">
+                    <!-- <li>
+                        <img src="https://scontent.fcgp36-1.fna.fbcdn.net/v/t39.30808-6/463774402_1498221134194180_8984345171886574584_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFdIbtnIWg1CrdNvrntCW6zMgn-zhHng-8yCf7OEeeD7-kcKKNNlIrAF5H2j6TSB81vx72fKywd-D6WtznHTc2J&_nc_ohc=8IAjxNPp_6UQ7kNvgHgFPvf&_nc_zt=23&_nc_ht=scontent.fcgp36-1.fna&_nc_gid=Aol7P65ht9L4uLgs2kgT56E&oh=00_AYAx4_8LrBBb4oejfU3zJFZOWOsTVlSJ1w9V7nxpwDn-9g&oe=67888B36" alt="">
+                        <span>17OnuArnob</span>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="questions">
+            <div class="question_title">
+                <span>
+                    What is the name of Bd's president?
+                </span>
+            </div>
+            <div class="question_details">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, placeat beatae modi hic ratione nisi
+                    deleniti quaerat dignissimos nobis autem a asperiores soluta aliquid pariatur voluptate delectus,
+                    eaque incidunt atque.</p>
+            </div>
+            <div class="options">
+                <h1>OPTIONS</h1>
+                <ul>
+                    <li>A. Abdul Hamid</li>
+                    <li>B. Abdul Maruf</li>
+                    <li>C. Abdul Kamal</li>
+                    <li>D. Sahabuddin Chuppu</li>
+                </ul>
+            </div>
+            <div class="options_q">
+                <ul>
+                    <li id="opt_1">A</li>
+                    <li id="opt_2">B</li>
+                    <li id="opt_3">C</li>
+                    <li id="opt_4">D</li>
+                </ul>
+            </div>
+        </div>
+        <div class="player _2">
+            <div class="title">
+                <img src="../../../static/src/team_blue.PNG" alt="">
+                <span>Blue Astranauts</span>
+            </div>
+            <div class="point">
+                <span>POINT:</span> <span>10</span>
+            </div>
+            <div class="players">
+                <ul>
+                    <li>
+                        <img src="https://scontent.fcgp36-1.fna.fbcdn.net/v/t39.30808-6/454037803_122143905500252439_5114255263101046561_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFgfgRJ15mAfHv8-nag9R0rP8H-9lUWGRY_wf72VRYZFuJ6nP58V-yimjzCcS5-9ppIFh9gbkcFyi4NReO_faXl&_nc_ohc=8YDDB5b7JzYQ7kNvgE04Q4R&_nc_zt=23&_nc_ht=scontent.fcgp36-1.fna&_nc_gid=AhD-aY9oHlLF0MykI2HjS1u&oh=00_AYAy6G5DmFYsU9ytk0ZCdoGE3amp6bBkjh1pbn6HwdrNZA&oe=678870B6"
+                            alt="">
+                        <span>Neon</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
+    <script src="../../../static/js/shoreo/live_olympiad/live_room.js"></script>
     <script>
-        const socket = io();
+        let ul = document.getElementById('_team_red');
+        const socket = io('ws://localhost:3000');
+        // socket.emit('userid', {
+        //     token: localStorage.getItem('token')
+        // })
+        // socket.on('user_joined', (user) => {
+        //     console.log(user);
+        //     let li = document.createElement('li');
+        //     li.innerHTML = `
+        //     <img src="${user[0].img}" alt="">
+        //                 <span>${user[0].user_name}</span>
+        //     `
+        //     ul.appendChild(li)
+        // })
+        function joinRoom(room, username) {
+            socket.emit('joinRoom', { room, username });
+
+            // Handle the list of users in the room
+            socket.on('roomUsers', (users) => {
+                console.log('Users in the room:', users);
+            });
+
+            // Handle a new user joining
+            socket.on('userConnected', (user) => {
+                console.log('New user connected:', user);
+            });
+
+            // Handle a user disconnecting
+            socket.on('userDisconnected', (user) => {
+                console.log('User disconnected:', user);
+            });
+        }
+        joinRoom('Room1', localStorage.getItem('userName'));
     </script>
 </body>
+
 </html>
