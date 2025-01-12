@@ -36,7 +36,7 @@
                 <span>Red Rangers</span>
             </div>
             <div class="point">
-                <span>POINT:</span> <span>10</span>
+                <span>POINT:</span> <span id="point_red">10</span>
             </div>
             <div class="players">
                 <ul id="_team_red">
@@ -49,22 +49,23 @@
         </div>
         <div class="questions">
             <div class="question_title">
-                <span>
+                <span id="_question_title">
                     What is the name of Bd's president?
                 </span>
             </div>
             <div class="question_details">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, placeat beatae modi hic ratione nisi
+                <p id="_question_description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, placeat
+                    beatae modi hic ratione nisi
                     deleniti quaerat dignissimos nobis autem a asperiores soluta aliquid pariatur voluptate delectus,
                     eaque incidunt atque.</p>
             </div>
             <div class="options">
                 <h1>OPTIONS</h1>
-                <ul>
-                    <li>A. Abdul Hamid</li>
-                    <li>B. Abdul Maruf</li>
-                    <li>C. Abdul Kamal</li>
-                    <li>D. Sahabuddin Chuppu</li>
+                <ul id="_options">
+                    <li id="li_opt_1">A. Abdul Hamid</li>
+                    <li id="li_opt_2">B. Abdul Maruf</li>
+                    <li id="li_opt_3">C. Abdul Kamal</li>
+                    <li id="li_opt_4">D. Sahabuddin Chuppu</li>
                 </ul>
             </div>
             <div class="options_q">
@@ -82,15 +83,15 @@
                 <span>Blue Astranauts</span>
             </div>
             <div class="point">
-                <span>POINT:</span> <span>10</span>
+                <span>POINT:</span> <span id="point_blue">10</span>
             </div>
             <div class="players">
-                <ul>
-                    <li>
+                <ul id="_team_blue_ul">
+                    <!-- <li>
                         <img src="https://scontent.fcgp36-1.fna.fbcdn.net/v/t39.30808-6/454037803_122143905500252439_5114255263101046561_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFgfgRJ15mAfHv8-nag9R0rP8H-9lUWGRY_wf72VRYZFuJ6nP58V-yimjzCcS5-9ppIFh9gbkcFyi4NReO_faXl&_nc_ohc=8YDDB5b7JzYQ7kNvgE04Q4R&_nc_zt=23&_nc_ht=scontent.fcgp36-1.fna&_nc_gid=AhD-aY9oHlLF0MykI2HjS1u&oh=00_AYAy6G5DmFYsU9ytk0ZCdoGE3amp6bBkjh1pbn6HwdrNZA&oe=678870B6"
                             alt="">
                         <span>Neon</span>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -99,7 +100,25 @@
     <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
     <script src="../../../static/js/shoreo/live_olympiad/live_room.js"></script>
     <script>
+        const queryParamsString = window.location.search.substr(1);
+        const queryParams = queryParamsString
+            .split("&")
+            .reduce((accumulator, singleQueryParam) => {
+                const [key, value] = singleQueryParam.split("=");
+                accumulator[key] = decodeURIComponent(value);
+                return accumulator;
+            }, {});
         let ul = document.getElementById('_team_red');
+        let ul2 = document.getElementById('_team_blue_ul');
+        let question_title = document.getElementById('_question_title');
+        let question_description = document.getElementById('_question_description');
+        let options = document.getElementById('_options');
+        let option_1 = document.getElementById('opt_1');
+        let option_2 = document.getElementById('opt_2');
+        let option_3 = document.getElementById('opt_3');
+        let option_4 = document.getElementById('opt_4');
+        let red_point = document.getElementById('point_red');
+        let blue_point = document.getElementById('point_blue');
         const socket = io('ws://localhost:3000');
         // socket.emit('userid', {
         //     token: localStorage.getItem('token')
@@ -113,25 +132,145 @@
         //     `
         //     ul.appendChild(li)
         // })
-        function joinRoom(room, username) {
-            socket.emit('joinRoom', { room, username });
+        function joinRoom(room, username, role) {
+            socket.emit('joinRoom', { room, username, role });
 
             // Handle the list of users in the room
             socket.on('roomUsers', (users) => {
                 console.log('Users in the room:', users);
+                //     for (user in users) {
+                // //         let li = document.createElement('li');
+                // //     li.innerHTML = `
+                // // <img src="${user.user.img}" alt="">
+                // //             <span>${user.user.user_name}</span>
+                // // `
+                // //     ul.appendChild(li)
+                // console.log(user.user)
+                //     }
+                console.log(users[0].user)
+                //     if (users[0].role == 'red') {
+                //         let li = document.createElement('li');
+                //         li.innerHTML = `
+                // <img src="${users[0].user.img}" alt="">
+                //             <span>${users[0].user.user_name}</span>
+                // `
+                //         ul.appendChild(li)
+                //     } else {
+                //         let li2 = document.createElement('li');
+                //         li2.innerHTML = `
+                // <img src="${users[0].user.img}" alt="">
+                //             <span>${users[0].user.user_name}</span>
+                // `
+                //         ul2.appendChild(li2)
+                //     }
+                for (x of users) {
+                    console.log(x);
+                    let li = document.createElement('li');
+                    li.innerHTML = `
+            <img src="${x.user.img}" alt="">
+                        <span>${x.user.user_name}</span>
+
+            `
+                    if (x.role == 'red') {
+                        ul.appendChild(li);
+                    } else if (x.role == 'blue') { ul2.appendChild(li) }
+                }
+                //for team blue
             });
 
             // Handle a new user joining
             socket.on('userConnected', (user) => {
                 console.log('New user connected:', user);
+                if (user.role === 'blue') {
+                    let li2 = document.createElement('li');
+                    li2.innerHTML = `
+            <img src="${user.user.img}" alt="">
+                        <span>${user.user.user_name}</span>
+            `
+                    ul2.appendChild(li2)
+                } else {
+                    let li = document.createElement('li');
+                    li.innerHTML = `
+            <img src="${user.user.img}" alt="">
+                        <span>${user.user.user_name}</span>
+            `
+                    ul.appendChild(li)
+                }
             });
 
             // Handle a user disconnecting
             socket.on('userDisconnected', (user) => {
                 console.log('User disconnected:', user);
+                socket.on('roomUsers', (users) => {
+                    {
+                        for (x of users) {
+                            if (x.id == user.id) {
+                                if (x.role == 'blue') {
+                                    ul2.removeChild(ul2.children[0]);
+                                } else if (x.role == 'red') {
+                                    ul.removeChild(ul.children[0]);
+                                }
+                            }
+                        }
+                    }
+                })
             });
+            socket.on('question', q => {
+                question_title.innerText = `${q.title}`,
+                    question_description.innerText = `${q.description}`;
+                let opt1 = document.getElementById('li_opt_1');
+                opt1.innerText = `A. ${q.options.a}`
+                let opt2 = document.getElementById('li_opt_2');
+                opt2.innerText = `B. ${q.options.b}`
+                let opt3 = document.getElementById('li_opt_3');
+                opt3.innerText = `C. ${q.options.c}`
+                let opt4 = document.getElementById('li_opt_4');
+                opt4.innerText = `D. ${q.options.d}`
+
+                // options.appendChild(opt1)
+                // options.appendChild(opt2)
+                // options.appendChild(opt3)
+                // options.appendChild(opt4)
+                option_1.addEventListener('click', () => {
+                    if (q.correct_answer == 'a') {
+                        socket.emit('check', (queryParams.team, 'true'))
+                    } else {
+                        socket.emit('check', (queryParams.team, 'false'))
+                    }
+                })
+                option_2.addEventListener('click', () => {
+                    if (q.correct_answer == 'b') {
+                        socket.emit('check', (queryParams.team, 'true'))
+                    } else {
+                        socket.emit('check', (queryParams.team, 'false'))
+                    }
+                })
+                option_3.addEventListener('click', () => {
+                    if (q.correct_answer == 'c') {
+                        socket.emit('check', (queryParams.team, 'true'))
+                    } else {
+                        socket.emit('check', (queryParams.team, 'false'))
+                    }
+                })
+                option_4.addEventListener('click', () => {
+                    if (q.correct_answer == 'd') {
+                        socket.emit('check', (queryParams.team, 'true'))
+                    } else {
+                        socket.emit('check', (queryParams.team, 'false'))
+                    }
+                })
+            })
+
+            socket.on('point', (role, point) => {
+                if (role == 'red') {
+                    red_point.innerText = `${point}`
+                }
+                if (role == 'blue') {
+                    blue_point.innerText = `${point}`
+                }
+            })
         }
-        joinRoom('Room1', localStorage.getItem('userName'));
+        joinRoom('Room1', localStorage.getItem('token'), queryParams.team);
     </script>
 </body>
 
